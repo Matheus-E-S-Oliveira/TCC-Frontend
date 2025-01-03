@@ -25,17 +25,15 @@ import { Component } from '@angular/core';
 })
 export class LayotHeaderComponent {
   menuOpen = false;
-  activeButtonIndex: number | null = null;
+  activeButtonIndex: number | null = 0;
 
   menu() {
     this.menuOpen = !this.menuOpen;
   }
   setActiveButton(index: number): void {
     if (this.activeButtonIndex === index) {
-      // Se o mesmo botão for clicado, desativa
       this.activeButtonIndex = null;
     } else {
-      // Define o botão clicado como ativo
       this.activeButtonIndex = index;
 
     }

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/components/dashboard.component';
 import { ComponentsStructureModule } from '../../shared/models/components/components-structure.module';
 import { AngularMaterialModule } from '../../shared/angular-material/angular-material.module';
 
@@ -15,7 +16,8 @@ import { AngularMaterialModule } from '../../shared/angular-material/angular-mat
     CommonModule,
     HomeRoutingModule,
     ComponentsStructureModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
   ]
 })
 export class HomeModule { }

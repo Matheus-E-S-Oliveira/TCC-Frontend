@@ -1,1 +1,27 @@
-<p>card-rating works!</p>
+<div class="card-rating">
+    <section style="width: 80%;">
+        <article>
+            <app-rating-circle
+            [avaliacao]="avaliacao">
+            </app-rating-circle>
+        </article>
+        <article style="display: flex; justify-content: center; padding-top: 10px;">
+            <div>
+                <span class="avalicao">1.000 Avaliações</span>
+            </div>
+
+        </article>
+        <article class="container-star-rating">
+            <app-star-rating
+            [avaliacao]="avaliacao">
+            </app-star-rating>
+        </article>
+
+        <article class="container-bar-rating">
+            <app-bar-rating
+            [data]="data">
+            </app-bar-rating>
+        </article>
+
+    </section>
+</div>

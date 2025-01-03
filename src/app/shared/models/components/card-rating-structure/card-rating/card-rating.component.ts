@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-rating',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './card-rating.component.scss'
 })
 export class CardRatingComponent {
-
+  @Input() avaliacao: number = 0;
+  @Input() data: {label: string, value: number}[] = [];
 }

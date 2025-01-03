@@ -1,0 +1,12 @@
+<div class="circle-rating">
+    <div class="progress-circle">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50" stroke="#f3f3f3" stroke-width="8" fill="none" />
+            <circle cx="60" cy="60" r="50" stroke="#89b5fa" stroke-width="8" fill="none"
+                class="circle-progress" [attr.stroke-dasharray]="circumference"
+                [attr.stroke-dashoffset]="offset">
+            </circle>
+        </svg>
+        <div class="percentage">{{ avaliacao | number: '1.1-1' }}/5</div>
+    </div>
+</div>

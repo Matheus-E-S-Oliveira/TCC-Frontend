@@ -1,0 +1,29 @@
+.card-rating {
+    display: flex;
+    flex-grow: 1;
+    background-color: #fff;
+    box-sizing: border-box;
+    justify-content: center;
+}
+.avalicao{
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-style: italic;
+    color: #424242;
+}
+.container-star-rating {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+
+.container-bar-rating {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+app-bar-rating{
+    width: 100%;
+}
