@@ -1,0 +1,45 @@
+.container-card{
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card-rating{
+    display: flex;
+    flex-grow: 1;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.circle-rating{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+.progress-circle {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+  }
+  
+  circle {
+    transition: stroke-dashoffset 0.5s ease;
+  }
+  
+  .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .progress {
+    transform: rotate(-90deg); /* Faz com que a animação comece no topo */
+  }
+  
