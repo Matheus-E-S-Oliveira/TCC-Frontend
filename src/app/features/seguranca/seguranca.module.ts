@@ -6,17 +6,21 @@ import { AngularMaterialModule } from '../../shared/angular-material/angular-mat
 import { ComponentsStructureModule } from '../../shared/models/components/components-structure.module';
 
 import { SegurancaDashboardComponent } from './components/seguranca-dashboard/seguranca-dashboard.component';
+import { SegurancaFormularioComponent } from './components/seguranca-formulario/seguranca-formulario.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    SegurancaDashboardComponent
+    SegurancaDashboardComponent,
+    SegurancaFormularioComponent
   ],
   imports: [
     CommonModule,
     SegurancaRoutingModule,
     ComponentsStructureModule,
     AngularMaterialModule,
+    FormsModule
   ]
 })
 export class SegurancaModule { }

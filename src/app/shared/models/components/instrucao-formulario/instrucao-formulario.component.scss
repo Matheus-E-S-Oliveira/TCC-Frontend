@@ -1,0 +1,38 @@
+
+.form-header {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.title,
+.subtitle {
+    width: 100%;
+    display: flex;
+    color: #424242;
+    font-family: 'Roboto';
+}
+
+.content-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.emoji {
+    font-size: 35px;
+    width: 35px;
+    height: 35px;
+}
+
+.separador {
+    font-size: 27px;
+    color: #424242;
+}
+
+span {
+    font-size: 17px;
+    font-weight: 500;
+    color: #424242;
+}

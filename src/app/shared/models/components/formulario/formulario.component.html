@@ -1,0 +1,15 @@
+<div class="form">
+    <section>
+      <div class="form-cabecalho">
+        <app-instrucao-formulario></app-instrucao-formulario>
+      </div>
+    </section>
+    <section>
+      <div class="form-content">
+        <ng-container *ngFor="let question of question">
+          <app-formulario-question [question]="question"></app-formulario-question>
+        </ng-container>
+      </div>
+    </section>
+  </div>
+  

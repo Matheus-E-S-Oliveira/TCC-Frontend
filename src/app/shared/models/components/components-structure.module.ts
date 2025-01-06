@@ -8,6 +8,10 @@ import { StarRatingComponent } from './star-rating/star-rating/star-rating.compo
 import { BarRatingComponent } from './bar-rating/bar-rating/bar-rating.component';
 import { KpisComponent } from './kpis/kpis/kpis.component';
 import { RouterModule } from '@angular/router';
+import { InstrucaoFormularioComponent } from './instrucao-formulario/instrucao-formulario.component';
+import { FormularioComponent } from './formulario/formulario.component';
+import { FormularioQuestionComponent } from './formulario-question/formulario-question.component';
+import { FormularioRatingComponent } from './formulario-rating/formulario-rating.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { RouterModule } from '@angular/router';
     RatingCircleComponent,
     StarRatingComponent,
     BarRatingComponent,
-    KpisComponent
+    KpisComponent,
+    InstrucaoFormularioComponent,
+    FormularioComponent,
+    FormularioQuestionComponent,
+    FormularioRatingComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +36,8 @@ import { RouterModule } from '@angular/router';
     CardComponent,
     CardRatingComponent,
     KpisComponent,
+    StarRatingComponent,
+    FormularioComponent
   ]
 })
 export class ComponentsStructureModule { }

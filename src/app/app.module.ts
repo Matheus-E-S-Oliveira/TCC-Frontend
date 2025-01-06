@@ -17,7 +17,7 @@ import { LayoutModule } from './shared/layout/layout.module';
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

@@ -28,4 +28,8 @@ export class DashboardComponent {
     const total = this.data.reduce((acc, rating) => acc + rating.value, 0);
     return total / this.data.length;
   }
+  //função para remover acentos e trocar o ç por c
+  removerAcentos(str: string) { 
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c"); 
+  }
 }

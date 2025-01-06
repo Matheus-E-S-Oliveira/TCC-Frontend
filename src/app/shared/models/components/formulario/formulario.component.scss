@@ -1,0 +1,30 @@
+.form {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-cabecalho {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 10px;
+    display: flex;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.form-content {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+app-formulario-question{
+    width: 100%;
+}

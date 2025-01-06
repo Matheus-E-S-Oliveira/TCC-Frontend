@@ -1,0 +1,31 @@
+
+
+
+
+
+
+.rating {
+    display: inline-block;
+}
+
+.star {
+    font-size: 35px;
+    width: 35px;
+    height: 35px;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.star.filled {
+    color: #89b5fa;
+}
+
+.star.empty {
+    color: #89b5fa;
+}
+
+.star:hover {
+    color: #007BFF
+}

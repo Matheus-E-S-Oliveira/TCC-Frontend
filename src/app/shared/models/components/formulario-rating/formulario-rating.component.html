@@ -1,0 +1,10 @@
+<div class="rating">
+    <ng-container *ngFor="let star of getStars(); let i = index">
+        <mat-icon class="star" [ngClass]="{
+          filled: i < rating,
+          empty: i >= rating
+        }" (click)="onStarClick(i + 1)" [matTooltip]="getTooltipText(i + 1)"
+            matTooltipPosition="above">
+            {{ i < rating ? 'star' : 'star_border' }} </mat-icon>
+    </ng-container>
+</div>

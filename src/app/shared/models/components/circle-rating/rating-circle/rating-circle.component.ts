@@ -13,6 +13,6 @@ export class RatingCircleComponent implements OnInit{
   offset: number = 0;
 
   ngOnInit(): void {
-    this.offset = this.circumference - (this.avaliacao / 4) * this.circumference;
+    this.offset = this.circumference - (this.avaliacao / 5) * this.circumference;
   }
 }

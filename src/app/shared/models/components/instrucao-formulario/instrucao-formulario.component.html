@@ -1,0 +1,63 @@
+<article>
+    <div class="form-header">
+        <strong class="title">
+            Por favor, avalie o serviço prestado utilizando o sistema de estrelas abaixo. Cada estrela
+            reflete a sua experiência. A sua opinião é muito importante para nós!
+        </strong>
+        <strong class="subtitle">
+            Escala de avaliação:
+        </strong>
+    </div>
+</article>
+<div class="form-cabecalho-content">
+    <article>
+        <div class="content-item">
+            <mat-icon class="emoji" style="color: #f44336;">sentiment_very_dissatisfied</mat-icon>
+            <span class="separador">-</span>
+            <app-star-rating [avaliacao]="1"></app-star-rating>
+            <span>
+                (1 estrela) - Muito insatisfeito
+            </span>
+        </div>
+    </article>
+    <article>
+        <div class="content-item">
+            <mat-icon class="emoji" style="color:#ff9800">sentiment_dissatisfied</mat-icon>
+            <span class="separador">-</span>
+            <app-star-rating [avaliacao]="2"></app-star-rating>
+            <span>
+                (2 estrelas) - Insatisfeito
+            </span>
+        </div>
+    </article>
+    <article>
+        <div class="content-item">
+            <mat-icon class="emoji" style="color: #ffeb3b;">sentiment_neutral</mat-icon>
+            <span class="separador">-</span>
+            <app-star-rating [avaliacao]="3"></app-star-rating>
+            <span>
+                (3 estrelas) - Normal
+            </span>
+        </div>
+    </article>
+    <article>
+        <div class="content-item">
+            <mat-icon class="emoji" style="color: #8bc34a">sentiment_satisfied</mat-icon>
+            <span class="separador">-</span>
+            <app-star-rating [avaliacao]="4"></app-star-rating>
+            <span>
+                (4 estrelas) - Satisfeito
+            </span>
+        </div>
+    </article>
+    <article>
+        <div class="content-item">
+            <mat-icon class="emoji" style="color:#4caf50">sentiment_very_satisfied</mat-icon>
+            <span class="separador">-</span>
+            <app-star-rating [avaliacao]="5"></app-star-rating>
+            <span>
+                (5 estrelas) - Muito satisfeito
+            </span>
+        </div>
+    </article>
+</div>
