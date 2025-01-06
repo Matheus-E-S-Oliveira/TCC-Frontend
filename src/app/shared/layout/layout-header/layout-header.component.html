@@ -9,31 +9,26 @@
     <article>
         <div [@expandCollapse]="menuOpen ? 'expanded' : 'collapsed'" class="menu-content">
             <div class="menu-content">
-                <button class="btn-menu-itens" [ngClass]="{ active: activeButtonIndex === 0 }"
-                    (click)="setActiveButton(0)">
+                <a class="btn-menu-itens" routerLink="/home" routerLinkActive="active">
                     <mat-icon>home</mat-icon>
                     <span>Página Inicial</span>
-                </button>
-                <button class="btn-menu-itens" [ngClass]="{ active: activeButtonIndex === 1 }"
-                    (click)="setActiveButton(1)">
+                </a>
+                <a class="btn-menu-itens" routerLink="/saude" routerLinkActive="active">
                     <mat-icon>health_and_safety</mat-icon>
                     <span>Saúde</span>
-                </button>
-                <button class="btn-menu-itens" [ngClass]="{ active: activeButtonIndex === 2 }"
-                    (click)="setActiveButton(2)">
+                </a>
+                <a class="btn-menu-itens" routerLink="/infraestrutura" routerLinkActive="active">
                     <mat-icon>apartment</mat-icon>
                     <span>Infraestrutura</span>
-                </button>
-                <button class="btn-menu-itens" [ngClass]="{ active: activeButtonIndex === 3 }"
-                    (click)="setActiveButton(3)">
+                </a>
+                <a class="btn-menu-itens" routerLink="/educacao" routerLinkActive="active">
                     <mat-icon>school</mat-icon>
                     <span>Educação</span>
-                </button>
-                <button class="btn-menu-itens" [ngClass]="{ active: activeButtonIndex === 4 }"
-                    (click)="setActiveButton(4)">
+                </a>
+                <a class="btn-menu-itens" routerLink="/seguranca" routerLinkActive="active">
                     <mat-icon>local_police</mat-icon>
                     <span>Segurança</span>
-                </button>
+                </a>
             </div>
         </div>
     </article>

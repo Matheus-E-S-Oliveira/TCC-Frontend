@@ -11,5 +11,5 @@ export class KpisComponent {
   @Input() title: string = '';
   @Input() bandeira: string = '';
   @Input() avaliacao: number = 0;
-  @Input() link: string = '';
+  @Input() route: string = '';
 }

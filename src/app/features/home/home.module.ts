@@ -7,7 +7,6 @@ import { DashboardComponent } from './dashboard/components/dashboard.component';
 import { ComponentsStructureModule } from '../../shared/models/components/components-structure.module';
 import { AngularMaterialModule } from '../../shared/angular-material/angular-material.module';
 
-
 @NgModule({
   declarations: [
     DashboardComponent

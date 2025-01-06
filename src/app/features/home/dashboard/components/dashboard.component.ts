@@ -10,10 +10,10 @@ import { Component, Input } from '@angular/core';
 export class DashboardComponent {
   commonBandeira: string = 'imgs/bandeira.jpg';
   data = [
-    { label: 'Saúde', value: 2.0 },
-    { label: 'Infraestrutura', value: 5.0 },
-    { label: 'Educação', value: 4.0 },
-    { label: 'Segurança', value: 3.0 }
+    { label: 'Saúde', value: 1.5, route: 'saude' },
+    { label: 'Infraestrutura', value: 2.5, route: 'infraestrutura' },
+    { label: 'Educação', value: 3.5, route: 'educacao' },
+    { label: 'Segurança', value: 4.5, route: 'seguranca' }
   ];
 
   generalAverage!: number;

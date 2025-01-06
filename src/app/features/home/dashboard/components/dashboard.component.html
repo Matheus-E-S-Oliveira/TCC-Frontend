@@ -1,7 +1,7 @@
 <div>
     <section>
         <div class="container-card">
-            <article style="width: 40%;">
+            <article class="width">
                 <app-card title="Ressaquinha-MG" subtitle=" Avaliação Geral dos Serviços Prestados na Cidade"
                     logo="imgs/bandeira.jpg" img="imgs/ressaquinha.jpg">
                 </app-card>
@@ -18,7 +18,8 @@
                 <app-kpis 
                     [title]="kpi.label" 
                     [bandeira]="commonBandeira" 
-                    [avaliacao]="kpi.value" 
+                    [avaliacao]="kpi.value"
+                    [route]="kpi.route" 
                     >
                 </app-kpis>
             </article>

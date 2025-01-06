@@ -7,6 +7,7 @@ import { AngularMaterialModule } from '../../angular-material/angular-material.m
 import { StarRatingComponent } from './star-rating/star-rating/star-rating.component';
 import { BarRatingComponent } from './bar-rating/bar-rating/bar-rating.component';
 import { KpisComponent } from './kpis/kpis/kpis.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { KpisComponent } from './kpis/kpis/kpis.component';
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    RouterModule
     
   ],
   exports:[

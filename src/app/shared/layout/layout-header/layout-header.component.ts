@@ -2,10 +2,10 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-layot-header',
+  selector: 'app-layout-header',
   standalone: false,
-  templateUrl: './layot-header.component.html',
-  styleUrl: './layot-header.component.scss',
+  templateUrl: './layout-header.component.html',
+  styleUrl: './layout-header.component.scss',
   animations: [
     trigger('expandCollapse', [
       state('collapsed', style({
@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
     ])
   ]
 })
-export class LayotHeaderComponent {
+export class LayoutHeaderComponent {
   menuOpen = false;
   activeButtonIndex: number | null = 0;
 

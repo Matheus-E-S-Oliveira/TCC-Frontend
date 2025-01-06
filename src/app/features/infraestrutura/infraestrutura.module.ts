@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SaudeRoutingModule } from './saude-routing.module';
+import { InfraestruturaRoutingModule } from './infraestrutura-routing.module';
 import { AngularMaterialModule } from '../../shared/angular-material/angular-material.module';
 import { ComponentsStructureModule } from '../../shared/models/components/components-structure.module';
 
-import { SaudeDashboardComponent } from './components/saude-dashboard/saude-dashboard.component';
+import { InfraestruturaDashboardComponent } from './components/infraestrutura-dashboard/infraestrutura-dashboard.component';
 
 
 @NgModule({
   declarations: [
-    SaudeDashboardComponent
+    InfraestruturaDashboardComponent
   ],
   imports: [
     CommonModule,
+    InfraestruturaRoutingModule,
     ComponentsStructureModule,
     AngularMaterialModule,
-    SaudeRoutingModule
   ]
 })
-export class SaudeModule { }
+export class InfraestruturaModule { }

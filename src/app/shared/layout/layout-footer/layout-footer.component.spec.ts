@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayotHeaderComponent } from './layot-header.component';
+import { LayoutFooterComponent } from './layout-footer.component';
 
-describe('LayotHeaderComponent', () => {
-  let component: LayotHeaderComponent;
-  let fixture: ComponentFixture<LayotHeaderComponent>;
+describe('LayoutFooterComponent', () => {
+  let component: LayoutFooterComponent;
+  let fixture: ComponentFixture<LayoutFooterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LayotHeaderComponent]
+      declarations: [LayoutFooterComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LayotHeaderComponent);
+    fixture = TestBed.createComponent(LayoutFooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
