@@ -1,5 +1,7 @@
 <div class="rating">
-    <span *ngFor="let icon of star">
-        <mat-icon class="star">{{icon}}</mat-icon>
+    <span *ngFor="let icon of star let i = index">
+        <mat-icon class="star" matTooltip="{{i + 1}} estrelas" matTooltipPosition="above">
+            {{icon}}
+        </mat-icon>
     </span>
 </div>

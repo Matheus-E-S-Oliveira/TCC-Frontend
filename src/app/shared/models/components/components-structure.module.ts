@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CardComponent } from './card-structure/card/card.component';
-import { CardRatingComponent } from './card-rating-structure/card-rating/card-rating.component';
-import { RatingCircleComponent } from './circle-rating/rating-circle/rating-circle.component';
-import { AngularMaterialModule } from '../../angular-material/angular-material.module';
-import { StarRatingComponent } from './star-rating/star-rating/star-rating.component';
-import { BarRatingComponent } from './bar-rating/bar-rating/bar-rating.component';
-import { KpisComponent } from './kpis/kpis/kpis.component';
 import { RouterModule } from '@angular/router';
-import { InstrucaoFormularioComponent } from './instrucao-formulario/instrucao-formulario.component';
+import { CommonModule } from '@angular/common';
+
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+
+import { KpisComponent } from './kpis/kpis/kpis.component';
+import { CardComponent } from './card-structure/card/card.component';
 import { FormularioComponent } from './formulario/formulario.component';
-import { FormularioQuestionComponent } from './formulario-question/formulario-question.component';
+import { BtnOpenFormComponent } from './btn-open-form/btn-open-form.component';
+import { BarRatingComponent } from './bar-rating/bar-rating/bar-rating.component';
+import { StarRatingComponent } from './star-rating/star-rating/star-rating.component';
 import { FormularioRatingComponent } from './formulario-rating/formulario-rating.component';
+import { RatingCircleComponent } from './circle-rating/rating-circle/rating-circle.component';
+import { CardRatingComponent } from './card-rating-structure/card-rating/card-rating.component';
+import { FormularioQuestionComponent } from './formulario-question/formulario-question.component';
+import { InstrucaoFormularioComponent } from './instrucao-formulario/instrucao-formulario.component';
+import { DialogoInfoFormComponent } from './dialogo-info-form/dialogo-info-form.component';
+import { DialogoConfirmaEnvioComponent } from './dialogo-confirma-envio/dialogo-confirma-envio.component';
+import { DialogoResultSubmitComponent } from './dialogo-result-submit/dialogo-result-submit.component';
+import { ScreenRendererComponent } from './screen-renderer/screen-renderer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,12 @@ import { FormularioRatingComponent } from './formulario-rating/formulario-rating
     InstrucaoFormularioComponent,
     FormularioComponent,
     FormularioQuestionComponent,
-    FormularioRatingComponent
+    FormularioRatingComponent,
+    BtnOpenFormComponent,
+    DialogoInfoFormComponent,
+    DialogoConfirmaEnvioComponent,
+    DialogoResultSubmitComponent,
+    ScreenRendererComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +49,9 @@ import { FormularioRatingComponent } from './formulario-rating/formulario-rating
     CardRatingComponent,
     KpisComponent,
     StarRatingComponent,
-    FormularioComponent
+    FormularioComponent,
+    BtnOpenFormComponent,
+    ScreenRendererComponent
   ]
 })
 export class ComponentsStructureModule { }

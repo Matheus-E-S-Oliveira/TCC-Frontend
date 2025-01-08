@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="dialog-header">
+        <span>Confirmação!</span>
+        <div class="close-dilog">
+            <button class="close-icon" mat-button (click)="onCancel()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+    
+    <mat-divider></mat-divider>
+
+    <div mat-dialog-content class="dialog-content">
+        <p>Tem certeza que deseja enviar o formulário?</p>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div mat-dialog-actions class="dialog-actions">
+        <button class="btn-cancel" mat-button (click)="onCancel()">Cancelar</button>
+        <button class="btn-confirm" mat-button (click)="onConfirm()">Confirmar</button>
+    </div>
+</div>

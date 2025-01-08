@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-seguranca-dashboard',
@@ -8,7 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './seguranca-dashboard.component.scss'
 })
 export class SegurancaDashboardComponent {
-  commonBandeira: string = 'imgs/bandeira.jpg';
   dataServico = [
     { label: 'Criterio #1', value: 4.0 },
     { label: 'Criterio #2', value: 4.4 },
@@ -21,17 +21,4 @@ export class SegurancaDashboardComponent {
     { label: 'Infraestrutura', value: 2.5, route: 'infraestrutura' },
     { label: 'Educação', value: 3.5, route: 'educacao' },
   ];
-
-  generalAverage!: number;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.generalAverage = this.calculateGeneralAverage();
-  }
-
-  calculateGeneralAverage(): number {
-    const total = this.dataServico.reduce((acc, rating) => acc + rating.value, 0);
-    return total / this.dataServico.length;
-  }
 }

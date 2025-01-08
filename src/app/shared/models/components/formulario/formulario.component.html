@@ -1,15 +1,26 @@
 <div class="form">
-    <section>
-      <div class="form-cabecalho">
-        <app-instrucao-formulario></app-instrucao-formulario>
-      </div>
-    </section>
-    <section>
-      <div class="form-content">
-        <ng-container *ngFor="let question of question">
-          <app-formulario-question [question]="question"></app-formulario-question>
-        </ng-container>
-      </div>
-    </section>
-  </div>
-  
+  <section>
+    <div class="form-cabecalho">
+      <app-instrucao-formulario></app-instrucao-formulario>
+    </div>
+  </section>
+  <section>
+    <div class="form-content">
+      <ng-container *ngFor="let question of question">
+        <app-formulario-question [question]="question"></app-formulario-question>
+      </ng-container>
+    </div>
+  </section>
+  <section style="flex-grow: 1;">
+    <div class="form-actions">
+      <a [routerLink]="['/', routePart]" class="btn-return">
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+      </a>
+      <button (click)="onSubmit()" class="btn-submit" type="submit" mat-button>
+        Enviar
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </section>
+</div>

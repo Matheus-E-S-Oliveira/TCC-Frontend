@@ -1,28 +1,9 @@
 <div>
-    <section>
-        <div class="container-card">
-            <article class="width">
-                <app-card title="Ressaquinha-MG" subtitle=" Avaliação Geral dos Serviços Prestados na Cidade"
-                    logo="imgs/bandeira.jpg" img="imgs/ressaquinha.jpg">
-                </app-card>
-            </article>
-            <article style="width: 60%;">
-                <app-card-rating [data]="data" [avaliacao]="generalAverage">
-                </app-card-rating>
-            </article>
-        </div>
-    </section>
-    <section>
-        <div class="container-kpis">
-            <article *ngFor="let kpi of data" class="container-kpi">
-                <app-kpis 
-                    [title]="kpi.label" 
-                    [bandeira]="commonBandeira" 
-                    [avaliacao]="kpi.value"
-                    [route]="kpi.route" 
-                    >
-                </app-kpis>
-            </article>
-        </div>
-    </section>
+    <app-screen-renderer
+    title="Ressaquinha-MG"
+    subtitle="Avaliação Geral dos Serviços Prestados na Cidade"
+    img="imgs/ressaquinha.jpg"
+    [data]="data"
+    [dashboard] = true>
+    </app-screen-renderer>
 </div>

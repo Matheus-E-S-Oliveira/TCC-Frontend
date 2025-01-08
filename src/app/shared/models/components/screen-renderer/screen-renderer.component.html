@@ -1,0 +1,33 @@
+<div>
+    <section>
+        <div class="container-card">
+            <article class="width">
+                <app-card 
+                    [title]="title"
+                    [subtitle]="subtitle"
+                    [logo]="commonBandeira"
+                    [img]="img">
+                </app-card>
+            </article>
+            <mat-divider class="card-divisor" [vertical]="true"></mat-divider>
+            <article style="width: 60%;">
+                <app-card-rating [data]="dataServico" [avaliacao]="generalAverage">
+                </app-card-rating>
+            </article>
+        </div>
+    </section>
+    <section class="container-btn-open-form" *ngIf="!dashboard">
+        <app-btn-open-form [routePath]="routeName"></app-btn-open-form>
+    </section>
+    <section>
+        <div class="container-kpis">
+            <article *ngFor="let kpi of data" class="container-kpi">
+                <app-kpis [title]="kpi.label" 
+                [bandeira]="commonBandeira" 
+                [avaliacao]="kpi.value" 
+                [route]="kpi.route">
+                </app-kpis>
+            </article>
+        </div>
+    </section>
+</div>

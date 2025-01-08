@@ -1,8 +1,16 @@
 <section class="menu-bar">
     <article class="menu-bar-header">
-        <button (click)="menu()" class="btn-menu" title="Click para interagir">
-            <mat-icon *ngIf="!menuOpen">menu</mat-icon>
-            <mat-icon *ngIf="menuOpen">close</mat-icon>
+        <button (click)="menu()" class="btn-menu">
+            <mat-icon *ngIf="!menuOpen" 
+                matTooltip="Clique aqui para abri o menu"
+                matTooltipPosition="above">
+                menu
+            </mat-icon>
+            <mat-icon *ngIf="menuOpen" 
+                matTooltip="Clique aqui para fechar o menu"
+                matTooltipPosition="above">
+                close
+            </mat-icon>
         </button>
         <header>TCC-V3 BETA: Voz do cidadão</header>
     </article>

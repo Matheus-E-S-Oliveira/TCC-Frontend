@@ -1,27 +1,27 @@
 <div class="card-rating">
-    <section style="width: 80%;">
+    <section style="width: 90%;">
         <article>
-            <app-rating-circle
-            [avaliacao]="avaliacao">
+            <app-rating-circle [avaliacao]="avaliacao">
             </app-rating-circle>
         </article>
-        <article style="display: flex; justify-content: center; padding-top: 10px;">
-            <div>
-                <span class="avalicao">1.000 Avaliações</span>
+        <article style="display: flex; justify-content: center; padding-top: 10px; padding-bottom: 5px;">
+            <div style="display: flex;">
+                <span class="avalicao">
+                    1.000 Avaliações
+                    <mat-icon style="margin-top: -15px; font-size: 27px; width: 27px; height: 27px;"
+                    matTooltip="Avalicações realizadas" matTooltipPosition="above">
+                        reviews
+                    </mat-icon>
+                </span>
             </div>
-
         </article>
         <article class="container-star-rating">
-            <app-star-rating
-            [avaliacao]="avaliacao">
+            <app-star-rating [avaliacao]="avaliacao">
             </app-star-rating>
         </article>
-
         <article class="container-bar-rating">
-            <app-bar-rating
-            [data]="data">
+            <app-bar-rating [data]="data">
             </app-bar-rating>
         </article>
-
     </section>
 </div>

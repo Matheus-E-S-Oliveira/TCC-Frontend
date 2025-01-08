@@ -1,0 +1,22 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+        <span>Atenção!</span>
+        <div class="close-dilog">
+            <button class="close-icon" mat-button (click)="close()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-content class="dialog-content">
+        <p>(1 estrela) - Muito insatisfeito: O serviço não atendeu às minhas expectativas de forma alguma.</p>
+        <p>(2 estrelas) - Insatisfeito: O serviço foi abaixo do esperado, com várias falhas.</p>
+        <p>(3 estrelas) - Neutro: O serviço atendeu às minhas necessidades, mas poderia ser melhor.</p>
+        <p>(4 estrelas) - Satisfeito: O serviço foi bom, com apenas pequenas áreas de melhoria.</p>
+        <p>(5 estrelas) - Muito satisfeito: O serviço superou minhas expectativas em todos os aspectos.</p>
+    </div>
+    <mat-divider></mat-divider>
+    <div mat-dialog-actions class="dialog-actions">
+        <button class="btn-dialog" mat-button (click)="close()">Fechar</button>
+    </div>
+</div>

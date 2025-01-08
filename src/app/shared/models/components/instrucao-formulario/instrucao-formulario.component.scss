@@ -12,6 +12,17 @@
     display: flex;
     color: #424242;
     font-family: 'Roboto';
+    align-items: center;
+}
+
+.rating-introducao{
+    cursor: pointer;
+    color: #89b5fa;
+    transition: background-color 0.8s;
+}
+.rating-introducao:hover{
+    color: #007BFF;
+    transform: translateY(-2px);
 }
 
 .content-item {

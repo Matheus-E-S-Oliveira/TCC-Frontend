@@ -1,9 +1,3 @@
-
-
-
-
-
-
 .rating {
     display: inline-block;
 }
@@ -12,7 +6,6 @@
     font-size: 35px;
     width: 35px;
     height: 35px;
-    color: gray;
     cursor: pointer;
     transition: color 0.3s;
     position: relative;
@@ -27,5 +20,6 @@
 }
 
 .star:hover {
-    color: #007BFF
+    color: #007BFF;
+    transform: translateY(-2px);
 }

@@ -9,7 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class FormularioRatingComponent {
 
-  @Input() rating: number = 0;
+  @Input() rating: number = 3;
   @Input() maxRating: number = 5;
   @Output() ratingChange = new EventEmitter<number>();
   

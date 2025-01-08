@@ -1,10 +1,11 @@
-.menu-bar{
+.menu-bar {
     background-color: #FFF;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     box-sizing: border-box;
 }
-.menu-bar-header{
+
+.menu-bar-header {
     display: flex;
     gap: 10px;
     padding: 20px;
@@ -13,6 +14,7 @@
     font-weight: 500;
     color: #424242;
 }
+
 .menu-content {
     display: flex;
     flex-wrap: wrap;
@@ -24,7 +26,7 @@
     box-sizing: border-box;
 }
 
-.btn-menu{
+.btn-menu {
     cursor: pointer;
     border: none;
     border-radius: 6px;
@@ -32,13 +34,15 @@
     color: #424242;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
-.btn-menu:active { 
+
+.btn-menu:hover {
     background-color: #007BFF;
     color: #FFF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(2px);
 }
-.btn-menu-itens{
+
+.btn-menu-itens {
     display: flex;
     align-items: center;
     flex-grow: 1;
@@ -61,6 +65,11 @@
 }
 
 .btn-menu-itens.active {
-  background-color: #007BFF;
-  color: #FFF;
+    background-color: #007BFF;
+    color: #FFF;
+}
+
+.btn-menu-itens:hover {
+    background-color: #007BFF;
+    color: #FFF;
 }

@@ -6,11 +6,13 @@ import { AngularMaterialModule } from '../../shared/angular-material/angular-mat
 import { ComponentsStructureModule } from '../../shared/models/components/components-structure.module';
 
 import { EducacaoDashboardComponent } from './components/educacao-dashboard/educacao-dashboard.component';
+import { EducacaoFormularioComponent } from './components/educacao-formulario/educacao-formulario.component';
 
 
 @NgModule({
   declarations: [
-    EducacaoDashboardComponent
+    EducacaoDashboardComponent,
+    EducacaoFormularioComponent
   ],
   imports: [
     CommonModule,

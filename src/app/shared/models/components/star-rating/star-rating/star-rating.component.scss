@@ -9,3 +9,10 @@
     font-size: 35px;
     display: inline-block;
 }
+
+.star:hover {
+    color: #007BFF;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
