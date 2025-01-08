@@ -45,12 +45,7 @@ import { ScreenRendererComponent } from './screen-renderer/screen-renderer.compo
     
   ],
   exports:[
-    CardComponent,
-    CardRatingComponent,
-    KpisComponent,
-    StarRatingComponent,
     FormularioComponent,
-    BtnOpenFormComponent,
     ScreenRendererComponent
   ]
 })
