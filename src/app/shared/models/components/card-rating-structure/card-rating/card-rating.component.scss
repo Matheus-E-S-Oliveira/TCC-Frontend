@@ -5,7 +5,8 @@
     box-sizing: border-box;
     justify-content: center;
 }
-.avalicao{
+
+.avalicao {
     display: flex;
     justify-content: center;
     font-family: 'Roboto';
@@ -13,8 +14,12 @@
     font-style: italic;
     color: #424242;
     gap: 5px;
+}
+
+mat-icon {
     cursor: pointer;
 }
+
 .container-star-rating {
     display: flex;
     justify-content: center;
@@ -26,6 +31,7 @@
     justify-content: center;
     padding-bottom: 5px;
 }
-app-bar-rating{
+
+app-bar-rating {
     width: 100%;
 }

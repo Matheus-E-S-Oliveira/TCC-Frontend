@@ -20,11 +20,17 @@ span {
     cursor: pointer;
 }
 
-.close-icon :hover {
-    font-size: 28px;
-    color: #cc3333;
+mat-icon{
+    font-size: 27px;
+    transition: font-size 0.1s, color 0.5s;
 }
 
+mat-icon:hover{
+    width: 24px;
+    height: 24px;
+    font-size: 29px;
+    color: #cc3333;
+}
 
 mat-divider {
     border-color: #89b5fa;

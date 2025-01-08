@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrl: './star-rating.component.scss'
 })
 export class StarRatingComponent implements OnInit{
+  @Input() disableTooltip: boolean = false;
   @Input() avaliacao: number = 0;
 
   star: string[] = [];
