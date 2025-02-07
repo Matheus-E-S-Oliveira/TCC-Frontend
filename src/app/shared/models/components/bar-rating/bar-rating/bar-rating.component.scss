@@ -3,6 +3,8 @@
     background-color: #f3f3f3;
     border-radius: 5px;
     margin: 10px 0;
+    transition: color 0.5s, transform 0.3s;
+
 }
 
 .bar {
@@ -10,6 +12,20 @@
     border-radius: 5px;
     background-color: #87CEFA;
 }
+
+.destaque {
+    transition: transform 0.3s, opacity 0.2s;
+    transform-origin: center;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.destaque:hover {
+    cursor: pointer;
+    transform: scale3d(1.02, 1.02, 1);
+    opacity: 0.95;
+}
+
 
 .label {
     display: flex;

@@ -17,7 +17,15 @@
 }
 
 mat-icon {
+    margin-top: -15px; 
+    font-size: 27px; 
+    width: 27px; 
+    height: 27px;
     cursor: pointer;
+    transition: color 0.5s;
+}
+mat-icon:hover{
+    color: #89b5fa;
 }
 
 .container-star-rating {

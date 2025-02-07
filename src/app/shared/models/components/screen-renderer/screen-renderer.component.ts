@@ -11,9 +11,11 @@ import { Router } from '@angular/router';
 })
 export class ScreenRendererComponent {
   @Input() dashboard: boolean = false;
-  @Input() title: string = '';
+  @Input() titulo: string = '';
   @Input() img: string = '';
   @Input() subtitle: string = '';
+  @Input() url: string = '';
+  @Input() urlSite: string = '';
   @Input() data: { label: string, value: number, route: string }[] = [];
   @Input() dataServico: { label: string, value: number }[] = []
 

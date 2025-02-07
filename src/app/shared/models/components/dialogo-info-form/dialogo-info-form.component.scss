@@ -21,14 +21,14 @@ span {
 }
 
 mat-icon{
-    font-size: 27px;
+    font-size: 26px;
     transition: font-size 0.1s, color 0.5s;
 }
 
 mat-icon:hover{
     width: 24px;
     height: 24px;
-    font-size: 29px;
+    font-size: 28px;
     color: #cc3333;
 }
 
@@ -65,7 +65,7 @@ mat-divider {
     border-radius: 6px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: background-color 0.8s, color 0.8s;
+    transition: background-color 0.8s, color 0.8s, transform 0.4s ;
 }
 
 .btn-dialog:hover {

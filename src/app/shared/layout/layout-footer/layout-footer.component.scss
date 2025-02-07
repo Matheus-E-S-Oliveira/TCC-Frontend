@@ -10,3 +10,27 @@
     font-family: 'Roboto';
     color: #424242;
 }
+.container-copyright{
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+.container-github{
+    display: flex;
+    color: #424242;
+    align-items: center;
+}
+a{
+    color: #424242;
+    transition: color 0.5s;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+a:hover{
+    color: #89b5fa;
+}
+i{
+    font-size: 24px;
+}

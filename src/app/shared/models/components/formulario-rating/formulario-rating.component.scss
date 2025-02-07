@@ -9,6 +9,7 @@
     cursor: pointer;
     transition: color 0.3s;
     position: relative;
+    transition: color 0.5s, transform 0.5s;
 }
 
 .star.filled {

@@ -78,6 +78,7 @@
     color: #424242;
     text-decoration: none;
     padding: 5px;
+    transition: background-color 0.5s, color 0.5s, transform 0.5s;
 }
 .btn:hover{
     background-color: #007BFF;

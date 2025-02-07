@@ -2,17 +2,22 @@
     background-color: #89b5fa;
     text-decoration: none;
     border-radius: 6px;
-    padding: 10px;
+    padding: 12px;
     color: #424242;
     font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: baseline;
-    padding-top: 7px;
+    padding-top: 10px;
+    transition: background-color 0.5s, color 0.5s, transform 0.4s;
 }
 .btn-open-form:hover{
     background-color: #007BFF;
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(2px);
+}
+mat-icon{
+    width: 22px;
+    height: 22px;
 }

@@ -28,7 +28,7 @@ mat-icon{
 mat-icon:hover{
     width: 24px;
     height: 24px;
-    font-size: 29px;
+    font-size: 28px;
     color: #cc3333;
 }
 
@@ -65,6 +65,7 @@ mat-divider {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.5s, color 0.5s, transform 0.4s;
 }
 .btn-cancel{
     background-color: #ff6666;

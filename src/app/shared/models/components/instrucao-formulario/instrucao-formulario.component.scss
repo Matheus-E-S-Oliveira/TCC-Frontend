@@ -18,7 +18,7 @@
 .rating-introducao{
     cursor: pointer;
     color: #89b5fa;
-    transition: background-color 0.8s;
+    transition: background-color 0.8s, transform 0.4s;
 }
 .rating-introducao:hover{
     color: #007BFF;

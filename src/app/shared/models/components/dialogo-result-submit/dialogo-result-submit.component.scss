@@ -56,7 +56,7 @@ mat-icon:hover{
     border-radius: 6px;
     padding: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.8s, color 0.8s;
+    transition: background-color 0.8s, color 0.8s, transform 0.8s;
     cursor: pointer;
     flex-grow: 1;
     display: flex;
@@ -65,7 +65,7 @@ mat-icon:hover{
     background-color: #ff6666;
 }
 
-.btn-close{
+.btn-close:hover{
     background-color: #cc3333;
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

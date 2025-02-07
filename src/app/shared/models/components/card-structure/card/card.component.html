@@ -11,6 +11,16 @@
                 <div class="card-subtittle">
                     {{subtitle}}
                 </div>
+                <a [href]="url" target="_blank">
+                    <mat-icon matTooltip="Abrir localização" matTooltipPosition="above">
+                        location_on
+                    </mat-icon>
+                </a>
+                <a *ngIf="dashboard" [href]="urlSite" target="_blank">
+                    <mat-icon matTooltip="Sobre a cidade" matTooltipPosition="above">
+                        open_in_new
+                    </mat-icon>
+                </a>
             </div>
         </div>
     </article>
