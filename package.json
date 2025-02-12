@@ -1,5 +1,5 @@
 {
-  "name": "tcc-beta-v.3",
+  "name": "tcc-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:TCC-BETA-V.3": "node dist/tcc-beta-v.3/server/server.mjs"
+    "serve:ssr:TCC_Frontend": "node dist/tcc_frontend/server/server.mjs"
   },
   "private": true,
   "dependencies": {

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TCC-BETA-V.3": {
+    "TCC_FRONTEND": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tcc-beta-v.3",
+            "outputPath": "dist/tcc_frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "TCC-BETA-V.3:build:production"
+              "buildTarget": "TCC_FRONTEND:build:production"
             },
             "development": {
-              "buildTarget": "TCC-BETA-V.3:build:development"
+              "buildTarget": "TCC_FRONTEND:build:development"
             }
           },
           "defaultConfiguration": "development"

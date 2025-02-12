@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'TCC-BETA-V.3';
+  title = 'TCC_FRONTEND';
 }
