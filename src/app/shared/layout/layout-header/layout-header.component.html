@@ -3,12 +3,14 @@
         <button (click)="menu()" class="btn-menu">
             <mat-icon *ngIf="!menuOpen" 
                 matTooltip="Clique aqui para abri o menu"
-                matTooltipPosition="above">
+                matTooltipShowDelay="500"
+                matTooltipHideDelay="300" matTooltipPosition="above">
                 menu
             </mat-icon>
             <mat-icon *ngIf="menuOpen" 
                 matTooltip="Clique aqui para fechar o menu"
-                matTooltipPosition="above">
+                matTooltipShowDelay="500"
+                matTooltipHideDelay="300" matTooltipPosition="above">
                 close
             </mat-icon>
         </button>

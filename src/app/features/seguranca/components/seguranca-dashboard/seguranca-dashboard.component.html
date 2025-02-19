@@ -1,10 +1,12 @@
-<div>
+<div *ngIf="result?.length && avalicaoResult?.length">
     <app-screen-renderer
         titulo="Ressaquinha-MG"
         subtitle="Avaliação dos Serviços Prestados na Segurança"
         img="imgs/delegacia.jpeg"
-        [data]="data"
-        [dataServico]="dataServico"
+        [data]="result"
+        [dataServico]="avalicaoResult"
+        [media]="media"
+        [numero]="numero"
         [url]="'https://maps.app.goo.gl/Fn1MRGgicvkb7Q6R6'">
     </app-screen-renderer>
 </div>

@@ -1,8 +1,8 @@
-<article class="container-question">
+<article class="container-question" *ngIf="question">
     <div class="pergunta">
         N°{{question.id}})- {{question.text}}
     </div>
     <div opcoes>
-        <app-formulario-rating></app-formulario-rating>
+        <app-formulario-rating [rating]="3"></app-formulario-rating>
     </div>
 </article>

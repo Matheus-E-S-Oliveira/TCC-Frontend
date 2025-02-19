@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-kpis',
@@ -7,9 +7,10 @@ import { Component, Input } from '@angular/core';
   templateUrl: './kpis.component.html',
   styleUrl: './kpis.component.scss'
 })
-export class KpisComponent {
+export class KpisComponent  {
   @Input() title: string = '';
   @Input() bandeira: string = '';
-  @Input() avaliacao: number = 0;
+  @Input() avaliacao!: number;
   @Input() route: string = '';
+
 }

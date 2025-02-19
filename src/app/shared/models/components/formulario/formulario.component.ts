@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmaEnvioComponent } from '../dialogo-confirma-envio/dialogo-confirma-envio.component';
 import { DialogoResultSubmitComponent } from '../dialogo-result-submit/dialogo-result-submit.component';
@@ -12,7 +12,8 @@ import { DialogoResultSubmitComponent } from '../dialogo-result-submit/dialogo-r
   styleUrl: './formulario.component.scss'
 })
 export class FormularioComponent {
-  @Input() question: { id: number, text: string }[] = [];
+  @Input() questions: { id: number, text: string }[] = [];
+  @Input() respostas: { [key: number]: number } = {};
 
   routePart!: string;
   constructor(
@@ -30,6 +31,7 @@ export class FormularioComponent {
     const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent);
     confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
+
         this.dialog.open(DialogoResultSubmitComponent);
       }
     });

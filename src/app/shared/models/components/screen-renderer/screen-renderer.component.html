@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="data?.length && barRating?.length">
     <section>
         <div class="container-card">
             <article class="width">
@@ -14,7 +14,7 @@
             </article>
             <mat-divider class="card-divisor" [vertical]="true"></mat-divider>
             <article style="width: 60%;">
-                <app-card-rating [data]="dataServico" [avaliacao]="generalAverage">
+                <app-card-rating [data]="barRating" [avaliacao]="media" [numeroAvalicao]="numero">
                 </app-card-rating>
             </article>
         </div>

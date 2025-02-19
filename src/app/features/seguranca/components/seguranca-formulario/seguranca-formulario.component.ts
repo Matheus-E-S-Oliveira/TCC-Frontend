@@ -9,10 +9,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SegurancaFormularioComponent {
   questions: { id: number, text: string }[] = [
-    { id: 1, text: 'Em uma escala de 1 a 5, como você avaliaria a qualidade do atendimento recebido pelos profissionais de saúde?' },
-    { id: 2, text: 'Como você classificaria o tempo de espera para ser atendido?' },
-    { id: 3, text: 'Em uma escala de 1 a 5, como você avaliaria a clareza das informações fornecidas sobre seu tratamento ou condição?' },
-    { id: 4, text: 'Qual a sua avaliação sobre a infraestrutura e o conforto das instalações (salas de espera, consultórios, etc.)?' },
-    { id: 5, text: 'De maneira geral, como você avaliaria sua experiência com os serviços de saúde recebidos?' }
+    { id: 1, text: 'Como você avalia sua satisfação geral com os serviços de segurança pública oferecidos na sua localidade (como policiamento, atendimento a emergências, etc.)?' },
+    { id: 2, text: 'Você ficou satisfeito com o cumprimento dos prazos e compromissos relacionados aos serviços de segurança pública (como resposta a ocorrências, prazos de investigação, etc.)?' },
+    { id: 3, text: 'Você ficou satisfeito com a quantidade de oportunidades para expressar suas preocupações ou sugestões sobre os serviços de segurança pública?' },
+    { id: 4, text: 'Você ficou satisfeito com as ações e melhorias realizadas para aperfeiçoar os serviços de segurança pública (como aumento do patrulhamento, novas tecnologias, etc.)' },
+    { id: 5, text: 'Como você avalia sua satisfação com o atendimento prestado pelos profissionais de segurança pública (como policiais, bombeiros e equipes de resgate)?' }
   ];
 }

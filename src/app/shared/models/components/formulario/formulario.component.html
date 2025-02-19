@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" *ngIf="questions?.length">
   <section>
     <div class="form-cabecalho">
       <app-instrucao-formulario></app-instrucao-formulario>
@@ -6,7 +6,7 @@
   </section>
   <section>
     <div class="form-content">
-      <ng-container *ngFor="let question of question">
+      <ng-container *ngFor="let question of questions">
         <app-formulario-question [question]="question"></app-formulario-question>
       </ng-container>
     </div>

@@ -12,9 +12,9 @@ export class StarRatingComponent implements OnInit{
   @Input() avaliacao: number = 0;
 
   star: string[] = [];
-
+  
   ngOnInit(): void {
-    this.gerarRating()
+    this.gerarRating();
   }
 
   gerarRating() {

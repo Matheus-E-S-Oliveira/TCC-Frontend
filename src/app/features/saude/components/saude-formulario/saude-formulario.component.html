@@ -1,1 +1,3 @@
-<app-formulario [question]="questions"></app-formulario>
+<div *ngIf="questions?.length">
+    <app-formulario [questions]="questions"></app-formulario>
+</div>

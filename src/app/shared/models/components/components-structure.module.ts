@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { AngularMaterialModule } from '../../modules/angular-material/angular-material.module';
 
 import { KpisComponent } from './kpis/kpis/kpis.component';
 import { CardComponent } from './card-structure/card/card.component';

@@ -1,5 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServicoMappedDto } from '../../structure/dtos-exibicao/servico-mapped-dto';
+import { AvaliacaoResponse } from '../../../../core/api/endpoints/avalicacoes/response/avaliacaos-response.service';
+import { CategoriaMappingService } from '../../../services/mapping/servico/categorias-mapping.service';
 
 
 @Component({
@@ -9,45 +12,50 @@ import { Router } from '@angular/router';
   templateUrl: './screen-renderer.component.html',
   styleUrl: './screen-renderer.component.scss'
 })
-export class ScreenRendererComponent {
+export class ScreenRendererComponent implements OnInit, OnChanges {
   @Input() dashboard: boolean = false;
   @Input() titulo: string = '';
   @Input() img: string = '';
   @Input() subtitle: string = '';
   @Input() url: string = '';
+  @Input() media!: number;
+  @Input() numero: number = 0;
   @Input() urlSite: string = '';
-  @Input() data: { label: string, value: number, route: string }[] = [];
-  @Input() dataServico: { label: string, value: number }[] = []
+  @Input() data: ServicoMappedDto[] = [];
+  @Input() dataServico: AvaliacaoResponse[] = []
 
   commonBandeira: string = 'imgs/bandeira.jpg';
-
-  generalAverage!: number;
   currentUrl!: string;
   routeName!: string;
+  barRating!: { label: string, value: number }[]
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private categoriaMappingService: CategoriaMappingService) { }
 
   ngOnInit(): void {
-    this.generalAverage = this.calculateGeneralAverage();
-
     this.currentUrl = this.router.url;
     const segments = this.currentUrl.split('/');
     this.routeName = segments[1];
+  }
 
-    if (this.dashboard) {
-      this.dataServico = this.data.map(m => ({
-        label: m.label,
-        value: m.value
-      }));
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] && this.data?.length) {
+      if (this.dashboard) {
+        this.barRating = this.data.map(m => ({
+          label: m.label,
+          value: m.value
+        }));
+      }
     }
-  }
-
-  calculateGeneralAverage(): number {
-    const total = this.data.reduce((acc, rating) => acc + rating.value, 0);
-    return total / this.data.length;
-  }
-  //função para remover acentos e trocar o ç por c
-  removerAcentos(str: string) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c");
+    if (!this.dashboard) {
+      if (changes['dataServico'] && this.dataServico?.length) {
+        this.barRating = this.dataServico.map(m => {
+          const label = this.categoriaMappingService?.obterLabelIndicador(m.categoria);
+          return {
+            label: label ? label : 'Categoria Desconhecida',
+            value: m.nota,
+          };
+        });
+      }
+    }
   }
 }

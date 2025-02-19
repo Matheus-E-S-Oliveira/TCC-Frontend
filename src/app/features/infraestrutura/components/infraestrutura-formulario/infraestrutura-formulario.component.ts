@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
 })
 export class InfraestruturaFormularioComponent {
   questions: { id: number, text: string }[] = [
-    { id: 1, text: 'Em uma escala de 1 a 5, como você avaliaria a qualidade das estradas e calçadas na sua área?' },
-    { id: 2, text: 'Como você classificaria a disponibilidade e a eficácia do transporte público em sua região?' },
-    { id: 3, text: 'Em uma escala de 1 a 5, como você avaliaria a manutenção de serviços públicos, como água, esgoto e eletricidade?' },
-    { id: 4, text: 'Como você avaliaria a qualidade das instalações públicas, como parques, bibliotecas e centros comunitários?' },
-    { id: 5, text: 'Em sua opinião, como você avaliaria a acessibilidade da infraestrutura para pessoas com mobilidade reduzida?' }
+    { id: 1, text: 'Como você avalia sua satisfação geral com os serviços de infraestrutura pública (como pavimentação, iluminação, saneamento, etc.) na sua região?' },
+    { id: 2, text: 'Você ficou satisfeito com o cumprimento dos prazos e compromissos relacionados às obras e serviços de infraestrutura pública?' },
+    { id: 3, text: 'Você ficou satisfeito com a quantidade de oportunidades para expressar suas preocupações ou sugestões sobre os serviços de infraestrutura pública?' },
+    { id: 4, text: 'Você ficou satisfeito com as ações e melhorias realizadas para aperfeiçoar os serviços de infraestrutura pública?' },
+    { id: 5, text: 'Como você avalia sua satisfação com o atendimento recebido ao tratar de questões relacionadas à infraestrutura pública?' }
   ];
 
 }

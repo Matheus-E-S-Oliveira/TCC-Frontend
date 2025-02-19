@@ -7,8 +7,9 @@
         <article style="display: flex; justify-content: center; padding-top: 10px; padding-bottom: 5px;">
             <div style="display: flex;">
                 <span class="avalicao">
-                    1.000 Avaliações
-                    <mat-icon matTooltip="Avalicações realizadas" matTooltipPosition="above">
+                    {{numeroAvalicao |  number: '1.0-0':'pt-BR'}} Avaliações
+                    <mat-icon matTooltip="Avalicações realizadas" matTooltipShowDelay="500"
+                    matTooltipHideDelay="300" matTooltipPosition="above">
                         reviews
                     </mat-icon>
                 </span>

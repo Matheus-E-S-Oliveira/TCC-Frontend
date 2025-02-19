@@ -9,5 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class CardRatingComponent {
   @Input() avaliacao: number = 0;
+  @Input() numeroAvalicao: number = 0;
   @Input() data: {label: string, value: number}[] = [];
 }
