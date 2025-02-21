@@ -1,5 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout-header',
@@ -11,31 +13,51 @@ import { Component } from '@angular/core';
       state('collapsed', style({
         height: '0px',
         opacity: 0,
+        padding: '0px',
       })),
       state('expanded', style({
-        height: '*',  // '*' faz o elemento crescer conforme o conteúdo
+        height: '*',
         opacity: 1,
         padding: '0px 20px 10px 20px',
       })),
       transition('collapsed <=> expanded', [
-        animate('300ms ease-in-out')  // Animação suave
+        animate('300ms ease-in-out')
       ])
     ])
   ]
 })
 export class LayoutHeaderComponent {
+
   menuOpen = false;
-  activeButtonIndex: number | null = 0;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) { }
+
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const savedMenuState = localStorage.getItem('menuOpen');
+      if (savedMenuState !== null) {
+        this.menuOpen = JSON.parse(savedMenuState);
+      }
+    }
+  }
 
   menu() {
     this.menuOpen = !this.menuOpen;
-  }
-  setActiveButton(index: number): void {
-    if (this.activeButtonIndex === index) {
-      this.activeButtonIndex = null;
-    } else {
-      this.activeButtonIndex = index;
-
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('menuOpen', JSON.stringify(this.menuOpen));
     }
+  }
+
+  isLoading = false
+  onMenuItemClick(route: string): void {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.router.navigate([route])
+      this.isLoading = false
+    }, 1000);
+  }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
   }
 }

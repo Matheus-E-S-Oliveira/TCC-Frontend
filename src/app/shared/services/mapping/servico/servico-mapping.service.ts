@@ -12,7 +12,9 @@ export class ServicoMappingService {
           label: servico.nome,
           titulo: servico.titulo,
           numero: servico.numeroDeAvaliacoes,
-          value: servico.media,
+          value:  servico.numeroDeAvaliacoes > 0 
+          ? servico.media / servico.numeroDeAvaliacoes 
+          : 0,
           route: this.removerAcentos(servico.nome)
         }));
     

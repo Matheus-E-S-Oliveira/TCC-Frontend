@@ -17,6 +17,7 @@ export class ScreenRendererComponent implements OnInit, OnChanges {
   @Input() titulo: string = '';
   @Input() img: string = '';
   @Input() subtitle: string = '';
+  @Input() id: string = '';
   @Input() url: string = '';
   @Input() media!: number;
   @Input() numero: number = 0;
@@ -52,7 +53,8 @@ export class ScreenRendererComponent implements OnInit, OnChanges {
           const label = this.categoriaMappingService?.obterLabelIndicador(m.categoria);
           return {
             label: label ? label : 'Categoria Desconhecida',
-            value: m.nota,
+            value: this.numero > 0 
+            ? m.nota / this.numero : 0 
           };
         });
       }

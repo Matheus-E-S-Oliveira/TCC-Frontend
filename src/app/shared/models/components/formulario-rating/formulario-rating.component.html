@@ -4,7 +4,7 @@
           filled: i < rating,
           empty: i >= rating
         }" (click)="onStarClick(i + 1)" [matTooltip]="getTooltipText(i + 1)" 
-      matTooltipShowDelay="500" matTooltipHideDelay="300" matTooltipPosition="above">
+      matTooltipShowDelay="300" matTooltipHideDelay="300" matTooltipPosition="above">
       {{ i < rating ? 'star' : 'star_border' }} </mat-icon>
   </ng-container>
 </div>

@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './btn-open-form.component.scss'
 })
 export class BtnOpenFormComponent {
-  @Input() routePath: string = ''
+  @Input() routePath: string = '';
+  @Input() idServico: string = '';
 }

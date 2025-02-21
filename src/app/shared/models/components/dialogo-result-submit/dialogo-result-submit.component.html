@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="data">
     <div class="dialog-header">
-        <span>Sucesso</span>
+        <span>{{data.success ? 'Sucesso' : 'Erro' }}</span>
         <div class="close-dilog">
             <button class="close-icon" mat-button (click)="onClose()">
                 <mat-icon>close</mat-icon>
@@ -11,7 +11,7 @@
     <mat-divider></mat-divider>
 
     <div mat-dialog-content class="dialog-content">
-        <p>Formulário enviado com sucesso!</p>
+        <p>{{data.message}}</p>
     </div>
 
     <mat-divider></mat-divider>

@@ -1,7 +1,7 @@
 <div class="container-contant">
     <section>
         <article>
-            <app-layout-header></app-layout-header>
+            <app-layout-header ngSkipHydration></app-layout-header>
         </article>
     </section>
     <section class="body-content">
@@ -9,7 +9,7 @@
             <ng-content></ng-content>
         </article>
     </section>
-    <section>
+    <section *ngIf="!isLoading" [@footerAnimation]="footerState">
         <article>
             <app-layout-footer></app-layout-footer>
         </article>

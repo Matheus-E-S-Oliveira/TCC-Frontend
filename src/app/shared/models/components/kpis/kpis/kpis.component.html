@@ -12,12 +12,14 @@
             {{ avaliacao | number:'1.1-1' }}/5,0
         </div>
         <div class="kpis-rating">
-            <app-star-rating 
-                [avaliacao]="avaliacao">
+            <app-star-rating [avaliacao]="avaliacao">
             </app-star-rating>
         </div>
         <div class="kpis-btn">
-            <a [routerLink]="['/', route]" class="btn">Ver detalhes</a>
+            <a (click)="voltarEReload()" class="btn">Ver detalhes</a>
         </div>
     </div>
+</div>
+<div *ngIf="isLoading" class="loading-overlay">
+    <mat-spinner></mat-spinner>
 </div>

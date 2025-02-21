@@ -1,3 +1,5 @@
-<app-layout-page>
-    <router-outlet></router-outlet>
-</app-layout-page>
+<div class="route-container">
+    <app-layout-page [@routeAnimations]="getRouteAnimationState(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </app-layout-page>
+</div>

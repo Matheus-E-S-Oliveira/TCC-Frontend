@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CadastroAvalicaoContext } from '../../../../shared/models/components/formulario/formulario.context';
+import { FormCadastroAvalicao } from '../../../../shared/models/components/formulario/formulario.viewmodel';
 
 @Component({
   selector: 'app-educacao-formulario',
@@ -15,5 +17,4 @@ export class EducacaoFormularioComponent {
     { id: 4, text: 'Você ficou satisfeito com as ações e melhorias realizadas para aperfeiçoar os serviços educacionais?' },
     { id: 5, text: 'Como você avalia sua satisfação com o atendimento e suporte oferecido aos alunos (como orientação acadêmica, apoio pedagógico, entre outros)?' }
   ];
-
 }

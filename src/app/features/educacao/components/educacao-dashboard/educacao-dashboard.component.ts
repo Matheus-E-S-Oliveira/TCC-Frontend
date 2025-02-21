@@ -5,6 +5,7 @@ import { ServicoService } from '../../../../shared/services/data/servico/servico
 import { ApiResponse } from '../../../../core/api/structures/base-response.api.service';
 import { AvaliacaoResponse } from '../../../../core/api/endpoints/avalicacoes/response/avaliacaos-response.service';
 import { take } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-educacao-dashboard',
@@ -17,12 +18,13 @@ export class EducacaoDashboardComponent implements OnInit {
   avalicaoResult: AvaliacaoResponse[] = [];
   media!: number;
   numero!: number;
-  id!: string;
+  id: string = '';
+  titulo: string = '';
 
   constructor(
     private servicoService: ServicoService,
     private avaliacaoApiService: AvaliacaoApiService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
@@ -31,19 +33,20 @@ export class EducacaoDashboardComponent implements OnInit {
         this.id = response.data[3].id;
         this.media = response.data[3].value;
         this.numero = response.data[3].numero;
+        this.titulo = response.data[3].titulo;
         this.result = response.data.filter((servico, index) => index !== 3);
 
-        this.getAvaliacao();
       } else {
         console.error('Falha ao carregar serviços:', response.message);
       }
     });
   }
-
+  
   ngAfterViewInit(): void {
     setTimeout(() => {
       if (this.cdr) {
         this.cdr.detectChanges();
+        this.getAvaliacao();
       }
     }, 0);
   }

@@ -1,4 +1,4 @@
-<div class="form" *ngIf="questions?.length">
+<div class="form" *ngIf="questions.length > 0 ">
   <section>
     <div class="form-cabecalho">
       <app-instrucao-formulario></app-instrucao-formulario>
@@ -7,13 +7,14 @@
   <section>
     <div class="form-content">
       <ng-container *ngFor="let question of questions">
-        <app-formulario-question [question]="question"></app-formulario-question>
+        <app-formulario-question [question]="question"
+          (respostaSelecionada)="onRespostaSelecionada($event)"></app-formulario-question>
       </ng-container>
     </div>
   </section>
   <section style="flex-grow: 1;">
     <div class="form-actions">
-      <a [routerLink]="['/', routePart]" class="btn-return">
+      <a class="btn-return" (click)="voltarEReload()">
         <mat-icon>arrow_back</mat-icon>
         Voltar
       </a>
@@ -23,4 +24,7 @@
       </button>
     </div>
   </section>
+</div>
+<div *ngIf="isLoading" class="loading-overlay" >
+  <mat-spinner></mat-spinner>
 </div>

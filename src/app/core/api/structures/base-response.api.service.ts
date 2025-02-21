@@ -5,6 +5,12 @@ export interface ApiResponse<T> {
     statusCode?: number;
 }
 
+export interface ApiResponseDialog {
+    success: boolean;
+    message?: string;
+    statusCode?: number;
+}
+
 export interface DTO<TResponseDto> {
     success: boolean,
     httpCode: number,

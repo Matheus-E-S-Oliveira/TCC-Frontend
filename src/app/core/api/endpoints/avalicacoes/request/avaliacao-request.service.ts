@@ -1,9 +1,4 @@
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class AvaliacaoRequestService {
-
-  constructor() { }
+export interface AvaliacaoRequest{
+  idServico: string
+  respostas: Record<number, number>
 }

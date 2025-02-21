@@ -18,7 +18,8 @@ export class SegurancaDashboardComponent implements OnInit {
   result: ServicoMappedDto[] = [];
   media!: number;
   numero!: number;
-  id!: string;
+  id: string = '';
+  titulo: string = '';
   avalicaoResult: AvaliacaoResponse[] = [];
   constructor(private servicoService: ServicoService, private avaliacaoApiService: AvaliacaoApiService,
     private cdr: ChangeDetectorRef
@@ -30,6 +31,7 @@ export class SegurancaDashboardComponent implements OnInit {
         this.id = response.data[4].id;
         this.media = response.data[4].value;
         this.numero = response.data[4].numero;
+        this.titulo = response.data[4].titulo;
         this.result = response.data.filter((servico, index) => index !== 4);        
       } else {
         console.error('Falha ao carregar serviços:', response.message);

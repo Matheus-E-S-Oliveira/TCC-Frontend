@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { BaseApiService } from '../base.api.service';
 import { ApiResponse } from '../../structures/base-response.api.service';
 import { AvaliacaoResponse } from './response/avaliacaos-response.service';
+import { AvaliacaoRequest } from './request/avaliacao-request.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class AvaliacaoApiService {
     return this.api.post(`${this.endpoint}`, data);
   }
 
-  atualizarAvaliacao(id: string, data: any): Observable<any> {
+  atualizarAvaliacao(id: string, data: any): Observable<ApiResponse<AvaliacaoRequest>>{
     return this.api.put(`${this.endpoint}/${id}`, data);
   }
 

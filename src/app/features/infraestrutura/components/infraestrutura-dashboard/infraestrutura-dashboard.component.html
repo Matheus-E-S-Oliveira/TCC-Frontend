@@ -1,8 +1,9 @@
 <div *ngIf="result?.length && avalicaoResult?.length">
     <app-screen-renderer
         titulo="Ressaquinha-MG"
-        subtitle="Avaliação dos Serviços Prestados na Infraestrutura"
+        [subtitle]="titulo"
         img="imgs/infra.jpg"
+        [id]="id"
         [data]="result"
         [dataServico]="avalicaoResult"
         [media]="media"

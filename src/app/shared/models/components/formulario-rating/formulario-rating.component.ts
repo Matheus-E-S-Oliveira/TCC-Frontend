@@ -11,10 +11,12 @@ export class FormularioRatingComponent {
 
   @Input() rating: number = 3;
   @Input() maxRating: number = 5;
+  @Output() ratingSelected = new EventEmitter<number>()
   
 
   ngOnInit() {
     this.getStars();
+    this.ratingSelected.emit(3)
   }
 
   getStars(): any[] {
@@ -22,6 +24,7 @@ export class FormularioRatingComponent {
   }
   onStarClick(rating: number) {
     this.rating = rating;
+    this.ratingSelected.emit(rating);
   }
   getTooltipText(rating: number): string {
     switch (rating) {

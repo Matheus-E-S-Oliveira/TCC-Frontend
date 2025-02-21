@@ -19,7 +19,8 @@ export class SaudeDashboardComponent implements OnInit {
   avalicaoResult: AvaliacaoResponse[] = [];
   media!: number;
   numero!: number;
-  id!: string;
+  id: string = '';
+  titulo: string = '';
   constructor(private servicoService: ServicoService, private avaliacaoApiService: AvaliacaoApiService,
     private cdr: ChangeDetectorRef
   ) { }
@@ -30,6 +31,7 @@ export class SaudeDashboardComponent implements OnInit {
         this.id = response.data[1].id;
         this.media = response.data[1].value;
         this.numero = response.data[1].numero;
+        this.titulo = response.data[1].titulo
         this.result = response.data.filter((servico, index) => index !== 1);        
       } else {
         console.error('Falha ao carregar serviços:', response.message);

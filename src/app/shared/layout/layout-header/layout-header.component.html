@@ -1,15 +1,11 @@
 <section class="menu-bar">
     <article class="menu-bar-header">
         <button (click)="menu()" class="btn-menu">
-            <mat-icon *ngIf="!menuOpen" 
-                matTooltip="Clique aqui para abri o menu"
-                matTooltipShowDelay="500"
+            <mat-icon *ngIf="!menuOpen" matTooltip="Clique aqui para abri o menu" matTooltipShowDelay="300"
                 matTooltipHideDelay="300" matTooltipPosition="above">
                 menu
             </mat-icon>
-            <mat-icon *ngIf="menuOpen" 
-                matTooltip="Clique aqui para fechar o menu"
-                matTooltipShowDelay="500"
+            <mat-icon *ngIf="menuOpen" matTooltip="Clique aqui para fechar o menu" matTooltipShowDelay="300"
                 matTooltipHideDelay="300" matTooltipPosition="above">
                 close
             </mat-icon>
@@ -17,25 +13,29 @@
         <header>TCC_Frontend: Voz do cidadão</header>
     </article>
     <article>
-        <div [@expandCollapse]="menuOpen ? 'expanded' : 'collapsed'" class="menu-content">
+        <div [class.hidden]="!menuOpen" [@expandCollapse]="menuOpen ? 'expanded' : 'collapsed'">       
             <div class="menu-content">
-                <a class="btn-menu-itens" routerLink="/home" routerLinkActive="active">
+                <a [ngClass]="{ active: isActive('/home') }" (click)="onMenuItemClick('/home')" class="btn-menu-itens">
                     <mat-icon>home</mat-icon>
                     <span>Página Inicial</span>
                 </a>
-                <a class="btn-menu-itens" routerLink="/saude" routerLinkActive="active">
+                <a [ngClass]="{ active: isActive('/saude') }" (click)="onMenuItemClick('/saude')"
+                    class="btn-menu-itens">
                     <mat-icon>health_and_safety</mat-icon>
                     <span>Saúde</span>
                 </a>
-                <a class="btn-menu-itens" routerLink="/infraestrutura" routerLinkActive="active">
+                <a [ngClass]="{ active: isActive('/infraestrutura') }" (click)="onMenuItemClick('/infraestrutura')"
+                    class="btn-menu-itens">
                     <mat-icon>apartment</mat-icon>
                     <span>Infraestrutura</span>
                 </a>
-                <a class="btn-menu-itens" routerLink="/educacao" routerLinkActive="active">
+                <a [ngClass]="{ active: isActive('/educacao') }" (click)="onMenuItemClick('/educacao')"
+                    class="btn-menu-itens">
                     <mat-icon>school</mat-icon>
                     <span>Educação</span>
                 </a>
-                <a class="btn-menu-itens" routerLink="/seguranca" routerLinkActive="active">
+                <a [ngClass]="{ active: isActive('/seguranca') }" (click)="onMenuItemClick('/seguranca')"
+                    class="btn-menu-itens">
                     <mat-icon>local_police</mat-icon>
                     <span>Segurança</span>
                 </a>
@@ -43,3 +43,6 @@
         </div>
     </article>
 </section>
+<div *ngIf="isLoading" class="loading-overlay">
+    <mat-spinner></mat-spinner>
+</div>

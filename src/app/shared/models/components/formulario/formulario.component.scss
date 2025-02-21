@@ -51,15 +51,20 @@ app-formulario-question {
     background-color: #66cc66;
     font-weight: bold;
 }
-.btn-submit:hover{
+
+.btn-submit:hover {
     background-color: #339933;
 }
-.btn-submit:hover, .btn-return:hover {
+
+.btn-submit:hover,
+.btn-return:hover {
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
-.btn-return, .btn-submit{
+
+.btn-return,
+.btn-submit {
     border: none;
     color: #424242;
     font-weight: bold;
@@ -75,4 +80,4 @@ app-formulario-question {
     align-items: center;
     gap: 5px;
     transition: color 0.5s, transform 0.4s, background-color 0.5s;
-}
+} 
