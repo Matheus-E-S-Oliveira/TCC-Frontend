@@ -19,6 +19,7 @@ import { DialogoInfoFormComponent } from './dialogo-info-form/dialogo-info-form.
 import { DialogoConfirmaEnvioComponent } from './dialogo-confirma-envio/dialogo-confirma-envio.component';
 import { DialogoResultSubmitComponent } from './dialogo-result-submit/dialogo-result-submit.component';
 import { ScreenRendererComponent } from './screen-renderer/screen-renderer.component';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ScreenRendererComponent } from './screen-renderer/screen-renderer.compo
     DialogoInfoFormComponent,
     DialogoConfirmaEnvioComponent,
     DialogoResultSubmitComponent,
-    ScreenRendererComponent
+    ScreenRendererComponent,
+    BottomSheetComponent
   ],
   imports: [
     CommonModule,

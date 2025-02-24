@@ -51,3 +51,38 @@ body {
     animation: none !important;
     transition: none !important;
 }
+
+.mat-bottom-sheet-container {
+    background: #fff !important;
+}
+
+.mat-stepper-vertical,
+.mat-stepper-horizontal {
+    background: none !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #ffffff !important;
+}
+
+.mat-vertical-content {
+    padding: 24px !important;
+}
+
+.mat-divider {
+    border-top-color: #f3f3f3 !important;
+    border-top-width: var(--mat-divider-width, 3px) !important;
+    padding-bottom: 10px !important;
+}
+
+// .mat-step-icon-state-edit {
+//     background-color: #89b5fa !important;
+// }
+
+// .mat-step-icon-selected {
+//     background-color: #007BFF !important;
+// }
+
+.mat-step-icon {
+    background-color: #89b5fa !important;
+}

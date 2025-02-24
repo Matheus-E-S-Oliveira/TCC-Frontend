@@ -1,0 +1,96 @@
+<section>
+    <div class="container">
+        <mat-vertical-stepper #stepper animationDuration="1000">
+            <mat-step label="Primeiro Passo">
+                <form>
+                    <div style="padding-bottom: 10px;">
+                        <span class="titulo">Identificação Eleitoral</span>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="container-filds">
+                        <mat-form-field>
+                            <mat-label>Título de eleitor</mat-label>
+                            <input matInput placeholder="Seu título de eleitor" required mask="0000 0000 0000">
+                        </mat-form-field>
+
+                        <div class="container-btn-stepper">
+                            <button class="btn-stepper-prox" type="button" mat-button matStepperNext>Próximo</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step label="Segundo Passo">
+                <form>
+                    <div style="padding-bottom: 10px;">
+                        <span class="titulo">Dados Pessoais</span>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="container-filds">
+                        <mat-form-field>
+                            <mat-label>Nome</mat-label>
+                            <input matInput placeholder="Seu nome" required>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>CPF</mat-label>
+                            <input matInput type="text" placeholder="Seu CPF" required autocomplete="off"
+                                mask="000.000.000-00">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Telefone</mat-label>
+                            <input matInput type="text" placeholder="Seu telefone" required autocomplete="off"
+                                mask="(00) 00000-0000">
+                        </mat-form-field>
+
+                        <div class="container-btn-stepper">
+                            <button class="btn-stepper-ant" type="button" mat-button
+                                matStepperPrevious>Anterior</button>
+                            <button class="btn-stepper-prox" type="button" mat-button matStepperNext>Próximo</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step label="Último Passo">
+                <form>
+                    <div style="padding-bottom: 10px;">
+                        <span class="titulo">Credenciais de Acesso</span>
+                    </div>
+
+                    <mat-divider></mat-divider>
+                    
+                    <div class="container-filds">
+                        <mat-form-field>
+                            <mat-label>Nome de usuário</mat-label>
+                            <input matInput type="text" placeholder="Seu nome de usuário" required autocomplete="off">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" placeholder="Seu e-mail" required autocomplete="off">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Senha</mat-label>
+                            <input matInput type="password" placeholder="Sua senha" required
+                                autocomplete="new-password">
+                        </mat-form-field>
+
+                        <div class="container-btn-stepper">
+                            <button class="btn-stepper-ant" type="button" mat-button
+                                matStepperPrevious>Anterior</button>
+                            <button class="btn-stepper-send" mat-button type="button" (click)="submit()">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
+
+    </div>
+</section>

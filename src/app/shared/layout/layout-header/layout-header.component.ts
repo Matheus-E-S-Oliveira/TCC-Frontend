@@ -1,7 +1,9 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, inject, Inject, PLATFORM_ID } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
+import { BottomSheetComponent } from '../../models/components/bottom-sheet/bottom-sheet.component';
 
 @Component({
   selector: 'app-layout-header',
@@ -28,9 +30,10 @@ import { Router } from '@angular/router';
 })
 export class LayoutHeaderComponent {
 
-  menuOpen = false;
-
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) { }
+  
+  menuOpen = false;
+  private _bottomSheet = inject(MatBottomSheet);
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -46,6 +49,10 @@ export class LayoutHeaderComponent {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('menuOpen', JSON.stringify(this.menuOpen));
     }
+  }
+
+  openBottomSheet(): void {
+    this._bottomSheet.open(BottomSheetComponent);
   }
 
   isLoading = false

@@ -11,6 +11,12 @@
             </mat-icon>
         </button>
         <header>TCC_Frontend: Voz do cidadão</header>
+        <div class="container-btn-user">
+            <button (click)="openBottomSheet()" class="btn-user">
+                <mat-icon class="icon-user" matTooltip="Clique aqui" matTooltipShowDelay="300"
+                matTooltipHideDelay="300" matTooltipPosition="above">account_circle</mat-icon>
+            </button>
+        </div>
     </article>
     <article>
         <div [class.hidden]="!menuOpen" [@expandCollapse]="menuOpen ? 'expanded' : 'collapsed'">       

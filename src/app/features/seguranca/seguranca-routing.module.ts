@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SegurancaDashboardComponent } from './components/seguranca-dashboard/seguranca-dashboard.component';
 import { SegurancaFormularioComponent } from './components/seguranca-formulario/seguranca-formulario.component';
+import { AuthGuard } from '../../shared/services/routes/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'form',
-    component: SegurancaFormularioComponent
+    component: SegurancaFormularioComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

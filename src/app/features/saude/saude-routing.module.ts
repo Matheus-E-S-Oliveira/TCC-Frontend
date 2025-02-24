@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SaudeDashboardComponent } from './components/saude-dashboard/saude-dashboard.component';
 import { SaudeFormularioComponent } from './components/saude-formulario/saude-formulario.component';
+import { AuthGuard } from '../../shared/services/routes/auth.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'form',
-    component: SaudeFormularioComponent
+    component: SaudeFormularioComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InfraestruturaDashboardComponent } from './components/infraestrutura-dashboard/infraestrutura-dashboard.component';
 import { InfraestruturaFormularioComponent } from './components/infraestrutura-formulario/infraestrutura-formulario.component';
+import { AuthGuard } from '../../shared/services/routes/auth.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'form',
-    component: InfraestruturaFormularioComponent
+    component: InfraestruturaFormularioComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

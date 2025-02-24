@@ -1,0 +1,27 @@
+.list-item {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #44474e;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f3f3f3;
+        border-radius: 20px;
+    }
+}
+
+.list-title {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    font-weight: 500;
+}
+
+.list-subtitle {
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
