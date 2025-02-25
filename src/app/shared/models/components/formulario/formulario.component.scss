@@ -1,3 +1,31 @@
+::ng-deep .body-content {
+    padding-top: 20px !important;
+}
+
+.container-rotas {
+    margin: 0;
+    text-decoration: none;
+    font-size: large;
+    padding-left: 10px;
+}
+
+.rotas{
+    color: #424242;
+}
+
+.link{
+    text-decoration: none;
+    color: #007BFF;
+
+    &:hover{
+        color: #1f68b6;
+    }
+
+    &:active{
+        color: #89b5fa;
+    }
+}
+
 .form {
     display: flex;
     gap: 20px;
@@ -80,4 +108,4 @@ app-formulario-question {
     align-items: center;
     gap: 5px;
     transition: color 0.5s, transform 0.4s, background-color 0.5s;
-} 
+}

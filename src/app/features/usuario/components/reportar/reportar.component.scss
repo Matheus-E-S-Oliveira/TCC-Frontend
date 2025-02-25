@@ -1,0 +1,118 @@
+.container {
+    box-sizing: border-box;
+}
+
+.container-form {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-cabecalho,
+.container-radio-group,
+.container-caixa-dialogo,
+.container-avisos {
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radion-button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-button-option {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-btns {
+    flex-grow: 1;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+}
+
+
+.btn-return {
+    background-color: #ff6666;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.btn-return:hover {
+    background-color: #cc3333;
+}
+
+.btn-submit {
+    background-color: #66cc66;
+    font-weight: bold;
+}
+
+.btn-submit:hover {
+    background-color: #339933;
+}
+
+.btn-submit:hover,
+.btn-return:hover {
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-return,
+.btn-submit {
+    border: none;
+    color: #424242;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.8s, color 0.8s;
+    cursor: pointer;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.5s, transform 0.4s, background-color 0.5s;
+}
+
+::ng-deep .small-toggle {
+    transform: scale(0.8);
+    font-size: 18px;
+}
+
+::ng-deep .small-toggle .mat-slide-toggle-thumb {
+    width: 12px;
+    height: 12px;
+}
+
+::ng-deep .small-toggle .mat-slide-toggle-bar {
+    height: 14px;
+    width: 28px;
+}
+.titulo{
+    font-size: large;
+    font-weight: 500;
+}

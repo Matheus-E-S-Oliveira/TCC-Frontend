@@ -78,4 +78,20 @@ export class FormularioComponent {
       window.location.href = '/' + this.routePart;
     }, 1000);
   }
+
+  getAreaFromRouterPath(routerPath: string): string {
+    switch (routerPath) {
+      case 'saude':
+        return 'Saúde';
+      case 'educacao':
+        return 'Educação';
+      case 'seguranca':
+        return 'Segurança';
+      case 'infraestrutura':
+        return 'Infraestrutura';
+      default:
+        return 'Área não encontrada';
+    }
+  }
+  
 }

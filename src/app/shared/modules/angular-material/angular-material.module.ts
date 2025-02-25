@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatInputModule } from '@angular/material/input'; 
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { provideNgxMask } from 'ngx-mask';
@@ -31,6 +33,8 @@ import { provideNgxMask } from 'ngx-mask';
     ReactiveFormsModule,
     MatInputModule,
     MatStepperModule,
+    MatRadioModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatIconModule,
@@ -44,7 +48,9 @@ import { provideNgxMask } from 'ngx-mask';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatStepperModule
+    MatStepperModule,
+    MatRadioModule,
+    MatSlideToggleModule
   ],
   providers: [provideNgxMask()]
 })

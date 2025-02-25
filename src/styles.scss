@@ -86,3 +86,10 @@ body {
 .mat-step-icon {
     background-color: #89b5fa !important;
 }
+
+.mat-internal-form-field>label {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: large;
+}

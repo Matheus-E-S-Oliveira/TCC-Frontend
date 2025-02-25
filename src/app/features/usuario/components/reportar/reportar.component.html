@@ -1,0 +1,88 @@
+<section>
+    <div class="container">
+        <div class="container-form">
+            <div class="container-cabecalho" style="gap: 20px;">
+                <h2 style="text-align: center; margin: 0;">Sua opinião nos ajuda a evoluir!</h2>
+                <p style="text-align: center; font-size: 17px; margin: 0;">
+                    Relate um problema ou sugira melhorias para tornar a plataforma ainda melhor.
+                </p>
+            </div>
+
+            <form [formGroup]="formGroup" class="form">
+                <div class="container-radio-group">
+                    <span class="titulo">O que você deseja reportar?</span>
+                    <mat-radio-group class="radion-button-group" formControlName="reportType">
+                        <mat-radio-button class="radio-button-option" value="error">
+                            <mat-icon style="color: red;">bug_report</mat-icon> Problema Técnico (Erro/Bug)
+                        </mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="suggestion">
+                            <mat-icon style="color: yellow;">emoji_objects</mat-icon> Sugestão de Melhoria
+                        </mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="other">
+                            <mat-icon style="color: orangered;">question_mark</mat-icon> Outro Tipo de Problema
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div class="container-radio-group" *ngIf="formGroup.get('reportType')?.value === 'error'" @fadeInOut>
+                    <span class="titulo">Qual o tipo de erro?</span>
+                    <mat-radio-group class="radion-button-group" style="grid-template-columns: 1fr 1fr 1fr 1fr;" formControlName="errorCategory">
+                        <mat-radio-button class="radio-button-option" value="functionality">Erro de funcionalidade</mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="display">Erro de exibição</mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="usability">Erro de usabilidade</mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="outros">Outros erros</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div class="container-radio-group" *ngIf="formGroup.get('reportType')?.value === 'suggestion'" @fadeInOut>
+                    <span class="titulo">Qual o tipo de melhoria?</span>
+                    <mat-radio-group class="radion-button-group" style="grid-template-columns: 1fr 1fr 1fr 1fr;" formControlName="suggestionCategory">
+                        <mat-radio-button class="radio-button-option" value="design">Melhoria de design</mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="feature">Nova funcionalidade</mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="performance">Melhoria de desempenho</mat-radio-button>
+                        <mat-radio-button class="radio-button-option" value="outros">Outras melhorias</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div class="container-caixa-dialogo">
+                    <span class="titulo">Descreva o problema ou melhoria:</span>
+                    <mat-form-field appearance="outline" style="width: 100%; margin-top: 20px;">
+                        <mat-label>Detalhe sua experiência</mat-label>
+                        <textarea matInput formControlName="description" placeholder="Forneça mais informações sobre o problema ou sugestão"
+                            rows="5"></textarea>
+                        <mat-error *ngIf="formGroup.get('description')?.hasError('required')">
+                            A descrição é obrigatória.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="container-caixa-dialogo">
+                    <span class="titulo">Deseja receber um retorno?</span>
+                    <div>
+                        <mat-slide-toggle class="small-toggle" formControlName="wantsContact">Sim, quero ser contatado</mat-slide-toggle>
+                    </div>
+                    
+                    <mat-form-field *ngIf="formGroup.get('wantsContact')?.value" appearance="outline" style="width: 100%; margin-top: 10px;" @fadeInOut>
+                        <mat-label>Email (opcional)</mat-label>
+                        <input matInput formControlName="contactEmail" placeholder="Informe seu e-mail se desejar retorno">
+                    </mat-form-field>
+                </div>
+
+                <div class="container-caixa-dialogo">
+                    <span class="titulo">Avalie nossa plataforma:</span>
+                    <app-formulario-rating ngSkipHydration style="padding-left: 10px;"></app-formulario-rating>
+                </div>
+
+                <div class="container-avisos">
+                    <span class="titulo">*Seu feedback será analisado por nossa equipe. Agradecemos por contribuir com melhorias!</span>
+                    <span class="titulo">*Sua avaliação é anônima, sendo opcional informar o e-mail para resposta.</span>
+                </div>
+
+                <div class="container-btns">
+                    <button class="btn-return" mat-button type="button" routerLink="/">Voltar</button>
+                    <button class="btn-submit" mat-button type="submit" (click)="submit()">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

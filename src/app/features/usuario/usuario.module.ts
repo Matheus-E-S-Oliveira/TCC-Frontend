@@ -8,19 +8,23 @@ import { UsuarioInformacaoComponent } from './components/usuario-informacao/usua
 import { AngularMaterialModule } from '../../shared/modules/angular-material/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
+import { ReportarComponent } from './components/reportar/reportar.component';
+import { ComponentsStructureModule } from "../../shared/models/components/components-structure.module";
 
 
 @NgModule({
   declarations: [
     CadastroUsuarioComponent,
-    UsuarioInformacaoComponent
+    UsuarioInformacaoComponent,
+    ReportarComponent
   ],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    NgxMaskDirective
-  ]
+    NgxMaskDirective,
+    ComponentsStructureModule
+]
 })
 export class UsuarioModule { }
