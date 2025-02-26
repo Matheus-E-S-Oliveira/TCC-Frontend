@@ -7,6 +7,8 @@
     border-radius: 10px;
     gap: 10px;
     flex-wrap: wrap;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .pergunta,
@@ -17,4 +19,28 @@
     font-size: 17px;
     color: #424242;
     font-weight: 500;
+    box-sizing: border-box;
+    white-space: normal;
+    word-wrap: break-word;
+    align-items: center;
+    gap: 5px;
+}
+
+.help{
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    background: none;
+}
+
+.help-icon{
+    cursor: pointer;
+    color: #89b5fa;
+    transition: background-color 0.8s, transform 0.4s;
+
+    &:hover{
+        color: #007BFF;
+    transform: translateY(-2px);
+    }
 }

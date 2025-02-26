@@ -29,6 +29,12 @@ form {
     flex-direction: column;
 }
 
+.filds {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 14px;
+}
+
 .container-btn-stepper {
     display: flex;
     gap: 10px;
@@ -39,7 +45,7 @@ form {
 .btn-stepper-send {
     font-size: larger;
     flex-grow: 1;
-    padding: 5px;
+    padding: 6px;
     cursor: pointer;
     border-radius: 9px;
     border: 0;
@@ -49,8 +55,29 @@ form {
     color: #424242;
     font-weight: bold;
     font-family: 'Roboto';
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
         background-color: #d6d6d6;
     }
+}
+
+.btn-stepper-send {
+    background-color: #66cc66;
+    font-weight: bold;
+}
+
+.btn-stepper-send:hover {
+    background-color: #339933;
+    color: #fff;
+}
+
+.instrucoes{
+    margin: 0;
+    padding-top: 15px;
+    font-style: italic;
+    color: orangered;
+    font-size: 14px;
 }

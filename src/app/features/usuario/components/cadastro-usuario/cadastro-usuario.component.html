@@ -10,13 +10,29 @@
                     <mat-divider></mat-divider>
 
                     <div class="container-filds">
-                        <mat-form-field>
-                            <mat-label>Título de eleitor</mat-label>
-                            <input matInput placeholder="Seu título de eleitor" required mask="0000 0000 0000">
-                        </mat-form-field>
+                        <div class="filds">
+                            <mat-form-field>
+                                <mat-label>Título de eleitor</mat-label>
+                                <input matInput placeholder="Seu título de eleitor" required mask="0000 0000 0000">
+                            </mat-form-field>
 
+                            <mat-form-field>
+                                <mat-label>Zona Eleitoral</mat-label>
+                                <input matInput placeholder="Sua zona eleitoral" required mask="000">
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Seção Eleitoral:</mat-label>
+                                <input matInput placeholder="Sua seção eleitoral" required mask="0000">
+                            </mat-form-field>
+
+                        </div>
                         <div class="container-btn-stepper">
                             <button class="btn-stepper-prox" type="button" mat-button matStepperNext>Próximo</button>
+                        </div>
+                        <div>
+                            <p class="instrucoes">Obs: *Informe os dados do seu título de eleitor para verificar sua
+                                elegibilidade na cidade.</p>
                         </div>
                     </div>
                 </form>
@@ -53,6 +69,10 @@
                                 matStepperPrevious>Anterior</button>
                             <button class="btn-stepper-prox" type="button" mat-button matStepperNext>Próximo</button>
                         </div>
+                        <div>
+                            <p class="instrucoes">Obs: *Preencha seus dados pessoais corretamente. Eles serão usados
+                                para sua identificação.</p>
+                        </div>
                     </div>
                 </form>
             </mat-step>
@@ -64,7 +84,7 @@
                     </div>
 
                     <mat-divider></mat-divider>
-                    
+
                     <div class="container-filds">
                         <mat-form-field>
                             <mat-label>Nome de usuário</mat-label>
@@ -85,12 +105,18 @@
                         <div class="container-btn-stepper">
                             <button class="btn-stepper-ant" type="button" mat-button
                                 matStepperPrevious>Anterior</button>
-                            <button class="btn-stepper-send" mat-button type="button" (click)="submit()">Enviar</button>
+                            <button class="btn-stepper-send" mat-button type="button"
+                                (click)="submit()">Cadastrar
+                                <mat-icon>how_to_reg</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <p class="instrucoes">Obs: *Escolha suas credenciais de login. Use um e-mail válido e uma
+                                senha segura.</p>
                         </div>
                     </div>
                 </form>
             </mat-step>
         </mat-vertical-stepper>
-
     </div>
 </section>

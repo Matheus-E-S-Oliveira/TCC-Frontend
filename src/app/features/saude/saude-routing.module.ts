@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'form',
     component: SaudeFormularioComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   }
 ];
 

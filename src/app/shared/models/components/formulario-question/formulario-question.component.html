@@ -1,7 +1,14 @@
 <article class="container-question">
     <div class="pergunta">
-        N°{{question.id}})- {{question.text}}
+        N°{{question.id}}- {{question.text}}
+        <button class="help" (click)="chancgeVisibility()" matTooltip="Clique aqui para mais informações" matTooltipPosition="above">
+            <mat-icon class="help-icon">info</mat-icon>
+        </button>
     </div>
+    <div [@toggleVisibility]="isVisivle ? 'visible' : 'hidden'">
+        <span style="color: #424242; font-weight: 500;">{{ obterExplicacaoPorId(question.id) }}</span>
+    </div>
+
     <div opcoes>
         <app-formulario-rating [rating]="3" (ratingSelected)="onRatingSelected($event)"></app-formulario-rating>
     </div>

@@ -7,25 +7,20 @@
                     <p style="font-size: 17px; margin: 0; padding-bottom: 10px;">Por favor ensira seu login para poder estar avaliando os serviços da sua
                         cidade!</p>
                 </div>
-                <mat-form-field appearance="outline">
-                    <mat-label>Nome</mat-label>
-                    <input matInput formControlName="nome" placeholder="Digite seu nome">
-                    <mat-error *ngIf="formGroup.get('nome')?.hasError('required')">
-                        O nome é obrigatório
-                    </mat-error>
-                </mat-form-field>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field>
                     <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" placeholder="Digite seu email">
-                    <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
-                        O email é obrigatório
-                    </mat-error>
+                    <input matInput type="email" placeholder="Seu e-mail" required autocomplete="email">
+                </mat-form-field>
+                
+                <mat-form-field>
+                    <mat-label>Senha</mat-label>
+                    <input matInput type="password" placeholder="Sua senha" required autocomplete="current-password">
                 </mat-form-field>
 
                 <button class="btn-submit" type="submit" mat-button>
                     Fazer Login
-                    <mat-icon>send</mat-icon>
+                    <mat-icon>login</mat-icon>
                 </button>
 
                 <div style="display: flex; gap: 10px; padding-top: 10px; justify-content: center;">

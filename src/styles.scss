@@ -93,3 +93,45 @@ body {
     align-items: center !important;
     font-size: large;
 }
+
+.mdc-switch__track::after {
+    background-color: #89b5fa !important;
+}
+
+.mdc-switch--selected .mdc-switch__icon,
+.mdc-switch--unselected .mdc-switch__icon {
+    fill: #006dff !important;
+}
+
+.mdc-switch__icons {
+    background-color: #ffffff !important;
+    border-radius: 50%;
+}
+
+.mdc-switch__track::before {
+    background: #c3c3c3;
+}
+
+.mdc-switch__track::before, .mdc-switch__track::after{
+    border-color: #89b5fa !important;
+}
+
+.mat-content{
+    flex: none !important;
+    flex-wrap: wrap;
+}
+
+.mat-expansion-panel-header{
+    background: white !important; 
+    padding: 0px 0px !important;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]){
+    box-shadow: none !important;
+}
+
+.mat-expansion-panel-body{
+    background: #fff;
+}
