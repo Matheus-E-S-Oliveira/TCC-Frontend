@@ -23,7 +23,7 @@
 
                             <mat-form-field>
                                 <mat-label>Seção Eleitoral:</mat-label>
-                                <input matInput placeholder="Sua seção eleitoral" required mask="0000">
+                                <input matInput placeholder="Sua seção eleitoral" required appDynamicMask>
                             </mat-form-field>
 
                         </div>
@@ -49,7 +49,7 @@
                     <div class="container-filds">
                         <mat-form-field>
                             <mat-label>Nome</mat-label>
-                            <input matInput placeholder="Seu nome" required>
+                            <input matInput placeholder="Seu nome" required maxlength="100">
                         </mat-form-field>
 
                         <mat-form-field>
@@ -88,25 +88,27 @@
                     <div class="container-filds">
                         <mat-form-field>
                             <mat-label>Nome de usuário</mat-label>
-                            <input matInput type="text" placeholder="Seu nome de usuário" required autocomplete="off">
+                            <input matInput type="text" placeholder="Seu nome de usuário" required maxlength="20"
+                                autocomplete="off">
                         </mat-form-field>
 
                         <mat-form-field>
                             <mat-label>Email</mat-label>
-                            <input matInput type="email" placeholder="Seu e-mail" required autocomplete="off">
+                            <input matInput type="email" placeholder="Seu e-mail" required autocomplete="off"
+                                maxlength="100">
                         </mat-form-field>
 
                         <mat-form-field>
                             <mat-label>Senha</mat-label>
-                            <input matInput type="password" placeholder="Sua senha" required
-                                autocomplete="new-password">
+                            <input matInput type="password" placeholder="Sua senha" required autocomplete="new-password"
+                                maxlength="50" [(ngModel)]="senha" name="senha">
+                                <mat-hint [align]="'end'">{{ senha?.length || 0 }}/50</mat-hint>
                         </mat-form-field>
 
                         <div class="container-btn-stepper">
                             <button class="btn-stepper-ant" type="button" mat-button
                                 matStepperPrevious>Anterior</button>
-                            <button class="btn-stepper-send" mat-button type="button"
-                                (click)="submit()">Cadastrar
+                            <button class="btn-stepper-send" mat-button type="button" (click)="submit()">Cadastrar
                                 <mat-icon>how_to_reg</mat-icon>
                             </button>
                         </div>

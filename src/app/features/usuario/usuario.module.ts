@@ -6,10 +6,11 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
 import { CadastroUsuarioComponent } from './components/cadastro-usuario/cadastro-usuario.component';
 import { UsuarioInformacaoComponent } from './components/usuario-informacao/usuario-informacao.component';
 import { AngularMaterialModule } from '../../shared/modules/angular-material/angular-material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
 import { ReportarComponent } from './components/reportar/reportar.component';
 import { ComponentsStructureModule } from "../../shared/models/components/components-structure.module";
+import { DirectivesModule } from '../../shared/modules/directives/directives.module';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { ComponentsStructureModule } from "../../shared/models/components/compon
     AngularMaterialModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    ComponentsStructureModule
+    ComponentsStructureModule,
+    DirectivesModule,
+    FormsModule
 ]
 })
 export class UsuarioModule { }

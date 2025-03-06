@@ -8,6 +8,7 @@ import { FormGroup } from '@angular/forms';
   styleUrl: './cadastro-usuario.component.scss'
 })
 export class CadastroUsuarioComponent {
+senha: any;
   submit() {
     console.log('Formulário enviado!');
     // Aqui você pode capturar os dados ou enviar a requisição.
