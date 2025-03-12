@@ -8,6 +8,7 @@ import { FormCadastroAvalicao } from './formulario.viewmodel';
 import { Location } from '@angular/common';
 import { AvaliacaoApiService } from '../../../../core/api/endpoints/avalicacoes/avaliacao.api.service';
 import { take } from 'rxjs';
+import { TokenService } from '../../../services/tokens/accessToken/token.service';
 
 @Component({
   selector: 'app-formulario',
@@ -26,6 +27,7 @@ export class FormularioComponent {
     private router: Router,
     public dialog: MatDialog,
     private location: Location,
+    private tokenService: TokenService,
     public context: CadastroAvalicaoContext,
     private avaliacaoApiService: AvaliacaoApiService) { }
 
@@ -51,26 +53,48 @@ export class FormularioComponent {
   }
 
   onSubmit(): void {
-    const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent);
-    confirmDialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.updateAvaliacao();
-      }
-    });
+    if (this.tokenService.getType() !== 'user') {
+      this.dialog.open(DialogoResultSubmitComponent, {
+        data: {
+          success: false,
+          message: "Apenas usuarios podem realizar avaliações",
+          statusCode: 401
+        }
+      });
+    }
+    else{
+      const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent);
+      confirmDialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.updateAvaliacao();
+        }
+      });
+    }
   }
 
   updateAvaliacao() {
+    this.context.formCadastro.controls.userId.setValue(this.tokenService.getSub());
+
     this.avaliacaoApiService.atualizarAvaliacao(this.idServico, this.context.formCadastro.value)
       .pipe(take(1))
-      .subscribe((response) => {
-        if (response) {
+      .subscribe({
+        next: (response) => {
+          if (response) {
+            console.log(response);
+            this.dialog.open(DialogoResultSubmitComponent, {
+              data: response
+            });
+            this.context.formCadastro.disable();
+          }
+        },
+        error: (error) => {
           this.dialog.open(DialogoResultSubmitComponent, {
-            data: response
+            data: error.error
           });
         }
-      })
+      });
   }
-  
+
   isLoading = false;
   voltarEReload() {
     this.isLoading = true;
@@ -93,5 +117,5 @@ export class FormularioComponent {
         return 'Área não encontrada';
     }
   }
-  
+
 }

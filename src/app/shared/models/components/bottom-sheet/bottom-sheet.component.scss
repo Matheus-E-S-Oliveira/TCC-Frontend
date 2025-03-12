@@ -5,6 +5,8 @@
     text-decoration: none;
     color: #44474e;
     cursor: pointer;
+    border: none;
+    background: none;
 
     &:hover {
         background-color: #f3f3f3;
@@ -16,12 +18,14 @@
     display: flex;
     gap: 2px;
     align-items: center;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .list-subtitle {
     padding-left: 15px;
     font-size: 15px;
+    display: flex;
     font-weight: 400;
 }
 

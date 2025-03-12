@@ -1,42 +1,86 @@
 <section>
-    <div class="container">
-        <div class="container-form">
-            <form [formGroup]="formGroup" class="form">
-                <div class="container-title-login">
-                    <strong style="font-size: larger; padding-bottom: 10px;">Bem vindo a Plataforma Voz do cidadão!!</strong>
-                    <p style="font-size: 17px; margin: 0; padding-bottom: 10px;">Por favor ensira seu login para poder estar avaliando os serviços da sua
-                        cidade!</p>
-                </div>
-
-                <mat-form-field>
-                    <mat-label>Email</mat-label>
-                    <input matInput type="email" placeholder="Seu e-mail" required autocomplete="email">
-                </mat-form-field>
-                
-                <mat-form-field>
-                    <mat-label>Senha</mat-label>
-                    <input matInput type="password" placeholder="Sua senha" required autocomplete="current-password">
-                </mat-form-field>
-
-                <button class="btn-submit" type="submit" mat-button>
-                    Fazer Login
-                    <mat-icon>login</mat-icon>
-                </button>
-
-                <div style="display: flex; gap: 10px; padding-top: 10px; justify-content: center;">
-                    <div style="display: flex; justify-content: flex-start; flex-grow: 1;">
-                        <span style="font-size: small;">
-                            <a routerLink="/usuario/create">Cadastre-se</a>
-                        </span>
-                    </div>
-                
-                    <div style="display: flex; justify-content: flex-end; flex-grow: 1;">
-                        <span style="font-size: small;">
-                            <a routerLink="">Esqueceu a senha?</a>
-                        </span>
-                    </div>
-                </div>                
-            </form>
+  <div class="container">
+    <div class="container-form">
+      <form [formGroup]="context.formCadastro" class="form">
+        <div class="container-title-login">
+          <strong style="font-size: larger; padding-bottom: 10px"
+            >Bem vindo a Plataforma Voz do cidadão!!</strong
+          >
+          <p style="font-size: 17px; margin: 0; padding-bottom: 10px">
+            Por favor ensira seu login para poder estar avaliando os serviços da
+            sua cidade!
+          </p>
         </div>
+
+        <mat-form-field>
+          <mat-label>Email/Nome de usuário</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Seu e-mail ou seu nome de usuário"
+            autocomplete="username"
+            minlength="4"
+            maxlength="50"
+            [formControl]="context.formCadastro.controls.userIdentify"
+          />
+        </mat-form-field>
+
+        <mat-form-field style="display: flex">
+          <mat-label>Senha</mat-label>
+          <input
+            matInput
+            [type]="mostrarSenha ? 'text' : 'password'"
+            placeholder="Sua senha"
+            minlength="8"
+            maxlength="16"
+            autocomplete="current-password"
+            [formControl]="context.formCadastro.controls.password"
+          />
+          <button
+            class="btn-visibility"
+            type="button"
+            (click)="mostrarSenha = !mostrarSenha"
+          >
+            <mat-icon style="font-size: 21px" *ngIf="mostrarSenha"
+              >visibility</mat-icon
+            >
+            <mat-icon style="font-size: 21px" *ngIf="!mostrarSenha"
+              >visibility_off</mat-icon
+            >
+          </button>
+        </mat-form-field>
+
+        <button
+          class="btn-submit"
+          (click)="ngSubimit()"
+          mat-button
+          [disabled]="context.formCadastro.invalid"
+        >
+          Fazer Login
+          <mat-icon>login</mat-icon>
+        </button>
+
+        <div
+          style="
+            display: flex;
+            gap: 10px;
+            padding-top: 10px;
+            justify-content: center;
+          "
+        >
+          <div style="display: flex; justify-content: flex-start; flex-grow: 1">
+            <span style="font-size: small">
+              <a routerLink="/usuario/create">Cadastre-se</a>
+            </span>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; flex-grow: 1">
+            <span style="font-size: small">
+              <a routerLink="">Esqueceu a senha?</a>
+            </span>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </section>

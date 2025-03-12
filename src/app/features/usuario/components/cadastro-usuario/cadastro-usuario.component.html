@@ -1,124 +1,312 @@
 <section>
-    <div class="container">
-        <mat-vertical-stepper #stepper animationDuration="1000">
-            <mat-step label="Primeiro Passo">
-                <form>
-                    <div style="padding-bottom: 10px;">
-                        <span class="titulo">Identificação Eleitoral</span>
-                    </div>
+  <div class="container">
+    <mat-vertical-stepper
+      #stepper
+      animationDuration="1000"
+      [selectedIndex]="isAdmin ? 2 : 0"
+      [linear]="!isAdmin"
+    >
+      <!-- disable -->
+      <mat-step label="Primeiro Passo" [editable]="!isAdmin">
+        <form [formGroup]="context.formCadastro">
+          <div style="padding-bottom: 10px">
+            <span class="titulo">Identificação Eleitoral</span>
+          </div>
 
-                    <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
 
-                    <div class="container-filds">
-                        <div class="filds">
-                            <mat-form-field>
-                                <mat-label>Título de eleitor</mat-label>
-                                <input matInput placeholder="Seu título de eleitor" required mask="0000 0000 0000">
-                            </mat-form-field>
+          <div class="container-filds">
+            <div class="filds">
+              <mat-form-field>
+                <mat-label>Título de eleitor</mat-label>
+                <input
+                  matInput
+                  placeholder="Seu título de eleitor"
+                  mask="0000 0000 0000"
+                  [formControl]="context.formCadastro.controls.tituloEleitor"
+                />
+                <mat-error *ngIf="context.formCadastro.controls.tituloEleitor.hasError('required')">
+                  O título de eleitor é obrigatória.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.tituloEleitor.hasError('minlength')">
+                  O título de eleitor deve ter no mínimo 12 caracteres.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.tituloEleitor.hasError('maxlength')">
+                  O título de eleitor deve ter no máximo 12 caracteres.
+                </mat-error>
+              </mat-form-field>
 
-                            <mat-form-field>
-                                <mat-label>Zona Eleitoral</mat-label>
-                                <input matInput placeholder="Sua zona eleitoral" required mask="000">
-                            </mat-form-field>
+              <mat-form-field>
+                <mat-label>Zona Eleitoral</mat-label>
+                <input
+                  matInput
+                  placeholder="Sua zona eleitoral"
+                  mask="000"
+                  [formControl]="context.formCadastro.controls.zonaEleitoral"
+                />
+                <mat-error *ngIf="context.formCadastro.controls.zonaEleitoral.hasError('required')">
+                  A zona eleitoral é obrigatória.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.zonaEleitoral.hasError('minlength')">
+                  A zona eleitoral deve ter no mínimo 3 caracteres.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.zonaEleitoral.hasError('maxlength')">
+                  A zona eleitoral deve ter no máximo 3 caracteres.
+                </mat-error>
+              </mat-form-field>
 
-                            <mat-form-field>
-                                <mat-label>Seção Eleitoral:</mat-label>
-                                <input matInput placeholder="Sua seção eleitoral" required appDynamicMask>
-                            </mat-form-field>
+              <mat-form-field>
+                <mat-label>Seção Eleitoral:</mat-label>
+                <input
+                  matInput
+                  placeholder="Sua seção eleitoral"
+                  appDynamicMask
+                  minlength="3"
+                  maxlength="6"
+                  [formControl]="context.formCadastro.controls.secaoEleitoral"
+                />
+                <mat-error *ngIf="context.formCadastro.controls.secaoEleitoral.hasError('required')">
+                  A seção eleitoral é obrigatória.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.secaoEleitoral.hasError('minlength')">
+                  A seção eleitoral deve ter no mínimo 3 caracteres.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.secaoEleitoral.hasError('maxlength')">
+                  A seção eleitoral deve ter no máximo 6 caracteres.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="container-btn-stepper">
+              <button
+                class="btn-stepper-prox"
+                type="button"
+                mat-button
+                matStepperNext
+              >
+                Próximo
+              </button>
+            </div>
+            <div>
+              <p class="instrucoes">
+                Obs: *Informe os dados do seu título de eleitor para verificar
+                sua elegibilidade na cidade.
+              </p>
+            </div>
+          </div>
+        </form>
+      </mat-step>
 
-                        </div>
-                        <div class="container-btn-stepper">
-                            <button class="btn-stepper-prox" type="button" mat-button matStepperNext>Próximo</button>
-                        </div>
-                        <div>
-                            <p class="instrucoes">Obs: *Informe os dados do seu título de eleitor para verificar sua
-                                elegibilidade na cidade.</p>
-                        </div>
-                    </div>
-                </form>
-            </mat-step>
+      <mat-step label="Segundo Passo" [editable]="!isAdmin">
+        <form [formGroup]="context.formCadastro">
+          <div style="padding-bottom: 10px">
+            <span class="titulo">Dados Pessoais</span>
+          </div>
 
-            <mat-step label="Segundo Passo">
-                <form>
-                    <div style="padding-bottom: 10px;">
-                        <span class="titulo">Dados Pessoais</span>
-                    </div>
+          <mat-divider></mat-divider>
 
-                    <mat-divider></mat-divider>
+          <div class="container-filds">
+            <mat-form-field>
+              <mat-label>Nome</mat-label>
+              <input
+                matInput
+                placeholder="Seu nome"
+                maxlength="100"
+                minlength="4"
+                maxlength="100"
+                [formControl]="context.formCadastro.controls.nome"
+              />
+              <mat-error *ngIf="context.formCadastro.controls.nome.hasError('required')">
+                O nome é obrigatória.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.nome.hasError('minlength')">
+                o nome deve ter no mínimo 4 caracteres.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.nome.hasError('maxlength')">
+                O nome deve ter no máximo 100 caracteres.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.nome.hasError('nomeInvalido')">
+                O nome não pode conter números ou caracteres especiais.
+              </mat-error>
+            </mat-form-field>
 
-                    <div class="container-filds">
-                        <mat-form-field>
-                            <mat-label>Nome</mat-label>
-                            <input matInput placeholder="Seu nome" required maxlength="100">
-                        </mat-form-field>
+            <mat-form-field>
+              <mat-label>CPF</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Seu CPF"
+                autocomplete="off"
+                mask="000.000.000-00"
+                [formControl]="context.formCadastro.controls.cpf"
+              />
+              <mat-error *ngIf="context.formCadastro.controls.cpf.hasError('required')">
+                O cpf é obrigatória.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.cpf.hasError('minlength')">
+                O cpf deve ter no mínimo 14 caracteres.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.cpf.hasError('maxlength')">
+                O cpf deve ter no máximo 14 caracteres.
+              </mat-error>
+            </mat-form-field>
 
-                        <mat-form-field>
-                            <mat-label>CPF</mat-label>
-                            <input matInput type="text" placeholder="Seu CPF" required autocomplete="off"
-                                mask="000.000.000-00">
-                        </mat-form-field>
+            <mat-form-field>
+              <mat-label>Telefone</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Seu telefone"
+                autocomplete="off"
+                mask="(00) 00000-0000"
+                [formControl]="context.formCadastro.controls.telefone"
+              />
+              <mat-error *ngIf="context.formCadastro.controls.telefone.hasError('required')">
+                O telefone é obrigatória.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.telefone.hasError('minlength')">
+                O telefone deve ter no mínimo 15 caracteres.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.telefone.hasError('maxlength')">
+                O telefone deve ter no máximo 15 caracteres.
+              </mat-error>
+            </mat-form-field>
 
-                        <mat-form-field>
-                            <mat-label>Telefone</mat-label>
-                            <input matInput type="text" placeholder="Seu telefone" required autocomplete="off"
-                                mask="(00) 00000-0000">
-                        </mat-form-field>
+            <div class="container-btn-stepper">
+              <button
+                class="btn-stepper-ant"
+                type="button"
+                mat-button
+                matStepperPrevious
+              >
+                Anterior
+              </button>
+              <button
+                class="btn-stepper-prox"
+                type="button"
+                mat-button
+                matStepperNext
+              >
+                Próximo
+              </button>
+            </div>
+            <div>
+              <p class="instrucoes">
+                Obs: *Preencha seus dados pessoais corretamente. Eles serão
+                usados para sua identificação.
+              </p>
+            </div>
+          </div>
+        </form>
+      </mat-step>
 
-                        <div class="container-btn-stepper">
-                            <button class="btn-stepper-ant" type="button" mat-button
-                                matStepperPrevious>Anterior</button>
-                            <button class="btn-stepper-prox" type="button" mat-button matStepperNext>Próximo</button>
-                        </div>
-                        <div>
-                            <p class="instrucoes">Obs: *Preencha seus dados pessoais corretamente. Eles serão usados
-                                para sua identificação.</p>
-                        </div>
-                    </div>
-                </form>
-            </mat-step>
+      <mat-step label="Último Passo">
+        <form [formGroup]="context.formCadastro" >
+          <div style="padding-bottom: 10px">
+            <span class="titulo">Credenciais de Acesso</span>
+          </div>
 
-            <mat-step label="Último Passo">
-                <form>
-                    <div style="padding-bottom: 10px;">
-                        <span class="titulo">Credenciais de Acesso</span>
-                    </div>
+          <mat-divider></mat-divider>
 
-                    <mat-divider></mat-divider>
+          <div class="container-filds">
+            <mat-form-field>
+              <mat-label>Nome de usuário</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Seu nome de usuário"
+                minlength="4"
+                maxlength="20"
+                autocomplete="off"
+                [formControl]="context.formCadastro.controls.userName"
+              />
+              <mat-error *ngIf="context.formCadastro.controls.userName.hasError('required')">
+                O nome de usuário é obrigatório.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.userName.hasError('minlength')">
+                O nome de usuário deve ter no mínimo 4 caracteres.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.userName.hasError('maxlength')">
+                O nome de usuário deve ter no máximo 20 caracteres.
+              </mat-error>
+            </mat-form-field>
 
-                    <div class="container-filds">
-                        <mat-form-field>
-                            <mat-label>Nome de usuário</mat-label>
-                            <input matInput type="text" placeholder="Seu nome de usuário" required maxlength="20"
-                                autocomplete="off">
-                        </mat-form-field>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                type="email"
+                placeholder="Seu e-mail"
+                autocomplete="off"
+                minlength="6"
+                maxlength="50"
+                [formControl]="context.formCadastro.controls.email"
+              />
+              <mat-error *ngIf="context.formCadastro.controls.email.hasError('required')">
+                O email é obrigatório.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.email.hasError('email')">
+                O email deve ser válido.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.email.hasError('minlength')">
+                O email deve ter no mínimo 6 caracteres.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.email.hasError('maxlength')">
+                O email deve ter no máximo 50 caracteres.
+              </mat-error>
+            </mat-form-field>
 
-                        <mat-form-field>
-                            <mat-label>Email</mat-label>
-                            <input matInput type="email" placeholder="Seu e-mail" required autocomplete="off"
-                                maxlength="100">
-                        </mat-form-field>
+            <mat-form-field>
+              <mat-label>Senha</mat-label>
+              <input
+                matInput
+                type="password"
+                placeholder="Sua senha"
+                autocomplete="new-password"
+                minlength="8"
+                maxlength="16"
+                [formControl]="context.formCadastro.controls.password"
+              />
+              <mat-error *ngIf="context.formCadastro.controls.password.hasError('required')">
+                A senha é obrigatória.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.password.hasError('minlength')">
+                A senha deve ter no mínimo 8 caracteres.
+              </mat-error>
+              <mat-error *ngIf="context.formCadastro.controls.password.hasError('maxlength')">
+                A senha deve ter no máximo 16 caracteres.
+              </mat-error>
+            </mat-form-field>
 
-                        <mat-form-field>
-                            <mat-label>Senha</mat-label>
-                            <input matInput type="password" placeholder="Sua senha" required autocomplete="new-password"
-                                maxlength="50" [(ngModel)]="senha" name="senha">
-                                <mat-hint [align]="'end'">{{ senha?.length || 0 }}/50</mat-hint>
-                        </mat-form-field>
-
-                        <div class="container-btn-stepper">
-                            <button class="btn-stepper-ant" type="button" mat-button
-                                matStepperPrevious>Anterior</button>
-                            <button class="btn-stepper-send" mat-button type="button" (click)="submit()">Cadastrar
-                                <mat-icon>how_to_reg</mat-icon>
-                            </button>
-                        </div>
-                        <div>
-                            <p class="instrucoes">Obs: *Escolha suas credenciais de login. Use um e-mail válido e uma
-                                senha segura.</p>
-                        </div>
-                    </div>
-                </form>
-            </mat-step>
-        </mat-vertical-stepper>
-    </div>
+            <div class="container-btn-stepper">
+              <button
+                class="btn-stepper-ant"
+                type="button"
+                mat-button
+                matStepperPrevious
+                [disabled]="isAdmin"
+              >
+                Anterior
+              </button>
+              <button
+                class="btn-stepper-send"
+                mat-button
+                type="submit"
+                (click)="ngSubmit()"
+                [disabled]="context.formCadastro.invalid"
+              >
+                Cadastrar
+                <mat-icon>how_to_reg</mat-icon>
+              </button>
+            </div>
+            <div>
+              <p class="instrucoes">
+                Obs: *Escolha suas credenciais de login. Use um e-mail válido e
+                uma senha segura.
+              </p>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
 </section>

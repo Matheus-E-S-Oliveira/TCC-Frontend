@@ -29,4 +29,5 @@ export class AppComponent implements OnInit {
   getRouteAnimationState(outlet: RouterOutlet) {
     return outlet?.activatedRouteData?.['animation'];
   }
+  //senha master 7heEuS85AvQ8
 }

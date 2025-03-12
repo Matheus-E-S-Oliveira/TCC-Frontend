@@ -27,7 +27,8 @@ import { DirectivesModule } from '../../shared/modules/directives/directives.mod
     NgxMaskDirective,
     ComponentsStructureModule,
     DirectivesModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 ]
 })
 export class UsuarioModule { }

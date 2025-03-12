@@ -40,6 +40,8 @@ mat-icon:hover{
     padding-top: 20px;
     padding-bottom: 20px;
     color: #424242;
+    display: flex;
+    justify-content: center;
 }
 .dialog-actions{
     padding: 0;
@@ -60,11 +62,11 @@ mat-icon:hover{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ff6666;
+    background-color: #00e4f4;
 }
 
 .btn-close:hover{
-    background-color: #cc3333;
+    background-color: #26ceff;
     color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);   

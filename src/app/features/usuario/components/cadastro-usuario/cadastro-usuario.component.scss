@@ -49,7 +49,7 @@ form {
     cursor: pointer;
     border-radius: 9px;
     border: 0;
-    background-color: #f3f3f3;
+    background-color: #00e4f4;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.5s ease;
     color: #424242;
@@ -60,18 +60,38 @@ form {
     justify-content: center;
 
     &:hover {
-        background-color: #d6d6d6;
+        background-color: #26ceff;
+    }
+}
+
+.btn-stepper-ant:disabled{
+    pointer-events: none;
+    transition: none;
+    opacity: 0.6;
+
+    &:hover{
+        background-color: #00e4f4;
     }
 }
 
 .btn-stepper-send {
-    background-color: #66cc66;
+    background-color: #a1fa96;
     font-weight: bold;
 }
 
 .btn-stepper-send:hover {
-    background-color: #339933;
+    background-color: #66cc66;
+    //  #339933;
     color: #fff;
+}
+
+.btn-stepper-send:disabled {
+    pointer-events: none;
+    opacity: 0.6;
+
+    &:hover{
+        background-color: #a1fa96;
+    }
 }
 
 .instrucoes{
