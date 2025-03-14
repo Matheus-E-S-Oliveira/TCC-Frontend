@@ -11,8 +11,11 @@
     <mat-divider></mat-divider>
 
     <div mat-dialog-content class="dialog-content">
-        <p style="padding: 0 10px;">{{data.message}}</p>
+        <p *ngFor="let msg of data.message" style="padding: 0 10px;">
+            {{msg}}
+        </p>
     </div>
+    
 
     <mat-divider></mat-divider>
 

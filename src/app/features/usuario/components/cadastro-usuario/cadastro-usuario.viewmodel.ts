@@ -11,6 +11,7 @@ export class FormCadastroUsuario {
   public userName: FormControl<string | null>;
   public email: FormControl<string | null>;
   public password: FormControl<string | null>;
+  public token: FormControl<string | null>
 
   public constructor() {
     this.tituloEleitor = new FormControl<string>("");
@@ -25,6 +26,6 @@ export class FormCadastroUsuario {
       [Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(50)]);
     this.password = new FormControl<string>("",
       [Validators.required, Validators.minLength(8), Validators.maxLength(16)]);
-
+    this.token = new FormControl<string>("");
   }
 }

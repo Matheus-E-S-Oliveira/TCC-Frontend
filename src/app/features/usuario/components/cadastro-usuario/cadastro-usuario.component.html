@@ -26,7 +26,7 @@
                   [formControl]="context.formCadastro.controls.tituloEleitor"
                 />
                 <mat-error *ngIf="context.formCadastro.controls.tituloEleitor.hasError('required')">
-                  O título de eleitor é obrigatória.
+                  O título de eleitor é obrigatório.
                 </mat-error>
                 <mat-error *ngIf="context.formCadastro.controls.tituloEleitor.hasError('minlength')">
                   O título de eleitor deve ter no mínimo 12 caracteres.
@@ -51,7 +51,7 @@
                   A zona eleitoral deve ter no mínimo 3 caracteres.
                 </mat-error>
                 <mat-error *ngIf="context.formCadastro.controls.zonaEleitoral.hasError('maxlength')">
-                  A zona eleitoral deve ter no máximo 3 caracteres.
+                  A zona eleitoral deve ter no máximo 6 caracteres.
                 </mat-error>
               </mat-form-field>
 
@@ -119,7 +119,7 @@
                 O nome é obrigatória.
               </mat-error>
               <mat-error *ngIf="context.formCadastro.controls.nome.hasError('minlength')">
-                o nome deve ter no mínimo 4 caracteres.
+                O nome deve ter no mínimo 4 caracteres.
               </mat-error>
               <mat-error *ngIf="context.formCadastro.controls.nome.hasError('maxlength')">
                 O nome deve ter no máximo 100 caracteres.
@@ -140,7 +140,7 @@
                 [formControl]="context.formCadastro.controls.cpf"
               />
               <mat-error *ngIf="context.formCadastro.controls.cpf.hasError('required')">
-                O cpf é obrigatória.
+                O cpf é obrigatório.
               </mat-error>
               <mat-error *ngIf="context.formCadastro.controls.cpf.hasError('minlength')">
                 O cpf deve ter no mínimo 14 caracteres.
@@ -161,7 +161,7 @@
                 [formControl]="context.formCadastro.controls.telefone"
               />
               <mat-error *ngIf="context.formCadastro.controls.telefone.hasError('required')">
-                O telefone é obrigatória.
+                O telefone é obrigatório.
               </mat-error>
               <mat-error *ngIf="context.formCadastro.controls.telefone.hasError('minlength')">
                 O telefone deve ter no mínimo 15 caracteres.

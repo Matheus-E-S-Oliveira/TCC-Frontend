@@ -75,7 +75,8 @@ export class CadastroUsuarioComponent implements OnInit {
     const partialFormValue = {
       userName: this.context.formCadastro.controls.userName.value,
       email: this.context.formCadastro.controls.email.value,
-      passoword: this.context.formCadastro.controls.password.value
+      password: this.context.formCadastro.controls.password.value,
+      token: this.tokenService.getToken()
     };
 
     this.admApiService.createAdm(partialFormValue)

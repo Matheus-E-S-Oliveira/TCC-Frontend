@@ -1,9 +1,62 @@
-.container-contant{
-    padding: 20px;
-    box-sizing: border-box;
+.container-contant {
+  padding: 20px;
+  box-sizing: border-box;
 }
-.body-content{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    box-sizing: border-box;
+.body-content {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+.menu-adm {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: calc(100vh - 60px);
+  width: calc(100% - 50px);
+  box-sizing: border-box;
+}
+
+.btn-menu-adm {
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #89b5fa;
+  color: #424242;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+  height: 45px;
+  width: 45px;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover{
+    background-color: #007bff;
+    color: #fff;
+  }
+}
+
+.icon-btn-menu-adm{
+    font-size: 35px;
+    width: 35px;
+    height: 35px;
+}
+
+::ng-deep.mat-mdc-menu-panel{
+    box-shadow: none !important;
+    background: none  !important;
+    display: flex;
+    padding: 0 4px;
+}
+::ng-deep.mat-mdc-menu-item, .mat-mdc-menu-item:visited, .mat-mdc-menu-item:link{
+    background-color: #fff !important;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px;
+    margin-top: 10px !important;
+    transition: background-color 0.5s ease-in-out;
+
+    &:hover{
+        background-color: #89b5fa !important;
+    }
 }

@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     this.servicoService.loadLicencaData();
   }
 
-  getRouteAnimationState(outlet: RouterOutlet) {
+  prepareRoute(outlet: RouterOutlet) {
     return outlet?.activatedRouteData?.['animation'];
   }
   //senha master 7heEuS85AvQ8

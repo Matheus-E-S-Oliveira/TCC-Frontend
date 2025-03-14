@@ -23,6 +23,27 @@
             maxlength="50"
             [formControl]="context.formCadastro.controls.userIdentify"
           />
+          <mat-error
+            *ngIf="
+              context.formCadastro.controls.userIdentify.hasError('required')
+            "
+          >
+            O e-mail ou nome de usuário é obrigatório.
+          </mat-error>
+          <mat-error
+            *ngIf="
+              context.formCadastro.controls.userIdentify.hasError('minlength')
+            "
+          >
+            O e-mail ou nome de usuário deve ter no mínimo 4 caracteres.
+          </mat-error>
+          <mat-error
+            *ngIf="
+              context.formCadastro.controls.userIdentify.hasError('maxlength')
+            "
+          >
+            O e-mail ou nome de usuário deve ter no máximo 50 caracteres.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field style="display: flex">
@@ -36,6 +57,21 @@
             autocomplete="current-password"
             [formControl]="context.formCadastro.controls.password"
           />
+          <mat-error
+            *ngIf="context.formCadastro.controls.password.hasError('required')"
+          >
+            A senha é obrigatória.
+          </mat-error>
+          <mat-error
+            *ngIf="context.formCadastro.controls.password.hasError('minlength')"
+          >
+            A senha deve ter no mínimo 8 caracteres.
+          </mat-error>
+          <mat-error
+            *ngIf="context.formCadastro.controls.password.hasError('maxlength')"
+          >
+            A senha deve ter no máximo 16 caracteres.
+          </mat-error>
           <button
             class="btn-visibility"
             type="button"

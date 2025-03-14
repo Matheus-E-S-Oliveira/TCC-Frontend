@@ -1,5 +1,5 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmaEnvioComponent } from '../dialogo-confirma-envio/dialogo-confirma-envio.component';
 import { DialogoResultSubmitComponent } from '../dialogo-result-submit/dialogo-result-submit.component';
@@ -73,7 +73,7 @@ export class FormularioComponent {
   }
 
   updateAvaliacao() {
-    this.context.formCadastro.controls.userId.setValue(this.tokenService.getSub());
+    this.context.formCadastro.controls.token.setValue(this.tokenService.getToken())
 
     this.avaliacaoApiService.atualizarAvaliacao(this.idServico, this.context.formCadastro.value)
       .pipe(take(1))

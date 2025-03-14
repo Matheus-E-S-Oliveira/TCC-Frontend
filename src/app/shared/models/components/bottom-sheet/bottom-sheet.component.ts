@@ -30,7 +30,7 @@ export class BottomSheetComponent {
     this.dialog.open(DialogoResultSubmitComponent, {
       data: {
         success: true,
-        message: "Logout realizado com sucesso. Esperamos seu retorno em breve!",
+        message: ["Logout realizado com sucesso. Esperamos seu retorno em breve!"],
         statusCode: 200
       }
     });

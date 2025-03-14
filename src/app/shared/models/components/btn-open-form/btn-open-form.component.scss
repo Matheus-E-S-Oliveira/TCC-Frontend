@@ -4,12 +4,15 @@
     border-radius: 6px;
     padding: 12px;
     color: #424242;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: baseline;
     padding-top: 10px;
     transition: background-color 0.5s, color 0.5s, transform 0.4s;
+    border: none;
+    font-size: large;
+    cursor: pointer;
 }
 .btn-open-form:hover{
     background-color: #007BFF;

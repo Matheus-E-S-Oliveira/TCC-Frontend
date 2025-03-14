@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { TokenService } from '../../services/tokens/accessToken/token.service';
 
 @Component({
   selector: 'app-layout-page',
@@ -27,6 +28,9 @@ import { Component } from '@angular/core';
 })
 export class LayoutPageComponent {
   isLoading = false;
+  isOpen = false;
+
+  constructor(private tokenService: TokenService) {}
   
   footerState = 'hidden';
   ngOnInit(): void {
@@ -34,5 +38,12 @@ export class LayoutPageComponent {
       this.isLoading = false;
       this.footerState = 'visible'; 
     }, 1000);
+  }
+
+  menuVisibilit(): boolean{
+    if(this.tokenService.getType() === 'master' || this.tokenService.getType() === 'adm'){
+      return true
+    }
+    return false
   }
 }

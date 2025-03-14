@@ -1,17 +1,33 @@
 <div class="container-contant">
-    <section>
-        <article>
-            <app-layout-header ngSkipHydration></app-layout-header>
-        </article>
-    </section>
-    <section class="body-content">
-        <article>
-            <ng-content></ng-content>
-        </article>
-    </section>
-    <section *ngIf="!isLoading" [@footerAnimation]="footerState">
-        <article>
-            <app-layout-footer></app-layout-footer>
-        </article>
-    </section>
+  <section>
+    <article>
+      <app-layout-header ngSkipHydration></app-layout-header>
+    </article>
+  </section>
+  <section class="body-content">
+    <article style="box-sizing: border-box;">
+      <ng-content></ng-content>
+      <div *ngIf="menuVisibilit()" class="menu-adm">
+          <button mat-button [matMenuTriggerFor]="aboveMenu"
+          class="btn-menu-adm">
+            <mat-icon class="icon-btn-menu-adm">keyboard_arrow_up</mat-icon>
+          </button>
+          <mat-menu #aboveMenu="matMenu" yPosition="above">
+              <button mat-menu-item>
+                <mat-icon>open_in_new</mat-icon>
+                Checar Relatorios
+            </button>
+              <button mat-menu-item>
+                <mat-icon>open_in_new</mat-icon>
+                Lista de Adms
+              </button>
+            </mat-menu>
+        </div>
+    </article>
+  </section>
+  <section *ngIf="!isLoading" [@footerAnimation]="footerState">
+    <article>
+      <app-layout-footer></app-layout-footer>
+    </article>
+  </section>
 </div>

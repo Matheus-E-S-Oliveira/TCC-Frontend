@@ -64,6 +64,10 @@ export class TokenService {
     return this.isBrowser() ? localStorage.getItem('type') : null;
   }
 
+  getServicoAvaliados() {
+    return this.isBrowser() ?  JSON.parse(localStorage.getItem('servicos_avaliados') || "{}") : null
+  }
+
   pegarExpiracao(): number | null {
     const token = this.getToken();
     if (!token) return null;

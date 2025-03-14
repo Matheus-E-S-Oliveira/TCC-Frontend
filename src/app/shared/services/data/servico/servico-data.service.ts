@@ -34,7 +34,7 @@ export class ServicoService {
                 this.ServicoSubject.next({
                     success: true,
                     data: [...servicosMapeados], // Garantindo nova referência
-                    message: 'Serviços carregados com sucesso'
+                    message: ['Serviços carregados com sucesso']
                 });
             } else {
                 console.warn('Nenhum serviço disponível na resposta da API');

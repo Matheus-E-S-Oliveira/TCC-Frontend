@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -34,7 +35,8 @@ import { provideNgxMask } from 'ngx-mask';
     MatStepperModule,
     MatRadioModule,
     MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   exports: [
     MatIconModule,
@@ -50,7 +52,8 @@ import { provideNgxMask } from 'ngx-mask';
     MatStepperModule,
     MatRadioModule,
     MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [provideNgxMask()]
 })
