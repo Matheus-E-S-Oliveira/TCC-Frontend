@@ -11,6 +11,7 @@ import { TokenService } from '../../../../shared/services/tokens/accessToken/tok
 import { AdmApiService } from '../../../../core/api/endpoints/adm/adm.api.service';
 import { Validators } from '@angular/forms';
 import { nomeValido } from '../../../../shared/models/structure/validator/nome-validator';
+import { secaoEleitoralValidator, zonaEleitoralValidator } from '../../../../shared/models/structure/validator/secao-eleitoral.validator';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -35,6 +36,15 @@ export class CadastroUsuarioComponent implements OnInit {
     this.context.InitForm(new FormCadastroUsuario());
     this.isAdmin = this.tokenService.getType() === 'master';
     this.setConditionalValidators();
+
+    if(!this.isAdmin){
+      this.context.formCadastro.controls.zonaEleitoral.valueChanges.subscribe(() => {
+        this.context.formCadastro.controls.secaoEleitoral.setValidators(
+          [secaoEleitoralValidator(this.context.formCadastro.controls.zonaEleitoral.value ?? "")]);
+
+          this.context.formCadastro.controls.secaoEleitoral.updateValueAndValidity();
+      });
+    }
 
   }
 
@@ -109,9 +119,10 @@ export class CadastroUsuarioComponent implements OnInit {
       this.context.formCadastro.controls.tituloEleitor.setValidators(
         [Validators.required, Validators.minLength(12), Validators.maxLength(12)]);
       this.context.formCadastro.controls.zonaEleitoral.setValidators(
-        [Validators.required, Validators.minLength(3), Validators.maxLength(3)]);
+        [Validators.required, Validators.minLength(3), Validators.maxLength(3), zonaEleitoralValidator()]);
       this.context.formCadastro.controls.secaoEleitoral.setValidators(
-        [Validators.required, Validators.minLength(3), Validators.maxLength(6)]);
+        [Validators.required, Validators.minLength(3), Validators.maxLength(6), 
+          secaoEleitoralValidator(this.context.formCadastro.controls.zonaEleitoral.value ?? "")]);
       this.context.formCadastro.controls.nome.setValidators(
         [Validators.required, Validators.minLength(4), Validators.maxLength(100), nomeValido()]);
       this.context.formCadastro.controls.cpf.setValidators(

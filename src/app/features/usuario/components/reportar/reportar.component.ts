@@ -49,8 +49,7 @@ export class ReportarComponent {
     const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent);
     confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.sendReport()
-        console.log(this.context.formCadastro.value)
+        this.sendReport();
       }
     });
 

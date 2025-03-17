@@ -80,7 +80,6 @@ export class FormularioComponent {
       .subscribe({
         next: (response) => {
           if (response) {
-            console.log(response);
             this.dialog.open(DialogoResultSubmitComponent, {
               data: response
             });

@@ -47,6 +47,9 @@
                 <mat-error *ngIf="context.formCadastro.controls.zonaEleitoral.hasError('required')">
                   A zona eleitoral é obrigatória.
                 </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.zonaEleitoral.hasError('zonaInvalida')">
+                  Esta zona eleitoral não corresponde a esta cidade.
+                </mat-error>
                 <mat-error *ngIf="context.formCadastro.controls.zonaEleitoral.hasError('minlength')">
                   A zona eleitoral deve ter no mínimo 3 caracteres.
                 </mat-error>
@@ -67,6 +70,12 @@
                 />
                 <mat-error *ngIf="context.formCadastro.controls.secaoEleitoral.hasError('required')">
                   A seção eleitoral é obrigatória.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.secaoEleitoral.hasError('secaoInvalida')">
+                  A seção eleitoral não é válida para esta zona.
+                </mat-error>
+                <mat-error *ngIf="context.formCadastro.controls.secaoEleitoral.hasError('zonaNaoSelecionada')">
+                  Informe uma zona válida antes de escolher a seção.
                 </mat-error>
                 <mat-error *ngIf="context.formCadastro.controls.secaoEleitoral.hasError('minlength')">
                   A seção eleitoral deve ter no mínimo 3 caracteres.
