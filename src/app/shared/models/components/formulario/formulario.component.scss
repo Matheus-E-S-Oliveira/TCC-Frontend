@@ -84,6 +84,19 @@ app-formulario-question {
     background-color: #66cc66;
 }
 
+.btn-submit:hover {
+    background-color: #66cc66;;
+}
+
+.btn-submit:disabled{
+    pointer-events: none;
+    opacity: 0.6;
+
+    &:hover{
+        background-color: #a1fa96;
+    }
+}
+
 .btn-submit:hover,
 .btn-return:hover {
     color: #fff;

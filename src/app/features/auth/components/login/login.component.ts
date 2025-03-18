@@ -7,6 +7,7 @@ import { DialogoResultSubmitComponent } from '../../../../shared/models/componen
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from '../../../../shared/services/tokens/accessToken/token.service';
+import { ConsultaService } from '../../../../shared/services/data/usuario-ultimas-avaliacoes/consulta-data.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private tokenService: TokenService) {
+    private tokenService: TokenService,
+    private consultaService: ConsultaService) {
   }
   ngOnInit(): void {
     this.context.InitForm(new FormLogin());
@@ -47,7 +49,10 @@ export class LoginComponent implements OnInit {
           if (response) {
 
             this.tokenService.saveToken(response.token)
-
+            const sub = this.tokenService.getSub();
+            if (sub !== null) {
+              this.consultaService.getUltimaAvalicacaoServicosById(sub);
+            }
             this.dialog.open(DialogoResultSubmitComponent, {
               data: response
             });

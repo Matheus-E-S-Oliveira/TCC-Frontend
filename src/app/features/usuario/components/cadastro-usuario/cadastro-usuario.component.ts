@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
+import { Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
-import { CadastroUsuarioContext } from './cadastro-usuario.context';
 import { FormCadastroUsuario } from './cadastro-usuario.viewmodel';
+import { CadastroUsuarioContext } from './cadastro-usuario.context';
+import { AdmApiService } from '../../../../core/api/endpoints/adm/adm.api.service';
+import { nomeValido } from '../../../../shared/models/structure/validator/nome-validator';
+import { TokenService } from '../../../../shared/services/tokens/accessToken/token.service';
 import { UsuarioApiService } from '../../../../core/api/endpoints/usuarios/usuario.api.service';
 import { DialogoResultSubmitComponent } from '../../../../shared/models/components/dialogo-result-submit/dialogo-result-submit.component';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TokenService } from '../../../../shared/services/tokens/accessToken/token.service';
-import { AdmApiService } from '../../../../core/api/endpoints/adm/adm.api.service';
-import { Validators } from '@angular/forms';
-import { nomeValido } from '../../../../shared/models/structure/validator/nome-validator';
 import { secaoEleitoralValidator, zonaEleitoralValidator } from '../../../../shared/models/structure/validator/secao-eleitoral.validator';
+import { ConsultaService } from '../../../../shared/services/data/usuario-ultimas-avaliacoes/consulta-data.service';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -29,7 +30,8 @@ export class CadastroUsuarioComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private consultaService: ConsultaService
   ) { }
 
   ngOnInit() {
@@ -37,12 +39,12 @@ export class CadastroUsuarioComponent implements OnInit {
     this.isAdmin = this.tokenService.getType() === 'master';
     this.setConditionalValidators();
 
-    if(!this.isAdmin){
+    if (!this.isAdmin) {
       this.context.formCadastro.controls.zonaEleitoral.valueChanges.subscribe(() => {
         this.context.formCadastro.controls.secaoEleitoral.setValidators(
           [secaoEleitoralValidator(this.context.formCadastro.controls.zonaEleitoral.value ?? "")]);
 
-          this.context.formCadastro.controls.secaoEleitoral.updateValueAndValidity();
+        this.context.formCadastro.controls.secaoEleitoral.updateValueAndValidity();
       });
     }
 
@@ -62,7 +64,10 @@ export class CadastroUsuarioComponent implements OnInit {
           if (response) {
 
             this.tokenService.saveToken(response.token);
-
+            const sub = this.tokenService.getSub();
+            if (sub !== null) {
+              this.consultaService.getUltimaAvalicacaoServicosById(sub);
+            }
             this.dialog.open(DialogoResultSubmitComponent, {
               data: response
             });
@@ -121,8 +126,8 @@ export class CadastroUsuarioComponent implements OnInit {
       this.context.formCadastro.controls.zonaEleitoral.setValidators(
         [Validators.required, Validators.minLength(3), Validators.maxLength(3), zonaEleitoralValidator()]);
       this.context.formCadastro.controls.secaoEleitoral.setValidators(
-        [Validators.required, Validators.minLength(3), Validators.maxLength(6), 
-          secaoEleitoralValidator(this.context.formCadastro.controls.zonaEleitoral.value ?? "")]);
+        [Validators.required, Validators.minLength(3), Validators.maxLength(6),
+        secaoEleitoralValidator(this.context.formCadastro.controls.zonaEleitoral.value ?? "")]);
       this.context.formCadastro.controls.nome.setValidators(
         [Validators.required, Validators.minLength(4), Validators.maxLength(100), nomeValido()]);
       this.context.formCadastro.controls.cpf.setValidators(

@@ -23,7 +23,7 @@
         <mat-icon>arrow_back</mat-icon>
         Voltar
       </a>
-      <button (click)="onSubmit()" class="btn-submit" type="submit" mat-button>
+      <button [disabled]="isButtonDisabled" (click)="onSubmit()" class="btn-submit" type="submit" mat-button>
         Enviar
         <mat-icon>send</mat-icon>
       </button>

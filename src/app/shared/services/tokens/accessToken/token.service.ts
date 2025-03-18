@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,7 @@ export class TokenService {
       }
 
       localStorage.removeItem('token');
+      localStorage.removeItem('servicos_avaliados')
     }
   }
 
@@ -55,6 +57,12 @@ export class TokenService {
         });
       }
     }
+  }
+
+  saveList (list: any){
+    const listString = JSON.stringify(list);
+
+    localStorage.setItem("servicos_avaliados", listString);
   }
 
   getSub(): string | null {

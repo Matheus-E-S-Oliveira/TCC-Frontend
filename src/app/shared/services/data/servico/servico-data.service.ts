@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { firstValueFrom, ReplaySubject, shareReplay } from 'rxjs';
-import { ServicoResponseService } from '../../../../core/api/endpoints/servicos/response/servico-response.service';
 import { ServicoApiService } from '../../../../core/api/endpoints/servicos/servico.api.service';
 import { ApiResponse } from '../../../../core/api/structures/base-response.api.service';
 import { ServicoMappingService } from '../../mapping/servico/servico-mapping.service';
@@ -27,13 +26,11 @@ export class ServicoService {
             const response = await firstValueFrom(this.servicoApiService.getServicos());
 
             if (response.data && response.data.length > 0) {
-                // Criando uma nova instância de dados mapeados
                 const servicosMapeados = this.servicoMappingService.mapearServicos(response.data);
 
-                // Atualizando o ReplaySubject com uma nova referência
                 this.ServicoSubject.next({
                     success: true,
-                    data: [...servicosMapeados], // Garantindo nova referência
+                    data: [...servicosMapeados],
                     message: ['Serviços carregados com sucesso']
                 });
             } else {

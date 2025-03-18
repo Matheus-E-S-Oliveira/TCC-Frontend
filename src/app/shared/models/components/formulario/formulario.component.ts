@@ -23,6 +23,8 @@ export class FormularioComponent {
   @Input() questions: { id: number, text: string }[] = [];
   routePart: string = '';
   idServico: string = '';
+  isButtonDisabled = false;
+  isAvaliedIsTrue = true;
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -41,6 +43,10 @@ export class FormularioComponent {
 
     if (navigation && navigation.serviceId) {
       this.idServico = navigation.serviceId;
+    }
+
+    if (!this.idServico) {
+      this.router.navigate(['/' +  this.routePart]);
     }
   }
 
@@ -62,7 +68,9 @@ export class FormularioComponent {
         }
       });
     }
-    else{
+    else {
+      this.isButtonDisabled = true
+      this.context.formCadastro.disable();
       const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent);
       confirmDialogRef.afterClosed().subscribe(result => {
         if (result) {
@@ -73,6 +81,8 @@ export class FormularioComponent {
   }
 
   updateAvaliacao() {
+    this.isButtonDisabled = true;
+
     this.context.formCadastro.controls.token.setValue(this.tokenService.getToken())
 
     this.avaliacaoApiService.atualizarAvaliacao(this.idServico, this.context.formCadastro.value)
@@ -83,13 +93,13 @@ export class FormularioComponent {
             this.dialog.open(DialogoResultSubmitComponent, {
               data: response
             });
-            this.context.formCadastro.disable();
           }
         },
         error: (error) => {
           this.dialog.open(DialogoResultSubmitComponent, {
             data: error.error
           });
+          this.isButtonDisabled = false;
         }
       });
   }

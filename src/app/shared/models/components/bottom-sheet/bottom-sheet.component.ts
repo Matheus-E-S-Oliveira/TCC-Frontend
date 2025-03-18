@@ -26,17 +26,27 @@ export class BottomSheetComponent {
   }
 
   endSection() {
-    this.tokenService.removeToken();
-    this.dialog.open(DialogoResultSubmitComponent, {
-      data: {
-        success: true,
-        message: ["Logout realizado com sucesso. Esperamos seu retorno em breve!"],
-        statusCode: 200
-      }
-    });
-
-    this.dialog.afterAllClosed.subscribe(() => {
-      this.router.navigate(['/home']);
-    })
+    if (this.tokenService.getToken() === null) {
+      this.dialog.open(DialogoResultSubmitComponent, {
+        data: {
+          success: false,
+          message: ["Não é possível realizar o logout, pois nenhum usuário está logado no momento."],
+          statusCode: 400
+        }
+      });
+    }
+    else {
+      this.tokenService.removeToken();
+      this.dialog.open(DialogoResultSubmitComponent, {
+        data: {
+          success: true,
+          message: ["Logout realizado com sucesso. Esperamos seu retorno em breve!"],
+          statusCode: 200
+        }
+      });
+      this.dialog.afterAllClosed.subscribe(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 }
