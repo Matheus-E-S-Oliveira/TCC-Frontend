@@ -21,6 +21,10 @@ export class BtnOpenFormComponent {
   ) { }
 
   verificaUltimaAvaliacao() {
+    if (this.tokenService.getToken() === null) {
+      this.router.navigate(['/login']);
+      return;
+    }
     var servicosAaliados = this.tokenService.getServicoAvaliados();
 
     if (servicosAaliados[this.idServico]) {
@@ -37,11 +41,11 @@ export class BtnOpenFormComponent {
           }
         });
       }
-      else{
+      else {
         this.router.navigate(['/', this.routePath, 'form'], { state: { serviceId: this.idServico } });
       }
     }
-    else{
+    else {
       this.dialog.open(DialogoResultSubmitComponent, {
         data: {
           success: false,

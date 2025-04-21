@@ -46,6 +46,7 @@ export class ReportarComponent {
   }
 
   onSubmit(): void {
+    console.log(new Date())
     const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent);
     confirmDialogRef.afterClosed().subscribe(result => {
       if (result) {
