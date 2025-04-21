@@ -23,7 +23,6 @@ registerLocaleData(localePt);
     LayoutModule,
   ],
   providers: [
-    provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     provideHttpClient(
       withFetch(),
