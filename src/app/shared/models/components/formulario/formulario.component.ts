@@ -63,7 +63,7 @@ export class FormularioComponent {
       this.dialog.open(DialogoResultSubmitComponent, {
         data: {
           success: false,
-          message: "Apenas usuarios podem realizar avaliações",
+          message: ["Apenas usuarios podem realizar avaliações"],
           statusCode: 401
         }
       });
