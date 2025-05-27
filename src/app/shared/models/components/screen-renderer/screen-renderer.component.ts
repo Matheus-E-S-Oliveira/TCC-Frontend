@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicoMappedDto } from '../../structure/dtos-exibicao/servico-mapped-dto';
 import { AvaliacaoResponse } from '../../../../core/api/endpoints/avalicacoes/response/avaliacaos-response.service';
 import { CategoriaMappingService } from '../../../services/mapping/servico/categorias-mapping.service';
@@ -28,39 +28,43 @@ export class ScreenRendererComponent implements OnInit, OnChanges {
 
   commonBandeira: string = 'imgs/bandeira.jpg';
   currentUrl!: string;
-  routeName!: string;
+  routeName: string = '';
   barRating!: { label: string, value: number }[]
 
   constructor(private router: Router, private categoriaMappingService: CategoriaMappingService,
-    private tokenService: TokenService
+    private tokenService: TokenService, private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.currentUrl = this.router.url;
-    const segments = this.currentUrl.split('/');
-    this.routeName = segments[1];
+    this.route.paramMap.subscribe(params => {
+      this.routeName = params.get('route') ?? '';
+    });
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data'] && this.data?.length) {
-      if (this.dashboard) {
+      if (this.id === '0') {
         this.barRating = this.data.map(m => ({
           label: m.label,
           value: m.value
         }));
+
+        this.dashboard = true;
       }
     }
-    if (!this.dashboard) {
+    if (this.id !== '0') {
       if (changes['dataServico'] && this.dataServico?.length) {
         this.barRating = this.dataServico.map(m => {
           const label = this.categoriaMappingService?.obterLabelIndicador(m.categoria);
           return {
             label: label ? label : 'Categoria Desconhecida',
-            value: this.numero > 0 
-            ? m.nota / this.numero : 0 
+            value: this.numero > 0
+              ? m.nota / this.numero : 0
           };
         });
       }
+
+      this.dashboard = false;
     }
   }
 }

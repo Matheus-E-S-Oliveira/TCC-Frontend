@@ -42,7 +42,9 @@ export class BtnOpenFormComponent {
         });
       }
       else {
-        this.router.navigate(['/', this.routePath, 'form'], { state: { serviceId: this.idServico } });
+        this.router.navigate(['/servico', this.routePath, 'form'], {
+          state: { serviceId: this.idServico }
+        });
       }
     }
     else {

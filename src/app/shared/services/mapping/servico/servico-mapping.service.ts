@@ -6,34 +6,41 @@ import { ServicoResponseService } from '../../../../core/api/endpoints/servicos/
 })
 export class ServicoMappingService {
 
-    mapearServicos(servicos: ServicoResponseService[]) {
-        const servicosMapeados = servicos.map(servico => ({
-          id: servico.id,  
-          label: servico.nome,
-          titulo: servico.titulo,
-          numero: servico.numeroDeAvaliacoes,
-          value:  servico.numeroDeAvaliacoes > 0 
-          ? servico.media / servico.numeroDeAvaliacoes 
-          : 0,
-          route: this.removerAcentos(servico.nome)
-        }));
-    
-        const dashboard = {
-          id: '0',
-          label: 'Dashboard',
-          titulo: 'Avaliação Geral dos Serviços Prestados na Cidade',
-          numero: this.calculateGeneralAverageNumero(servicosMapeados),
-          value: this.calculateGeneralAverageValue(servicosMapeados),
-          route: 'home'
-        };
+  mapearServicos(servicos: ServicoResponseService[]) {
+    const servicosMapeados = servicos.map(servico => ({
+      id: servico.id,
+      label: servico.nome,
+      titulo: servico.titulo,
+      numero: servico.numeroDeAvaliacoes,
+      value: servico.numeroDeAvaliacoes > 0
+        ? servico.media / servico.numeroDeAvaliacoes
+        : 0,
+      route: this.removerAcentos(servico.nome),
+      localizacao: servico.localizacao,
+      imagem: servico.imagem,
+      urlSite: servico.urlSite
 
-        servicosMapeados.unshift(dashboard);
-    
-        return servicosMapeados;
-      }
+    }));
 
-  removerAcentos(str: string) { 
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c").toLowerCase(); 
+    const dashboard = {
+      id: '0',
+      label: 'Dashboard',
+      titulo: 'Avaliação Geral dos Serviços Prestados na Cidade',
+      numero: this.calculateGeneralAverageNumero(servicosMapeados),
+      value: this.calculateGeneralAverageValue(servicosMapeados),
+      route: 'home',
+      localizacao: 'https://maps.app.goo.gl/9y6QfHosYRhZ66pe7',
+      imagem: 'imgs/ressaquinha.jpg',
+      urlSite: 'https://www.ressaquinha.mg.gov.br/'
+    };
+
+    servicosMapeados.unshift(dashboard);
+
+    return servicosMapeados;
+  }
+
+  removerAcentos(str: string) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c").toLowerCase();
   }
 
   calculateGeneralAverageValue(servicos: any[]): number {

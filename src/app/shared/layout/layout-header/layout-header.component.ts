@@ -4,6 +4,7 @@ import { Component, inject, Inject, PLATFORM_ID } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Router } from '@angular/router';
 import { BottomSheetComponent } from '../../models/components/bottom-sheet/bottom-sheet.component';
+import { ServicoService } from '../../services/data/servico/servico-data.service';
 
 @Component({
   selector: 'app-layout-header',
@@ -29,9 +30,10 @@ import { BottomSheetComponent } from '../../models/components/bottom-sheet/botto
   ]
 })
 export class LayoutHeaderComponent {
+  menuItems: { route: string, label: string }[] = [];
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router,
+ private servicoService: ServicoService) { }
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) { }
-  
   menuOpen = false;
   private _bottomSheet = inject(MatBottomSheet);
 
@@ -42,6 +44,20 @@ export class LayoutHeaderComponent {
         this.menuOpen = JSON.parse(savedMenuState);
       }
     }
+    this.servicoService.ServicoData$.subscribe(response => {
+      if (response.success) {
+        this.menuItems = response.data.map(servico => ({
+          route: `/servico/${servico.route}`, // `route` é o campo mapeado
+          label: servico.label // ou servico.titulo, dependendo de como quer exibir
+        }));
+
+        // Adiciona a página inicial como primeiro item, se quiser
+        // this.menuItems = [
+        //   { route: '/servico/home', label: 'Página Inicial' },
+        //   ...items
+        // ];
+      }
+    });
   }
 
   menu() {
@@ -55,14 +71,14 @@ export class LayoutHeaderComponent {
     this._bottomSheet.open(BottomSheetComponent);
   }
 
-  isLoading = false
-  onMenuItemClick(route: string): void {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.router.navigate([route])
-      this.isLoading = false
-    }, 1000);
-  }
+  // isLoading = false
+  // onMenuItemClick(route: string): void {
+  //   this.isLoading = true;
+  //   setTimeout(() => {
+  //     this.router.navigate([route])
+  //     this.isLoading = false
+  //   }, 1000);
+  // }
 
   isActive(route: string): boolean {
     return this.router.url === route;

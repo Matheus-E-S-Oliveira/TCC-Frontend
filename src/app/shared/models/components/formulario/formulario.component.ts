@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmaEnvioComponent } from '../dialogo-confirma-envio/dialogo-confirma-envio.component';
@@ -31,13 +31,14 @@ export class FormularioComponent {
     private location: Location,
     private tokenService: TokenService,
     public context: CadastroAvalicaoContext,
+    private route: ActivatedRoute,
     private avaliacaoApiService: AvaliacaoApiService) { }
 
   ngOnInit(): void {
     this.context.InitForm(new FormCadastroAvalicao());
-    const currentUrl = this.router.url;
-    const parts = currentUrl.split('/');
-    this.routePart = parts[1];
+    this.route.paramMap.subscribe(params => {
+      this.routePart = params.get('route') ?? '';
+    });
 
     const navigation = this.location.getState() as { serviceId: string };
 
@@ -104,13 +105,13 @@ export class FormularioComponent {
       });
   }
 
-  isLoading = false;
-  voltarEReload() {
-    this.isLoading = true;
-    setTimeout(() => {
-      window.location.href = '/' + this.routePart;
-    }, 1000);
-  }
+  // isLoading = false;
+  // voltarEReload() {
+  //   this.isLoading = true;
+  //   setTimeout(() => {
+  //     window.location.href = '/' + this.routePart;
+  //   }, 1000);
+  // }
 
   getAreaFromRouterPath(routerPath: string): string {
     switch (routerPath) {

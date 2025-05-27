@@ -1,22 +1,12 @@
 <section class="menu-bar">
   <article class="menu-bar-header">
     <button (click)="menu()" class="btn-menu">
-      <mat-icon
-        *ngIf="!menuOpen"
-        matTooltip="Clique aqui para abri o menu"
-        matTooltipShowDelay="300"
-        matTooltipHideDelay="300"
-        matTooltipPosition="above"
-      >
+      <mat-icon *ngIf="!menuOpen" matTooltip="Clique aqui para abri o menu" matTooltipShowDelay="300"
+        matTooltipHideDelay="300" matTooltipPosition="above">
         menu
       </mat-icon>
-      <mat-icon
-        *ngIf="menuOpen"
-        matTooltip="Clique aqui para fechar o menu"
-        matTooltipShowDelay="300"
-        matTooltipHideDelay="300"
-        matTooltipPosition="above"
-      >
+      <mat-icon *ngIf="menuOpen" matTooltip="Clique aqui para fechar o menu" matTooltipShowDelay="300"
+        matTooltipHideDelay="300" matTooltipPosition="above">
         close
       </mat-icon>
     </button>
@@ -24,79 +14,28 @@
 
     <div class="container-btn-user">
       <div>
-        <a
-          class="pupulacaoLink"
-          matTooltip="Fonte: IBGE (Última atualização: 2024) - Clique para acessar"
-          matTooltipShowDelay="300"
-          matTooltipHideDelay="300"
-          matTooltipPosition="above"
-          href="https://www.ibge.gov.br/cidades-e-estados/mg/ressaquinha.html"
-          target="_blank"
-          >População estimada: 4.641 pessoas</a
-        >
+        <a class="pupulacaoLink" matTooltip="Fonte: IBGE (Última atualização: 2024) - Clique para acessar"
+          matTooltipShowDelay="300" matTooltipHideDelay="300" matTooltipPosition="above"
+          href="https://www.ibge.gov.br/cidades-e-estados/mg/ressaquinha.html" target="_blank">População estimada: 4.641
+          pessoas</a>
       </div>
       <button (click)="openBottomSheet()" class="btn-user">
-        <mat-icon
-          class="icon-user"
-          matTooltip="Clique aqui"
-          matTooltipShowDelay="300"
-          matTooltipHideDelay="300"
-          matTooltipPosition="above"
-          >account_circle</mat-icon
-        >
+        <mat-icon class="icon-user" matTooltip="Clique aqui" matTooltipShowDelay="300" matTooltipHideDelay="300"
+          matTooltipPosition="above">account_circle</mat-icon>
       </button>
     </div>
   </article>
   <article>
-    <div
-      [class.hidden]="!menuOpen"
-      [@expandCollapse]="menuOpen ? 'expanded' : 'collapsed'"
-    >
+    <div [class.hidden]="!menuOpen" [@expandCollapse]="menuOpen ? 'expanded' : 'collapsed'">
       <div class="menu-content">
-        <a
-          [ngClass]="{ active: isActive('/home') }"
-          (click)="onMenuItemClick('/home')"
-          class="btn-menu-itens"
-        >
-          <mat-icon>home</mat-icon>
-          <span>Página Inicial</span>
-        </a>
-        <a
-          [ngClass]="{ active: isActive('/saude') }"
-          (click)="onMenuItemClick('/saude')"
-          class="btn-menu-itens"
-        >
-          <mat-icon>health_and_safety</mat-icon>
-          <span>Saúde</span>
-        </a>
-        <a
-          [ngClass]="{ active: isActive('/infraestrutura') }"
-          (click)="onMenuItemClick('/infraestrutura')"
-          class="btn-menu-itens"
-        >
-          <mat-icon>apartment</mat-icon>
-          <span>Infraestrutura</span>
-        </a>
-        <a
-          [ngClass]="{ active: isActive('/educacao') }"
-          (click)="onMenuItemClick('/educacao')"
-          class="btn-menu-itens"
-        >
-          <mat-icon>school</mat-icon>
-          <span>Educação</span>
-        </a>
-        <a
-          [ngClass]="{ active: isActive('/seguranca') }"
-          (click)="onMenuItemClick('/seguranca')"
-          class="btn-menu-itens"
-        >
-          <mat-icon>local_police</mat-icon>
-          <span>Segurança</span>
+        <a *ngFor="let item of menuItems" [routerLink]="item.route" [ngClass]="{ active: isActive(item.route) }"
+          class="btn-menu-itens">
+          <span>{{ item.label }}</span>
         </a>
       </div>
     </div>
   </article>
 </section>
-<div *ngIf="isLoading" class="loading-overlay">
+<!-- <div *ngIf="isLoading" class="loading-overlay">
   <mat-spinner></mat-spinner>
-</div>
+</div> -->

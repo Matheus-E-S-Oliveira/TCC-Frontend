@@ -1,0 +1,70 @@
+<div>
+  <form [formGroup]="context.formCadastro" class="example-form">
+    <div class="conteiner-dashboard">
+
+      <div class="container-imagem">
+        <div class="imagem-preview" *ngIf="imagemBase64">
+          <img [src]="imagemBase64" alt="Preview da imagem" />
+        </div>
+        <button *ngIf="!imagemBase64" mat-stroked-button type="button" (click)="selecionarImagem()">
+          Selecionar Imagem
+        </button>
+        <input type="file" #fileInput hidden (change)="carregarImagem($event)" />
+      </div>
+      <div class="container-campos">
+        <!-- Campos principais -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Categoria ou Área do Serviço</mat-label>
+          <input matInput formControlName="nome" placeholder="Digite o nome, por exemplo: Saúde, Educação, etc." />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Título</mat-label>
+          <input matInput formControlName="titulo" placeholder="Ex: Avaliação dos Serviços Prestados na Educação" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Link de Localização (Google Maps)</mat-label>
+          <input matInput formControlName="localizacao"
+            placeholder="Cole aqui o link do Google Maps referente ao local" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>URL do Site</mat-label>
+          <input matInput formControlName="urlSite" placeholder="Ex: https://www.exemplo.com.br" />
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- Perguntas -->
+    <div class="container-perguntas" [formGroup]="context.formCadastro">
+      <h3>Perguntas</h3>
+      <div style="display: flex; gap: 20px; flex-direction: column;" formArrayName="perguntas">
+        <ng-container *ngFor="let pergunta of perguntas.controls; let i = index" [formGroupName]="i">
+          <div class="pergunta-item">
+            <p class="indicador-titulo">
+              <strong>{{ i + 1 }})</strong> Elabore uma pergunta sobre a categoria <strong>"{{ obterLabelIndicador(i +
+                1) }}"</strong> relacionada a este serviço.
+            </p>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ obterLabelIndicador(i + 1) }}</mat-label>
+              <input matInput formControlName="question"
+                [placeholder]="'Ex: Como você avalia a ' + obterLabelIndicador(i + 1).toLowerCase() + '?'" />
+            </mat-form-field>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="container-botoes">
+      <a class="btn-return" routerLink="/serviço">
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+      </a>
+      <button  class="btn-submit" (click)="onSubmit()"  color="primary" type="submit"
+        [disabled]="context.formCadastro.invalid">
+        Enviar
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<ng-container *ngIf="servico">
+  <app-screen-renderer
+    [titulo]="servico.label + ' - Ressaquinha-MG'"
+    [subtitle]="servico.titulo"
+    [img]="servico.imagem"
+    [id]="servico.id"
+    [data]="result"
+    [dataServico]="avaliacoes"
+    [media]="servico.value"
+    [numero]="servico.numero"
+    [url]="servico.localizacao">
+  </app-screen-renderer>
+</ng-container>
+
+<hr />
+
+<h3>Outros Serviços</h3>
+<div *ngFor="let s of result">
+  <a [routerLink]="['/servico', s.route]">{{ s.label }}</a>
+</div>

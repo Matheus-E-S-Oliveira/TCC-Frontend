@@ -1,6 +1,6 @@
 <div class="form" *ngIf="questions.length > 0 ">
   <h4 class="container-rotas">
-    <span class="rotas"><a class="link" [routerLink]="'/' + routePart"
+    <span class="rotas"><a class="link" [routerLink]="'/servico/' + routePart"
         >{{getAreaFromRouterPath(routePart)}}</a> / Avaliação</span>
   </h4>
 
@@ -19,7 +19,7 @@
   </section>
   <section style="flex-grow: 1;">
     <div class="form-actions">
-      <a class="btn-return" (click)="voltarEReload()">
+      <a class="btn-return" [routerLink]="['/servico', routePart]">
         <mat-icon>arrow_back</mat-icon>
         Voltar
       </a>
@@ -30,6 +30,6 @@
     </div>
   </section>
 </div>
-<div *ngIf="isLoading" class="loading-overlay">
+<!-- <div *ngIf="isLoading" class="loading-overlay">
   <mat-spinner></mat-spinner>
-</div>
+</div> -->

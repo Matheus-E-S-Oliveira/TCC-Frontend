@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-star-rating',
@@ -7,15 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './star-rating.component.html',
   styleUrl: './star-rating.component.scss'
 })
-export class StarRatingComponent implements OnInit{
+export class StarRatingComponent{
   @Input() disableTooltip: boolean = false;
   @Input() avaliacao: number = 0;
 
   star: string[] = [];
   
-  ngOnInit(): void {
-    this.gerarRating();
-  }
+  ngOnChanges(changes: SimpleChanges) {
+      if (changes['avaliacao']) {
+        this.gerarRating();
+      }
+    }
 
   gerarRating() {
     let valor = this.avaliacao;

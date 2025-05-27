@@ -4,4 +4,7 @@ export interface ServicoResponseService {
   titulo: string;
   numeroDeAvaliacoes: number;
   media: number;
+  localizacao: string;
+  imagem: string;
+  urlSite: string
 }

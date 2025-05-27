@@ -4,10 +4,7 @@ import { ServicoService } from './shared/services/data/servico/servico-data.serv
 import { animate, style, transition, trigger } from '@angular/animations';
 import { RouterOutlet } from '@angular/router';
 import { TokenService } from './shared/services/tokens/accessToken/token.service';
-import { take } from 'rxjs';
 import { ConsultaService } from './shared/services/data/usuario-ultimas-avaliacoes/consulta-data.service';
-
-
 
 @Component({
   selector: 'app-root',
