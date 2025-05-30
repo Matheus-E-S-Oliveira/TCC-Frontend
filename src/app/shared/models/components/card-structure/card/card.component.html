@@ -11,24 +11,37 @@
                 <div class="card-subtittle">
                     {{subtitle}}
                 </div>
-                <a [href]="url" target="_blank">
-                    <mat-icon matTooltip="Abrir localização"  matTooltipShowDelay="300"
-                    matTooltipHideDelay="300" matTooltipPosition="above">
+                <a *ngIf="url" [href]="url" target="_blank">
+                    <mat-icon matTooltip="Abrir localização" matTooltipShowDelay="300" matTooltipHideDelay="300"
+                        matTooltipPosition="above">
                         location_on
                     </mat-icon>
                 </a>
-                <a *ngIf="dashboard" [href]="urlSite" target="_blank">
-                    <mat-icon matTooltip="Sobre a cidade"  matTooltipShowDelay="300"
-                    matTooltipHideDelay="300" matTooltipPosition="above">
+                <a *ngIf="site" [href]="site" target="_blank">
+                    <mat-icon matTooltip="Sobre a cidade" matTooltipShowDelay="300" matTooltipHideDelay="300"
+                        matTooltipPosition="above">
                         open_in_new
                     </mat-icon>
                 </a>
+                <button *ngIf="list" mat-button [matMenuTriggerFor]="aboveMenu" class="btn-menu">
+                    <mat-icon class="icon-btn-menu-adm">more_vert</mat-icon>
+                </button>
+                <mat-menu #aboveMenu="matMenu" xPosition="before" yPosition="below">
+                    <a [routerLink]="['/avaliados/edit', id]" mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        Editar serviço
+                    </a>
+                    <button (click)="onDelete()" mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        Excluir serviço
+                    </button>
+                </mat-menu>
             </div>
         </div>
     </article>
     <div class="card-content">
         <div class="card-img">
-            <img src={{img}} alt="Descrição da imagem">
+            <img src={{img}} alt="Descrição da imagem" style="max-height: 400px;">
         </div>
     </div>
 </div>

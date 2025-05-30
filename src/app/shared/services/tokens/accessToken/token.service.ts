@@ -1,13 +1,15 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { DialogoResultSubmitComponent } from '../../../models/components/dialogo-result-submit/dialogo-result-submit.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
-  constructor(private router: Router, private ngZone: NgZone) {
+  constructor(private router: Router, private ngZone: NgZone, public dialog: MatDialog) {
     this.ngZone.runOutsideAngular(() => {
       this.monitorarExpiracao();
     });
@@ -59,7 +61,7 @@ export class TokenService {
     }
   }
 
-  saveList (list: any){
+  saveList(list: any) {
     const listString = JSON.stringify(list);
 
     localStorage.setItem("servicos_avaliados", listString);
@@ -73,7 +75,7 @@ export class TokenService {
   }
 
   getServicoAvaliados() {
-    return this.isBrowser() ?  JSON.parse(localStorage.getItem('servicos_avaliados') || "{}") : null
+    return this.isBrowser() ? JSON.parse(localStorage.getItem('servicos_avaliados') || "{}") : null
   }
 
   pegarExpiracao(): number | null {
@@ -95,14 +97,22 @@ export class TokenService {
     const agora = Date.now();
     const tempoRestante = exp - agora;
 
-    if (tempoRestante > 0) {
-      setTimeout(() => {
-        this.removeToken();
-        this.router.navigate(['/home']);
-      }, tempoRestante);
-    } else {
+    const encerrarSessao = () => {
       this.removeToken();
-      this.router.navigate(['/home']);
+      this.dialog.open(DialogoResultSubmitComponent, {
+        data: {
+          success: false,
+          message: ["Sua sessão expirou. Faça login novamente para continuar."],
+          statusCode: 401
+        }
+      });
+      this.router.navigate(['/servico/home']);
+    };
+
+    if (tempoRestante > 0) {
+      setTimeout(encerrarSessao, tempoRestante);
+    } else {
+      encerrarSessao();
     }
   }
 }

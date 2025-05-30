@@ -1,0 +1,22 @@
+<h4 class="container-rotas">
+  <span class="rotas"><a class="link" routerLink="/servico/home">Ínicio</a> / Serviços</span>
+</h4>
+
+<div class="container-grid">
+  <section class="container" *ngFor="let item of result">
+    <app-card [title]="item.label + ' - Ressaquinha-MG'" [subtitle]="item.titulo" [logo]="commonBandeira"
+      [img]="item.imagem" [url]="item.localizacao" [site]="item.urlSite" [list]="true" [id]="item.id">
+    </app-card>
+  </section>
+</div>
+<div class="menu-adm">
+  <button mat-button [matMenuTriggerFor]="aboveMenu" class="btn-menu-adm">
+    <mat-icon class="icon-btn-menu-adm">add</mat-icon>
+  </button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button routerLink="/avaliados/create" mat-menu-item>
+      <mat-icon>open_in_new</mat-icon>
+      Cadastrar novo serviço
+    </button>
+  </mat-menu>
+</div>

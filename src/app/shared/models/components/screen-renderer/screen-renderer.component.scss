@@ -29,12 +29,13 @@ app-card {
 }
 
 .container-kpis {
-    display: flex;
-    width: 100%;
-    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(318px, 1fr));
     gap: 10px;
+    width: 100%;
     padding-top: 40px;
     box-sizing: border-box;
+
 }
 
 .container-kpi {

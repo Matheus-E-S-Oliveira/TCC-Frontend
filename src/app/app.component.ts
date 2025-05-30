@@ -5,6 +5,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { RouterOutlet } from '@angular/router';
 import { TokenService } from './shared/services/tokens/accessToken/token.service';
 import { ConsultaService } from './shared/services/data/usuario-ultimas-avaliacoes/consulta-data.service';
+import { LoadingService } from './shared/services/loading/loading.service';
+import { delay, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -22,13 +24,18 @@ import { ConsultaService } from './shared/services/data/usuario-ultimas-avaliaco
 })
 export class AppComponent implements OnInit {
   title = 'TCC_FRONTEND';
+  showLoading = false;
+  public loading: boolean = false;
 
   constructor(private servicoService: ServicoService,
     private tokenService: TokenService,
-    private consultaService: ConsultaService
-    ) { }
+    private consultaService: ConsultaService,
+    private loadingService: LoadingService
+  ) { }
 
   ngOnInit(): void {
+    this.loadingObserver();
+    this.servicoService.resetServico();
     this.servicoService.loadLicencaData();
     const sub = this.tokenService.getSub();
     if (sub) {
@@ -38,6 +45,10 @@ export class AppComponent implements OnInit {
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet?.activatedRouteData?.['animation'];
+  }
+
+  public loadingObserver(): void {
+    this.loadingService.loadingSub.pipe(delay(0)).subscribe(loading => (this.loading = loading));
   }
   //senha master 7heEuS85AvQ8
 }

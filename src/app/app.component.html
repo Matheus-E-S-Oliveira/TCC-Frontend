@@ -1,5 +1,12 @@
-<div class="route-container">
-    <app-layout-page >
-        <router-outlet></router-outlet>
-    </app-layout-page>
+<div *ngIf="loading" class="loading-overlay">
+  <div class="spinner">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+  </div>
+</div>
+
+<div [class.loading]="loading" class="route-container">
+  <app-layout-page>
+    <router-outlet></router-outlet>
+  </app-layout-page>
 </div>

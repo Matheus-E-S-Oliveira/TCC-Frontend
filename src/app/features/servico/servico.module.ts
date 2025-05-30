@@ -9,10 +9,12 @@ import { MatInputModule } from '@angular/material/input'; // Inputs
 import { MatFormFieldModule } from '@angular/material/form-field'; // Form fields
 import { MatButtonModule } from '@angular/material/button'; // Botão material
 import { ServicoFormComponent } from './components/servico-form/servico-form.component';
+import { ServicoListComponent } from './components/servico-list/servico-list.component';
+import { ComponentsStructureModule } from "../../shared/models/components/components-structure.module";
 
 
 @NgModule({
-  declarations: [ServicoFormComponent],
+  declarations: [ServicoFormComponent, ServicoListComponent],
   imports: [
     CommonModule,
     ServicoRoutingModule,
@@ -20,7 +22,8 @@ import { ServicoFormComponent } from './components/servico-form/servico-form.com
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    ComponentsStructureModule
+]
 })
 export class ServicoModule { }

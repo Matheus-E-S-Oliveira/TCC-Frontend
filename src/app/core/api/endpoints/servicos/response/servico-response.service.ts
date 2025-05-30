@@ -6,5 +6,5 @@ export interface ServicoResponseService {
   media: number;
   localizacao: string;
   imagem: string;
-  urlSite: string
+  urlSite: string | null
 }

@@ -16,12 +16,4 @@ export class KpisComponent {
 
   constructor(private router: Router) { }
 
-  isLoading = false;
-  isReloaded = false
-  voltarEReload() {
-    this.isLoading = true
-    setTimeout(() => {
-      window.location.href = '/' + this.route;
-    }, 1000);
-  }
 }

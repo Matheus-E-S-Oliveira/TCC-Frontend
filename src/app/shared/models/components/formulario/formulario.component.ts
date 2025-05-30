@@ -1,14 +1,18 @@
+import { NavigationBlockService } from './../../../services/loading/navigation-block.service';
+import { ServicoMappingService } from './../../../services/mapping/servico/servico-mapping.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmaEnvioComponent } from '../dialogo-confirma-envio/dialogo-confirma-envio.component';
 import { DialogoResultSubmitComponent } from '../dialogo-result-submit/dialogo-result-submit.component';
 import { CadastroAvalicaoContext } from './formulario.context';
 import { FormCadastroAvalicao } from './formulario.viewmodel';
-import { Location } from '@angular/common';
 import { AvaliacaoApiService } from '../../../../core/api/endpoints/avalicacoes/avaliacao.api.service';
 import { take } from 'rxjs';
 import { TokenService } from '../../../services/tokens/accessToken/token.service';
+import { PerguntasApiService } from '../../../../core/api/endpoints/perguntas/perguntas.api.service';
+import { Pergunta } from '../../../../core/api/endpoints/perguntas/response/perguntaResponse.service';
+import { ServicoService } from '../../../services/data/servico/servico-data.service';
 
 @Component({
   selector: 'app-formulario',
@@ -16,39 +20,64 @@ import { TokenService } from '../../../services/tokens/accessToken/token.service
 
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.scss',
-  providers: [CadastroAvalicaoContext],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [CadastroAvalicaoContext]
 })
-export class FormularioComponent {
-  @Input() questions: { id: number, text: string }[] = [];
+export class FormularioComponent implements OnInit {
+  questions: { id: number, text: string }[] = [];
   routePart: string = '';
-  idServico: string = '';
+  idServico: string | null = null;
   isButtonDisabled = false;
   isAvaliedIsTrue = true;
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private location: Location,
     private tokenService: TokenService,
     public context: CadastroAvalicaoContext,
     private route: ActivatedRoute,
+    private servicoService: ServicoService,
+    private navigationBlockService: NavigationBlockService,
+    private servicoMappingService: ServicoMappingService,
+    private perguntasApiService: PerguntasApiService,
     private avaliacaoApiService: AvaliacaoApiService) { }
+
 
   ngOnInit(): void {
     this.context.InitForm(new FormCadastroAvalicao());
+
     this.route.paramMap.subscribe(params => {
       this.routePart = params.get('route') ?? '';
     });
 
-    const navigation = this.location.getState() as { serviceId: string };
+    this.route.queryParamMap.subscribe(params => {
+      this.idServico = params.get('serviceId') ?? null;
 
-    if (navigation && navigation.serviceId) {
-      this.idServico = navigation.serviceId;
-    }
+      if (this.idServico) {
+        this.getPerguntaByServico();
+      } else {
+        this.router.navigate(['/servico' + this.routePart]);
+      }
+    });
+  }
 
-    if (!this.idServico) {
-      this.router.navigate(['/' +  this.routePart]);
-    }
+  getPerguntaByServico() {
+    this.perguntasApiService.getServicoPorId(this.idServico ?? '')
+      .pipe(take(1))
+      .subscribe((response) => {
+        if (response.data.length === 0) {
+          this.dialog.open(DialogoResultSubmitComponent, {
+            data: {
+              success: false,
+              message: ["Esse serviço está indisponível para avaliação no momento"],
+              statusCode: 503
+            }
+          });
+          return;
+        }
+        this.questions = response.data.map((item: Pergunta) => ({
+          id: item.numero,
+          text: item.question
+        }));
+      });
   }
 
   onRespostaSelecionada(event: { id: number, valor: number }) {
@@ -65,35 +94,36 @@ export class FormularioComponent {
         data: {
           success: false,
           message: ["Apenas usuarios podem realizar avaliações"],
-          statusCode: 401
+          statusCode: 201
         }
       });
     }
     else {
-      this.isButtonDisabled = true
-      this.context.formCadastro.disable();
+      this.navigationBlockService.bloquearNavegacao();
       const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent);
       confirmDialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.updateAvaliacao();
         }
       });
+      this.navigationBlockService.liberarNavegacao();
     }
   }
 
   updateAvaliacao() {
-    this.isButtonDisabled = true;
-
     this.context.formCadastro.controls.token.setValue(this.tokenService.getToken())
-
-    this.avaliacaoApiService.atualizarAvaliacao(this.idServico, this.context.formCadastro.value)
+    this.avaliacaoApiService.atualizarAvaliacao(this.idServico ?? '', this.context.formCadastro.value)
       .pipe(take(1))
       .subscribe({
         next: (response) => {
           if (response) {
+            this.isButtonDisabled = true;
+            this.context.formCadastro.disable();
+            this.servicoService.atualizarServicos();
             this.dialog.open(DialogoResultSubmitComponent, {
               data: response
             });
+            
           }
         },
         error: (error) => {
@@ -105,27 +135,7 @@ export class FormularioComponent {
       });
   }
 
-  // isLoading = false;
-  // voltarEReload() {
-  //   this.isLoading = true;
-  //   setTimeout(() => {
-  //     window.location.href = '/' + this.routePart;
-  //   }, 1000);
-  // }
-
   getAreaFromRouterPath(routerPath: string): string {
-    switch (routerPath) {
-      case 'saude':
-        return 'Saúde';
-      case 'educacao':
-        return 'Educação';
-      case 'seguranca':
-        return 'Segurança';
-      case 'infraestrutura':
-        return 'Infraestrutura';
-      default:
-        return 'Área não encontrada';
-    }
+    return this.servicoMappingService.getNomeAreaBySlug(routerPath);
   }
-
 }

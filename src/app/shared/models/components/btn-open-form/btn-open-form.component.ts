@@ -22,7 +22,10 @@ export class BtnOpenFormComponent {
 
   verificaUltimaAvaliacao() {
     if (this.tokenService.getToken() === null) {
-      this.router.navigate(['/login']);
+      const currentUrl = this.router.url;
+      this.router.navigate(['/login'], {
+        queryParams: { returnUrl: currentUrl }
+      });
       return;
     }
     var servicosAaliados = this.tokenService.getServicoAvaliados();
@@ -43,7 +46,7 @@ export class BtnOpenFormComponent {
       }
       else {
         this.router.navigate(['/servico', this.routePath, 'form'], {
-          state: { serviceId: this.idServico }
+          queryParams: { serviceId: this.idServico }
         });
       }
     }

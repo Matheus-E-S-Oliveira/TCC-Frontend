@@ -134,6 +134,15 @@
   text-decoration: none;
 }
 
+.btn-submit:disabled {
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+
+  &:hover {
+    background-color: #a1fa96 !important;
+  }
+}
+
 .container-imagem {
   width: 100%;
   height: 350px;
@@ -166,4 +175,25 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 5px;
+}
+
+.conteiner-clear {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.clear-btn {
+  position: absolute;
+  padding: 8px !important;
+  color: #fff !important;
+  background-color: red !important;
+  border-color: red !important;
+  min-width: min-content !important;
+
+  &-icon {
+    margin: 0 !important;
+    font-size: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+  }
 }

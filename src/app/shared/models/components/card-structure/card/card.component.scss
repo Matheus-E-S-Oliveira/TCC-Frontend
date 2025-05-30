@@ -20,6 +20,7 @@
     align-items: center;
     flex-wrap: wrap;
     box-sizing: border-box;
+    flex: 1;
 
 }
 
@@ -53,10 +54,12 @@ mat-icon {
     padding-right: 2px;
     color: #424242;
     cursor: pointer;
-    transition: color 0.5s, transform 0.4s; 
+    transition: color 0.5s, transform 0.4s;
 }
-mat-icon:hover{
-    color: #89b5fa;;
+
+mat-icon:hover {
+    color: #89b5fa;
+    ;
     transform: translateY(-5px);
 }
 
@@ -85,4 +88,11 @@ mat-icon:hover{
     display: flex;
     flex-grow: 1;
     box-sizing: border-box;
+    object-fit: cover;
+}
+
+.btn-menu {
+    background: none;
+    border: none;
+    padding: 0;
 }

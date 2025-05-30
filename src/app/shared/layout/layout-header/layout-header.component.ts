@@ -50,12 +50,6 @@ export class LayoutHeaderComponent {
           route: `/servico/${servico.route}`, // `route` é o campo mapeado
           label: servico.label // ou servico.titulo, dependendo de como quer exibir
         }));
-
-        // Adiciona a página inicial como primeiro item, se quiser
-        // this.menuItems = [
-        //   { route: '/servico/home', label: 'Página Inicial' },
-        //   ...items
-        // ];
       }
     });
   }
@@ -70,15 +64,6 @@ export class LayoutHeaderComponent {
   openBottomSheet(): void {
     this._bottomSheet.open(BottomSheetComponent);
   }
-
-  // isLoading = false
-  // onMenuItemClick(route: string): void {
-  //   this.isLoading = true;
-  //   setTimeout(() => {
-  //     this.router.navigate([route])
-  //     this.isLoading = false
-  //   }, 1000);
-  // }
 
   isActive(route: string): boolean {
     return this.router.url === route;

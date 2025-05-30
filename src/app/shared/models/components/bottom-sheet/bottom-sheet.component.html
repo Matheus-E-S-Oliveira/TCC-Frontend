@@ -1,33 +1,33 @@
 <mat-nav-list>
-    <a routerLink="/usuario/info" class="list-item">
+    <a (click)="navigateAndClose('/usuario/info')" class="list-item">
         <span class="list-title">
         <mat-icon>account_circle</mat-icon>
             Informações do Usuário</span>
         <span class="list-subtitle">Acessar informações do usuário</span>
     </a>
 
-    <a routerLink="/login" class="list-item">
+    <a (click)="navigateAndClose('/login')" class="list-item">
         <span class="list-title">
         <mat-icon>login</mat-icon>
             Login</span>
         <span class="list-subtitle">Realizar login</span>
     </a>
 
-    <a routerLink="/login/adm" class="list-item">
+    <a (click)="navigateAndClose('/login/adm')" class="list-item">
         <span class="list-title">
         <mat-icon>admin_panel_settings</mat-icon>
             Login como Administrador</span>
         <span class="list-subtitle">Realizar login como administrador</span>
     </a>
 
-    <a routerLink="usuario/create" class="list-item">
+    <a (click)="navigateAndClose('usuario/create')" class="list-item">
         <span class="list-title">
         <mat-icon>person_add</mat-icon>
             Cadastrar Usuário</span>
         <span class="list-subtitle">Criar cadastro de usuário</span>
     </a>
 
-    <a routerLink="usuario/report" class="list-item">
+    <a (click)="navigateAndClose('usuario/report')" class="list-item">
         <span class="list-title">
         <mat-icon>feedback</mat-icon>
             Reportar</span>

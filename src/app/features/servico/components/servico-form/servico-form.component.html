@@ -1,13 +1,26 @@
-<div>
+<h4 *ngIf="isEdit" class="container-rotas">
+  <span class="rotas"><a class="link" routerLink="/servico/home">Ínicio</a> / 
+   <a routerLink="/avaliados" class="link">Serviços</a> / Editar</span>
+</h4>
+
+<h4 *ngIf="!isEdit" class="container-rotas">
+  <span class="rotas"><a class="link" routerLink="/servico/home">Ínicio</a> / 
+    <a class="link" routerLink="/avaliados">Serviços</a> / Cadastrar</span>
+</h4>
+
+<div style="margin-top: 20px;">
   <form [formGroup]="context.formCadastro" class="example-form">
     <div class="conteiner-dashboard">
 
-      <div class="container-imagem">
+      <div class="container-imagem" [ngClass]="{ 'conteiner-clear': imagemBase64 }">
         <div class="imagem-preview" *ngIf="imagemBase64">
           <img [src]="imagemBase64" alt="Preview da imagem" />
         </div>
         <button *ngIf="!imagemBase64" mat-stroked-button type="button" (click)="selecionarImagem()">
           Selecionar Imagem
+        </button>
+        <button class="clear-btn" *ngIf="imagemBase64" mat-stroked-button type="button" (click)="clearInputImage()">
+          <mat-icon class="clear-btn-icon">close</mat-icon>
         </button>
         <input type="file" #fileInput hidden (change)="carregarImagem($event)" />
       </div>
@@ -56,12 +69,12 @@
     </div>
 
     <div class="container-botoes">
-      <a class="btn-return" routerLink="/serviço">
+      <a class="btn-return" routerLink="/avaliados">
         <mat-icon>arrow_back</mat-icon>
         Voltar
       </a>
-      <button  class="btn-submit" (click)="onSubmit()"  color="primary" type="submit"
-        [disabled]="context.formCadastro.invalid">
+      <button class="btn-submit" (click)="onSubmit()"  color="primary" type="submit"
+         [disabled]="context.formCadastro.invalid || context.formCadastro.disabled || context.formCadastro.pristine">
         Enviar
         <mat-icon>send</mat-icon>
       </button>

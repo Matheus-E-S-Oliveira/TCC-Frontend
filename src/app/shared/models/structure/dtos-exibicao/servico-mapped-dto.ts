@@ -7,5 +7,5 @@ export interface ServicoMappedDto {
   route: string;
   localizacao: string;
   imagem: string;
-  urlSite: string
+  urlSite: string | null;
 }

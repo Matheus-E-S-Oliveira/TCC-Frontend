@@ -34,6 +34,14 @@ export class ServicoMappingService {
       urlSite: 'https://www.ressaquinha.mg.gov.br/'
     };
 
+    const areaMap: Record<string, string> = {};
+    servicos.forEach(servico => {
+      const slug = this.removerAcentos(servico.nome);
+      areaMap[slug] = servico.nome;
+    });
+
+    sessionStorage.setItem('areaMap', JSON.stringify(areaMap));
+
     servicosMapeados.unshift(dashboard);
 
     return servicosMapeados;
@@ -58,5 +66,10 @@ export class ServicoMappingService {
       minimumFractionDigits: 1,
       maximumFractionDigits: 1
     });
+  }
+
+  getNomeAreaBySlug(slug: string): string {
+    const map = JSON.parse(sessionStorage.getItem('areaMap') || '{}');
+    return map[slug] ?? 'Área não encontrada';
   }
 }

@@ -1,0 +1,80 @@
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+/* Círculo 1 */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.circle1 {
+    width: 70px;
+    height: 70px;
+    border-top-color: #89b5fa;
+    animation-name: spin-clockwise;
+    animation-duration: 1.5s;
+    box-shadow: 0 -2px 0 3px #89b5fa;
+}
+
+.circle2 {
+    width: 40px;
+    height: 40px;
+    border-bottom-color: #a1fa96;
+    animation-name: spin-counterclockwise;
+    animation-duration: 1s;
+    box-shadow: 0 0px 0 2px #a1fa96;
+}
+
+@keyframes spin-clockwise {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin-counterclockwise {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+.route-container {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.route-container.loading {
+    filter: blur(2px);
+    opacity: 0.3;
+    pointer-events: none;
+}

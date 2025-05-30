@@ -10,8 +10,14 @@
     
     <mat-divider></mat-divider>
 
-    <div mat-dialog-content class="dialog-content">
+    <div *ngIf="!data" mat-dialog-content class="dialog-content">
         <p style="padding: 0 10px;">Tem certeza que deseja enviar o formulário?</p>
+    </div>
+
+    <div *ngIf="data" mat-dialog-content class="dialog-content">
+        <p *ngFor="let msg of data.message" style="padding: 0 10px;">
+            {{msg}}
+        </p>
     </div>
 
     <mat-divider></mat-divider>

@@ -49,7 +49,8 @@ import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
   exports:[
     FormularioComponent,
     ScreenRendererComponent,
-    FormularioRatingComponent
+    FormularioRatingComponent,
+    CardComponent
   ]
 })
 export class ComponentsStructureModule { }

@@ -14,7 +14,7 @@ import { TokenService } from '../../../services/tokens/accessToken/token.service
   styleUrl: './screen-renderer.component.scss'
 })
 export class ScreenRendererComponent implements OnInit, OnChanges {
-  @Input() dashboard: boolean = false;
+  @Input() site: string | null = null;
   @Input() titulo: string = '';
   @Input() img: string = '';
   @Input() subtitle: string = '';
@@ -26,6 +26,7 @@ export class ScreenRendererComponent implements OnInit, OnChanges {
   @Input() data: ServicoMappedDto[] = [];
   @Input() dataServico: AvaliacaoResponse[] = []
 
+  dashboard: boolean = false;
   commonBandeira: string = 'imgs/bandeira.jpg';
   currentUrl!: string;
   routeName: string = '';

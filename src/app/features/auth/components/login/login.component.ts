@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from '../../../../shared/services/tokens/accessToken/token.service';
 import { ConsultaService } from '../../../../shared/services/data/usuario-ultimas-avaliacoes/consulta-data.service';
+import { ServicoService } from '../../../../shared/services/data/servico/servico-data.service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
+    private servicoService: ServicoService,
     private tokenService: TokenService,
     private consultaService: ConsultaService) {
   }
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (response) {
-
+            this.servicoService.atualizarServicos();
             this.tokenService.saveToken(response.token)
             const sub = this.tokenService.getSub();
             if (sub !== null) {
@@ -58,7 +60,7 @@ export class LoginComponent implements OnInit {
             });
 
             this.dialog.afterAllClosed.subscribe(() => {
-              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/servico/home';
               this.router.navigate([returnUrl]);
             })
           }
@@ -78,7 +80,8 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (response) {
-
+            this.servicoService.resetServico();
+            this.servicoService.atualizarServicos();
             this.tokenService.saveToken(response.token)
 
             this.dialog.open(DialogoResultSubmitComponent, {
@@ -86,7 +89,7 @@ export class LoginComponent implements OnInit {
             });
 
             this.dialog.afterAllClosed.subscribe(() => {
-              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
+              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/servico/home';
               this.router.navigate([returnUrl]);
             })
           }

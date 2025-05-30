@@ -1,6 +1,8 @@
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { format } from "path";
 
 export class ServicoFormModel {
+    public id = new FormControl<string | null>(null);
     public nome = new FormControl<string>('');
     public titulo = new FormControl<string>('');
     public localizacao = new FormControl<string>('');

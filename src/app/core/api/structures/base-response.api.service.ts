@@ -6,6 +6,14 @@ export interface ApiResponse<T> {
     statusCode?: number;
 }
 
+export interface ApiGetByIdResponse<T> {
+    success: boolean;
+    data: T;
+    token?: any;
+    message?: [string];
+    statusCode?: number;
+}
+
 export interface ApiResponseDialog {
     success: boolean;
     message?: [string];
