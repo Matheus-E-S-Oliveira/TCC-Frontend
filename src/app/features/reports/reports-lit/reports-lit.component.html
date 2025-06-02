@@ -1,0 +1,57 @@
+<h4 class="container-rotas">
+    <span class="rotas"><a class="link" routerLink="/servico/home">Ínicio</a> / Reports</span>
+</h4>
+
+<div class="reports-lit">
+    <ng-container *ngIf="result">
+        <div class="report-container" *ngIf="result.length > 0; else empty">
+            <mat-accordion>
+                <mat-expansion-panel class="custom-panel" *ngFor="let report of result">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Tipo de reportagem: {{ report.reportType }} - Nota: {{ report.rating }}/5
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Criado em: {{ report.dataCriacao | date: 'dd/MM/yyyy HH:mm' }}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="report-details">
+                        <p><strong>Descrição:</strong> {{ report.description }}</p>
+
+                        <ng-container *ngIf="report.errorCategory">
+                            <p><strong>Categoria de Erro:</strong> {{ report.errorCategory }}</p>
+                        </ng-container>
+
+                        <ng-container *ngIf="report.suggestionCategory">
+                            <p><strong>Categoria de Sugestão:</strong> {{ report.suggestionCategory }}</p>
+                        </ng-container>
+
+                        <p><strong>Deseja Contato:</strong> {{ report.wantsContact ? 'Sim' : 'Não' }}</p>
+
+                        <ng-container *ngIf="report.wantsContact && report.contactEmail">
+                            <p><strong>Email para Contato:</strong> {{ report.contactEmail }}</p>
+                        </ng-container>
+
+                        <ng-container *ngIf="report.dataAtualizacao">
+                            <p><strong>Atualizado em:</strong> {{ report.dataAtualizacao | date: 'dd/MM/yyyy HH:mm' }}
+                            </p>
+                        </ng-container>
+                    </div>
+
+                    <mat-divider></mat-divider>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+        <div class="btn-load-more" *ngIf="hasMore">
+            <button class="btn" (click)="getReports()">Carregar mais</button>
+        </div>
+
+        <ng-template #empty>
+            <p>Nenhum relatório encontrado.</p>
+        </ng-template>
+    </ng-container>
+</div>

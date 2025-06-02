@@ -4,11 +4,13 @@
     font-style: italic;
     background-color: #fff;
     padding: 20px;
+    padding-bottom: 3px;
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     font-family: 'Roboto';
     color: #424242;
+    flex-wrap: wrap;
 }
 .container-copyright{
     display: flex;
@@ -33,4 +35,11 @@ a:hover{
 }
 i{
     font-size: 24px;
+}
+
+.link{
+    width: fit-content;
+}
+::ng-deep .mat-expansion-panel {
+    box-shadow: none !important;
 }

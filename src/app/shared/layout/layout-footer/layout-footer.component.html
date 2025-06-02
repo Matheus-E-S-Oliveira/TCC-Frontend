@@ -1,16 +1,29 @@
 <footer class="layout-footer">
+
   <div class="container-copyright">
     <mat-icon>copyright</mat-icon>
     <span>developed by Matheus Eric Santos de Oliviera</span>
   </div>
-  
+
   <div class="container-github">
-    <a
-      href="https://github.com/Matheus-E-S-Oliveira/TCC-Frontend.git"
-      target="_blank"
-    >
+    <a href="https://github.com/Matheus-E-S-Oliveira/TCC-Frontend.git" target="_blank">
       <i class="fab fa-github"></i>
       <span>Matheus-E-S-Oliveira</span>
     </a>
   </div>
+
+  <mat-accordion style="width: 90%;">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title style="color: #424242; font-weight: 400;">
+          Serviços Avaliados
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let s of result" style="margin-bottom: 4px;">
+        <a class="link" [routerLink]="['/servico', s.route]">{{ s.label }}</a>
+      </div>
+      <mat-divider style="width: 100%;" class="card-divisor" [vertical]="false"></mat-divider>
+    </mat-expansion-panel>
+  </mat-accordion>
 </footer>

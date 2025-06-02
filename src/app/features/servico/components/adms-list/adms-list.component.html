@@ -1,0 +1,15 @@
+<h4 class="container-rotas">
+  <span class="rotas"><a class="link" routerLink="/servico/home">Início</a> / Administradores Cadastrados</span>
+</h4>
+
+<div class="adm-list">
+  <div class="adm-item" *ngFor="let item of result">
+    <div class="adm-info">
+      <span class="adm-name">{{ item.userName }}</span>
+      <span class="adm-email">{{ item.email }}</span>
+    </div>
+    <button mat-icon-button color="warn" (click)="onDelete(item.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

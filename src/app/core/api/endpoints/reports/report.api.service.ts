@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseApiService } from '../base.api.service';
 import { Observable } from 'rxjs';
-import { ApiResponse } from '../../structures/base-response.api.service';
+import { ApiGetByIdResponse, ApiResponse, ApiResponseDialog, PaginatedResultSlim } from '../../structures/base-response.api.service';
 import { ReportResponseService } from './response/report-response.service';
 import { ReportRequest } from './request/report-request.service';
 
@@ -15,8 +15,8 @@ export class ReportApiService {
  
    constructor(private api: BaseApiService) {}
  
-   getReports(): Observable<ApiResponse<ReportResponseService>> {
-     return this.api.get(`${this.endpoint}`);
+   getReports(page: number = 1, size: number = 10): Observable<ApiGetByIdResponse<PaginatedResultSlim<ReportResponseService>>> {
+     return this.api.getPaged(`${this.endpoint}`, { page, size });
    }
  
    getReport(id: string): Observable<ApiResponse<ReportResponseService>> {

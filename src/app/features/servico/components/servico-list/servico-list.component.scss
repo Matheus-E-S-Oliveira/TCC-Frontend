@@ -24,8 +24,9 @@
   justify-content: flex-end;
   position: fixed;
   top: calc(100vh - 110px);
-  width: calc(100% - 54px);
+  width: calc(100% - 53px);
   box-sizing: border-box;
+  z-index: 9;
 }
 
 .btn-menu-adm {

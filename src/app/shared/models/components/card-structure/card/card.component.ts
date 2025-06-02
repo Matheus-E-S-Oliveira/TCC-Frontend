@@ -35,7 +35,7 @@ export class CardComponent {
     const confirmDialogRef = this.dialog.open(DialogoConfirmaEnvioComponent, {
       data: {
         success: false,
-        message: ["Tem certeza de que deseja excluir este serviço? Essa ação é irreversível e resultará na perda permanente de todos os dados relacionados."],
+        message: ["Deseja realmente excluir este serviço? Esta ação é permanente e resultará na remoção de todos os dados associados."],
         statusCode: 204
       }
     });

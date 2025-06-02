@@ -55,11 +55,11 @@ export class LoginComponent implements OnInit {
             if (sub !== null) {
               this.consultaService.getUltimaAvalicacaoServicosById(sub);
             }
-            this.dialog.open(DialogoResultSubmitComponent, {
+            const dialogRef = this.dialog.open(DialogoResultSubmitComponent, {
               data: response
             });
 
-            this.dialog.afterAllClosed.subscribe(() => {
+            dialogRef.afterClosed().subscribe(() => {
               const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/servico/home';
               this.router.navigate([returnUrl]);
             })
@@ -84,11 +84,11 @@ export class LoginComponent implements OnInit {
             this.servicoService.atualizarServicos();
             this.tokenService.saveToken(response.token)
 
-            this.dialog.open(DialogoResultSubmitComponent, {
+            const dialogRef = this.dialog.open(DialogoResultSubmitComponent, {
               data: response
             });
 
-            this.dialog.afterAllClosed.subscribe(() => {
+            dialogRef.afterClosed().subscribe(() => {
               const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/servico/home';
               this.router.navigate([returnUrl]);
             })

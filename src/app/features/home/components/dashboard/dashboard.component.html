@@ -12,10 +12,3 @@
     [site]="servico.urlSite">
   </app-screen-renderer>
 </ng-container>
-
-<hr />
-
-<h3>Outros Serviços</h3>
-<div *ngFor="let s of result">
-  <a [routerLink]="['/servico', s.route]">{{ s.label }}</a>
-</div>

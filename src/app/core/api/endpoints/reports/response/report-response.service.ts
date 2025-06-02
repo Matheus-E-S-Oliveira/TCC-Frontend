@@ -1,7 +1,12 @@
 export interface ReportResponseService {
   id: string;
-  nome: string;
-  titulo: string;
-  numeroDeAvaliacoes: number;
-  media: number;
+  reportType: string;
+  errorCategory?: string;
+  suggestionCategory?: string;
+  description: string;
+  wantsContact: boolean;
+  contactEmail?: string;
+  rating: number;
+  dataCriacao: Date;
+  dataAtualizacao?: Date;
 }

@@ -1,5 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { PerguntasApiService } from '../../../../core/api/endpoints/perguntas/perguntas.api.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-avaliacao-form',
@@ -8,7 +7,4 @@ import { PerguntasApiService } from '../../../../core/api/endpoints/perguntas/pe
   styleUrl: './avaliacao-form.component.scss'
 })
 export class AvaliacaoFormComponent {
-  questions: { id: number, text: string }[] = [];
-
-  constructor(private perguntasApiService: PerguntasApiService) { }
 }

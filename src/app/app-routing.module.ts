@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'report',
+    loadChildren: () => import('./features/reports/reports.module').then(m => m.ReportsModule)
+  },
+  {
     path: '**',
     redirectTo: 'servico/home',
   }

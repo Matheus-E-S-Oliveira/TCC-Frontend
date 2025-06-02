@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BaseApiService } from '../base.api.service';
 import { Observable } from 'rxjs';
-import { ApiResponse } from '../../structures/base-response.api.service';
-import { UsuarioResponseService } from './response/adm-response.service';
+import { ApiResponse, ApiResponseDialog } from '../../structures/base-response.api.service';
+import { AdmResponse } from './response/adm-response.service';
 import { AdmRequest } from './request/adm-request.service';
 
 @Injectable({
@@ -14,11 +14,11 @@ export class AdmApiService {
  
    constructor(private api: BaseApiService) {}
  
-   getUsers(): Observable<ApiResponse<UsuarioResponseService>> {
-     return this.api.get(`${this.endpoint}`);
+   getAdms(): Observable<ApiResponse<AdmResponse>> {
+     return this.api.get<ApiResponse<AdmResponse>>(`${this.endpoint}`);
    }
  
-   getUser(id: string): Observable<ApiResponse<UsuarioResponseService>> {
+   getAdm(id: string): Observable<ApiResponse<AdmResponse>> {
      return this.api.getById(`${this.endpoint}/${id}`);
    }
  
@@ -30,7 +30,7 @@ export class AdmApiService {
      return this.api.put(`${this.endpoint}/${id}`, data);
    }
  
-   deleteUser(id: string): Observable<any> {
+   deleteAdm(id: string): Observable<ApiResponseDialog> {
      return this.api.delete(`${this.endpoint}/${id}`);
    }
 }

@@ -5,7 +5,7 @@ import { ServicoMappedDto } from '../../../../shared/models/structure/dtos-exibi
 import { AvaliacaoApiService } from '../../../../core/api/endpoints/avalicacoes/avaliacao.api.service';
 import { AvaliacaoResponse } from '../../../../core/api/endpoints/avalicacoes/response/avaliacaos-response.service';
 import { ApiResponse } from '../../../../core/api/structures/base-response.api.service';
-import { filter, switchMap, take } from 'rxjs';
+import { EMPTY, filter, of, switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,36 +31,34 @@ export class DashboardComponent implements OnInit {
         switchMap(params => {
           const routeParam = params.get('route')!;
           return this.servicoService.ServicoData$.pipe(
-            take(1), // só pega uma vez para evitar múltiplos triggers
+            take(1),
             switchMap((response: ApiResponse<ServicoMappedDto>) => {
-              if (response.success) {
-                const servicoSelecionado = response.data.find(s => s.route === routeParam);
-                this.result = response.data.filter(s => s.route !== routeParam);
-
-                if (servicoSelecionado) {
-                  this.servico = servicoSelecionado;
-
-                  if (routeParam !== 'home') {
-                    return this.avaliacaoApiService.getAvaliacaoPorId(servicoSelecionado.id).pipe(
-                      take(1)
-                    );
-                  } else {
-                    this.avaliacoes = [];
-                    return []; // retorno vazio se for home
-                  }
-                } else {
-                  console.warn('Serviço não encontrado');
-                  return [];
-                }
-              } else {
+              if (!response.success || !response.data) {
                 console.error('Erro ao carregar serviços');
-                return [];
+                return EMPTY;
               }
+
+              const servicoSelecionado = response.data.find(s => s.route === routeParam);
+              this.result = response.data.filter(s => s.route !== routeParam);
+
+              if (!servicoSelecionado) {
+                console.warn('Serviço não encontrado');
+                return EMPTY;
+              }
+
+              this.servico = servicoSelecionado;
+
+              if (routeParam === 'home') {
+                this.avaliacoes = [];
+                return of(null);
+              }
+
+              return this.avaliacaoApiService.getAvaliacaoPorId(servicoSelecionado.id).pipe(take(1));
             })
           );
         })
       )
-      .subscribe((avaliacaoResponse: any) => {
+      .subscribe((avaliacaoResponse: ApiResponse<AvaliacaoResponse> | null) => {
         if (avaliacaoResponse?.data) {
           this.avaliacoes = avaliacaoResponse.data;
         }

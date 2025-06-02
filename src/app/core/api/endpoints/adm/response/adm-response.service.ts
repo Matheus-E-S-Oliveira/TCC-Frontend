@@ -1,7 +1,5 @@
-export interface UsuarioResponseService {
+export interface AdmResponse {
   id: string;
-  nome: string;
-  titulo: string;
-  numeroDeAvaliacoes: number;
-  media: number;
+  userName: string;
+  email: string;
 }

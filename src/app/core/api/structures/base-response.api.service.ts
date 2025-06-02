@@ -43,6 +43,13 @@ export interface PaginationResult<T> {
     hasPreviousPage: boolean;
     hasNextPage: boolean;
 }
+
+export interface PaginatedResultSlim<T> {
+  page: number;
+  pageSize: number;
+  totalItems: number;
+  items: T[];
+}
   
 export interface BasicResponse {
 

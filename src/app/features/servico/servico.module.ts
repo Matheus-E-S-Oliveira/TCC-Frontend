@@ -11,10 +11,11 @@ import { MatButtonModule } from '@angular/material/button'; // Botão material
 import { ServicoFormComponent } from './components/servico-form/servico-form.component';
 import { ServicoListComponent } from './components/servico-list/servico-list.component';
 import { ComponentsStructureModule } from "../../shared/models/components/components-structure.module";
+import { AdmsListComponent } from './components/adms-list/adms-list.component';
 
 
 @NgModule({
-  declarations: [ServicoFormComponent, ServicoListComponent],
+  declarations: [ServicoFormComponent, ServicoListComponent, AdmsListComponent],
   imports: [
     CommonModule,
     ServicoRoutingModule,

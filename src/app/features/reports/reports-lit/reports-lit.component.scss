@@ -1,0 +1,98 @@
+.reports-lit {
+    .report-container {
+        margin: 20px auto;
+        width: 100%;
+        // padding: 20px;
+        border-radius: 12px;
+        box-sizing: border-box;
+    }
+
+    mat-accordion {
+        width: 100%;
+    }
+
+    ::ng-deep .custom-panel {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 8px;
+        margin-bottom: 12px;
+    }
+
+    ::ng-deep .mat-expansion-panel {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        padding: 10px;
+        background-color: #fff;
+
+        .mat-expansion-panel-header {
+            background-color: #fff;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px !important;
+        }
+
+    }
+
+    .report-details {
+        font-size: 14px;
+        color: #333;
+        line-height: 1.6;
+        padding-left: 10px;
+
+        p {
+            margin: 8px 0;
+        }
+
+        strong {
+            color: #1a237e;
+        }
+    }
+
+    p {
+        margin: 10px 0;
+    }
+
+    ::ng-deep .mat-panel-title {
+        color: #1976d2;
+        font-weight: 600;
+    }
+
+    ::ng-deep .mat-panel-description {
+        color: #616161;
+        font-size: 13px;
+    }
+
+    ::ng-deep .mat-content {
+        flex: 1 !important;
+        flex-wrap: nowrap;
+    }
+
+    ::ng-deep .mat-expansion-indicator {
+        width: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.btn-load-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn {
+        height: 40px;
+        background: none;
+        border: none;
+        font-size: larger;
+        font-style: italic;
+        color: #424242;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover{
+            color: #89b5fa;
+        }
+    }
+}

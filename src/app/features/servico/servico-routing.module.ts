@@ -3,12 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { ServicoFormComponent } from './components/servico-form/servico-form.component';
 import { ServicoListComponent } from './components/servico-list/servico-list.component';
 import { ConditionalNavigationGuard } from '../../shared/services/routes/bloqueio-navegacao.guard';
+import { AdmsListComponent } from './components/adms-list/adms-list.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: ServicoListComponent,
+    canDeactivate: [ConditionalNavigationGuard]
+  },
+  {
+    path: 'adms',
+    component: AdmsListComponent,
     canDeactivate: [ConditionalNavigationGuard]
   },
   {
